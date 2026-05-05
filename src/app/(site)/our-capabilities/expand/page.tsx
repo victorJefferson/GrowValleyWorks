@@ -6,23 +6,51 @@ import { ServiceCard } from "@/components/ui/ServiceCard";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 import styles from "../Capabilities.module.scss";
+import { client } from "@/lib/sanity";
+import { heroQuery, pillarQuery } from "@/lib/queries";
+import { urlFor } from "@/lib/sanity";
+import { PortableText } from '@portabletext/react';
 
 export const metadata: Metadata = {
   title: "Expand | GrowValley Works",
   description: "International expansion, multi-entity structuring, and cross-border compliance. The operational work that turns a new market into a running business.",
 };
 
-export default function ExpandPage() {
+export default async function ExpandPage() {
+  let heroData = null;
+  let pillarData = null;
+
+  try {
+    [heroData, pillarData] = await Promise.all([
+      client.fetch(heroQuery, { pageSlug: "expand" }),
+      client.fetch(pillarQuery, { slug: "expand" })
+    ]);
+  } catch (err) {
+    console.error("Expand Page Fetch Error:", err);
+  }
+
+  const defaultHero = {
+    eyebrow: "SERVICES / EXPAND",
+    headline: "Expand",
+    subheadline: "GrowValley handles the legal, structural, and compliance work behind international expansion. From entity setup to cross-border filings, we run the infrastructure so you can run the business.",
+    image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=1400",
+  };
+
+  const displayHero = heroData || defaultHero;
+  const heroImage = heroData?.image ? urlFor(heroData.image).url() : displayHero.image;
+
   return (
     <main>
       {/* SECTION 1: HERO */}
       <Hero
         isShort
-        eyebrow="SERVICES / EXPAND"
-        headline="Expand"
-        subheadline="GrowValley handles the legal, structural, and compliance work behind international expansion. From entity setup to cross-border filings, we run the infrastructure so you can run the business."
-        image="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=1400"
-        hasCTA={false}
+        eyebrow={displayHero.eyebrow}
+        headline={displayHero.headline}
+        subheadline={displayHero.subheadline}
+        image={heroImage}
+        hasCTA={displayHero.hasCTA}
+        ctaText={displayHero.ctaText}
+        ctaHref={displayHero.ctaHref}
       />
 
       {/* SECTION 2: POSITIONING */}
@@ -31,15 +59,23 @@ export default function ExpandPage() {
           <div className={styles.introContent}>
             <span className={styles.sectionEyebrow}>OUR APPROACH</span>
             <h2 className={styles.introHeading}>
-              Most businesses can enter a new market. Few are built to operate in one.
+              {pillarData?.approachHeadline || "Most businesses can enter a new market. Few are built to operate in one."}
             </h2>
             <div className={styles.introBody}>
-              <p className={styles.introParagraph}>
-                International expansion creates a new layer of legal and regulatory obligation, often across multiple jurisdictions at once. Entity structure, compliance calendars, local licensing, multi-entity governance: these are not administrative details.
-              </p>
-              <p className={styles.introParagraph}>
-                They are the foundations the business runs on. GrowValley builds those foundations and maintains them as your footprint grows.
-              </p>
+              {pillarData?.approachBody ? (
+                <div className={styles.introParagraph}>
+                  <PortableText value={pillarData.approachBody} />
+                </div>
+              ) : (
+                <>
+                  <p className={styles.introParagraph}>
+                    International expansion creates a new layer of legal and regulatory obligation, often across multiple jurisdictions at once. Entity structure, compliance calendars, local licensing, multi-entity governance: these are not administrative details.
+                  </p>
+                  <p className={styles.introParagraph}>
+                    They are the foundations the business runs on. GrowValley builds those foundations and maintains them as your footprint grows.
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -123,7 +159,7 @@ export default function ExpandPage() {
           <div className={styles.stripContent}>
             <span className={styles.stripBrand}>BUILT FOR SCALE</span>
             <h2 className={styles.stripText} style={{ fontStyle: 'normal', fontWeight: 600 }}>
-              Expansion is not a milestone. It is an ongoing operation.
+              {pillarData?.positioningText || "Expansion is not a milestone. It is an ongoing operation."}
             </h2>
             <p style={{ opacity: 0.8, fontSize: '1.2rem', maxWidth: '800px' }}>
               Most firms will help you incorporate in a new country. Few stay with you through the regulatory cycle, the entity changes, the banking relationships, and the compliance calendar that follows.
@@ -136,22 +172,31 @@ export default function ExpandPage() {
       <section className={styles.section}>
         <div className="container">
           <div className={styles.statsGridPillar}>
-            <div className={styles.statItem}>
-              <span className={styles.statNumber}>30+</span>
-              <p className={styles.statLabel}>Jurisdictions Covered</p>
-            </div>
-            <div className={styles.statItem}>
-              <span className={styles.statNumber}>6</span>
-              <p className={styles.statLabel}>Expansion Specialists On Roster</p>
-            </div>
-            <div className={styles.statItem}>
-              <span className={styles.statNumber}>4</span>
-              <p className={styles.statLabel}>Integrated Service Areas</p>
-            </div>
-            <div className={styles.statItem}>
-              <span className={styles.statNumber}>1</span>
-              <p className={styles.statLabel}>Point of Contact Across All Workstreams</p>
-            </div>
+            {pillarData?.stats ? pillarData.stats.map((s: any, i: number) => (
+              <div key={i} className={styles.statItem}>
+                <span className={styles.statNumber}>{s.number}</span>
+                <p className={styles.statLabel}>{s.label}</p>
+              </div>
+            )) : (
+              <>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>30+</span>
+                  <p className={styles.statLabel}>Jurisdictions Covered</p>
+                </div>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>6</span>
+                  <p className={styles.statLabel}>Expansion Specialists On Roster</p>
+                </div>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>4</span>
+                  <p className={styles.statLabel}>Integrated Service Areas</p>
+                </div>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>1</span>
+                  <p className={styles.statLabel}>Point of Contact Across All Workstreams</p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -161,11 +206,11 @@ export default function ExpandPage() {
         <div className="container">
           <div className={styles.ctaBannerBox}>
             <div className={styles.ctaBannerText}>
-              <h2>Entering a new market? Get the structure right before you move.</h2>
-              <p>GrowValley manages the legal, structural, and compliance work behind international expansion. One team, every jurisdiction, no gaps.</p>
+              <h2>{pillarData?.ctaHeadline || "Entering a new market? Get the structure right before you move."}</h2>
+              <p>{pillarData?.ctaBody || "GrowValley manages the legal, structural, and compliance work behind international expansion. One team, every jurisdiction, no gaps."}</p>
             </div>
             <Link href="/contact">
-              <Button size="lg" variant="secondary">Talk to Our Expansion Team</Button>
+              <Button size="lg" variant="secondary">{pillarData?.ctaButtonLabel || "Talk to Our Expansion Team"}</Button>
             </Link>
           </div>
         </div>

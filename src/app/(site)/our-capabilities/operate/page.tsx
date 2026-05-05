@@ -7,22 +7,51 @@ import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 import styles from "../Capabilities.module.scss";
 
+import { client } from "@/lib/sanity";
+import { heroQuery, pillarQuery } from "@/lib/queries";
+import { urlFor } from "@/lib/sanity";
+import { PortableText } from '@portabletext/react';
+
 export const metadata: Metadata = {
   title: "Operate | GrowValley Works",
   description: "PRO services, entity management, regulatory filings, and corporate administration. Running the infrastructure of your business.",
 };
 
-export default function OperatePage() {
+export default async function OperatePage() {
+  let heroData = null;
+  let pillarData = null;
+
+  try {
+    [heroData, pillarData] = await Promise.all([
+      client.fetch(heroQuery, { pageSlug: "operate" }),
+      client.fetch(pillarQuery, { slug: "operate" })
+    ]);
+  } catch (err) {
+    console.error("Operate Page Fetch Error:", err);
+  }
+
+  const defaultHero = {
+    eyebrow: "SERVICES / OPERATE",
+    headline: "Operate",
+    subheadline: "Running a business in the UAE requires continuous interaction with government authorities, regulators, and licensing bodies. We handle that interaction so your operations do not stop when it gets complicated.",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1400",
+  };
+
+  const displayHero = heroData || defaultHero;
+  const heroImage = heroData?.image ? urlFor(heroData.image).url() : displayHero.image;
+
   return (
     <main>
       {/* SECTION 1: HERO */}
       <Hero
         isShort
-        eyebrow="SERVICES / OPERATE"
-        headline="Operate"
-        subheadline="Running a business in the UAE requires continuous interaction with government authorities, regulators, and licensing bodies. We handle that interaction so your operations do not stop when it gets complicated."
-        image="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1400"
-        hasCTA={false}
+        eyebrow={displayHero.eyebrow}
+        headline={displayHero.headline}
+        subheadline={displayHero.subheadline}
+        image={heroImage}
+        hasCTA={displayHero.hasCTA}
+        ctaText={displayHero.ctaText}
+        ctaHref={displayHero.ctaHref}
       />
 
       {/* SECTION 2: OUR APPROACH */}
@@ -31,15 +60,23 @@ export default function OperatePage() {
           <div className={styles.introContent}>
             <span className={styles.sectionEyebrow}>OUR APPROACH</span>
             <h2 className={styles.introHeading}>
-              Formation is a moment. Operating compliance is a calendar that never stops.
+              {pillarData?.approachHeadline || "Formation is a moment. Operating compliance is a calendar that never stops."}
             </h2>
             <div className={styles.introBody}>
-              <p className={styles.introParagraph}>
-                These obligations repeat, overlap, and carry penalties when missed. Most businesses manage them reactively. 
-              </p>
-              <p className={styles.introParagraph}>
-                GrowValley tracks every deadline, prepares every submission in advance, and handles every government interaction through advisors who do this as their primary work.
-              </p>
+              {pillarData?.approachBody ? (
+                <div className={styles.introParagraph}>
+                  <PortableText value={pillarData.approachBody} />
+                </div>
+              ) : (
+                <>
+                  <p className={styles.introParagraph}>
+                    These obligations repeat, overlap, and carry penalties when missed. Most businesses manage them reactively. 
+                  </p>
+                  <p className={styles.introParagraph}>
+                    GrowValley tracks every deadline, prepares every submission in advance, and handles every government interaction through advisors who do this as their primary work.
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -52,15 +89,23 @@ export default function OperatePage() {
             <span className={styles.sectionEyebrow}>WHO WE WORK WITH</span>
           </div>
           <div className={styles.whoGrid}>
-            <div className={styles.whoBlock}>
-              <p>Founders and operators running UAE-registered entities who need PRO services, visa and permit processing, and government authority liaison managed without building a dedicated internal team for it.</p>
-            </div>
-            <div className={styles.whoBlock}>
-              <p>Multi-entity businesses operating across mainland and free zone jurisdictions, where compliance deadlines, renewal cycles, and regulatory filing calendars require coordinated tracking across multiple legal structures simultaneously.</p>
-            </div>
-            <div className={styles.whoBlock}>
-              <p>Companies whose compliance is currently managed by whoever is available, where deadlines are tracked in inboxes rather than systems, and where one missed renewal or late filing would create a problem they could not easily undo.</p>
-            </div>
+            {pillarData?.whoWeWorkWith ? pillarData.whoWeWorkWith.map((item: string, i: number) => (
+              <div key={i} className={styles.whoBlock}>
+                <p>{item}</p>
+              </div>
+            )) : (
+              <>
+                <div className={styles.whoBlock}>
+                  <p>Founders and operators running UAE-registered entities who need PRO services, visa and permit processing, and government authority liaison managed without building a dedicated internal team for it.</p>
+                </div>
+                <div className={styles.whoBlock}>
+                  <p>Multi-entity businesses operating across mainland and free zone jurisdictions, where compliance deadlines, renewal cycles, and regulatory filing calendars require coordinated tracking across multiple legal structures simultaneously.</p>
+                </div>
+                <div className={styles.whoBlock}>
+                  <p>Companies whose compliance is currently managed by whoever is available, where deadlines are tracked in inboxes rather than systems, and where one missed renewal or late filing would create a problem they could not easily undo.</p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -107,7 +152,7 @@ export default function OperatePage() {
         <div className="container">
           <div className={styles.stripContent}>
             <p className={styles.stripText}>
-              A missed renewal is not an oversight. In the UAE, it is a fine, a freeze, or a forced cancellation. We track the deadlines, manage the authorities, and make sure none of that reaches you.
+              {pillarData?.positioningText || "A missed renewal is not an oversight. In the UAE, it is a fine, a freeze, or a forced cancellation. We track the deadlines, manage the authorities, and make sure none of that reaches you."}
             </p>
             <span className={styles.stripBrand}>GrowValley</span>
           </div>
@@ -119,11 +164,11 @@ export default function OperatePage() {
         <div className="container">
           <div className={styles.ctaBannerBox}>
             <div className={styles.ctaBannerText}>
-              <h2>Your compliance calendar should not live in someone's inbox.</h2>
-              <p>GrowValley manages PRO services, entity maintenance, regulatory filings, and corporate administration as a structured, tracked operation. Tell us what your entity needs and we will take it from there.</p>
+              <h2>{pillarData?.ctaHeadline || "Your compliance calendar should not live in someone's inbox."}</h2>
+              <p>{pillarData?.ctaBody || "GrowValley manages PRO services, entity maintenance, regulatory filings, and corporate administration as a structured, tracked operation. Tell us what your entity needs and we will take it from there."}</p>
             </div>
             <Link href="/contact">
-              <Button size="lg" variant="secondary">Speak to Our Team</Button>
+              <Button size="lg" variant="secondary">{pillarData?.ctaButtonLabel || "Speak to Our Team"}</Button>
             </Link>
           </div>
         </div>

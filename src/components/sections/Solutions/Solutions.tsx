@@ -36,8 +36,12 @@ const solutions = [
   },
 ];
 
-export const Solutions = () => {
+export const Solutions = ({ cmsData }: { cmsData?: any }) => {
   const [activeSolution, setActiveSolution] = useState(0);
+
+  const displayHeadline = cmsData?.headline || "We don't set up companies. We run them.";
+  const displayDescription = cmsData?.description || "Most operators deal with four vendors to do what one firm should handle. GrowValley covers the full operational stack across jurisdictions, at scale. One relationship. One point of accountability. No gaps between providers.";
+  const displayItems = cmsData?.items || solutions;
 
   return (
     <section className={styles.solutionsWrapper}>
@@ -45,17 +49,17 @@ export const Solutions = () => {
         <div className="container">
           <header className={styles.sectionHeader}>
             <h2 className={styles.sectionHeadline}>
-              We don&apos;t set up companies. We run them.
+              {displayHeadline}
             </h2>
             <p className={styles.sectionBody}>
-              Most operators deal with four vendors to do what one firm should handle. GrowValley covers the full operational stack across jurisdictions, at scale. One relationship. One point of accountability. No gaps between providers.
+              {displayDescription}
             </p>
           </header>
 
           <div className={styles.solutionsContainer}>
             <div className={styles.solutionsNav}>
               <div className={styles.solutionsList}>
-                {solutions.map((s, idx) => (
+                {displayItems.map((s: any, idx: number) => (
                   <button
                     key={s.id}
                     className={`${styles.solutionsTrigger} ${activeSolution === idx ? styles.active : ""
@@ -80,14 +84,14 @@ export const Solutions = () => {
                 <div className={styles.solutionsCard} key={activeSolution}>
                   <div className={styles.cardHeader}>
                     <h2 className={styles.cardTitleH2}>
-                      {solutions[activeSolution].title}
+                      {displayItems[activeSolution].title}
                     </h2>
                     <p className={styles.subtitle}>
-                      {solutions[activeSolution].subtitle}
+                      {displayItems[activeSolution].subtitle}
                     </p>
                   </div>
                   <Link
-                    href={solutions[activeSolution].href}
+                    href={displayItems[activeSolution].href}
                     className={styles.learnMore}
                   >
                     Learn more <ArrowRight size={16} />
@@ -97,7 +101,7 @@ export const Solutions = () => {
 
               {/* Mobile: All cards in a list */}
               <div className={styles.mobileOnly}>
-                {solutions.map((s) => (
+                {displayItems.map((s: any) => (
                   <div
                     id={`mobile-${s.id}`}
                     key={s.id}

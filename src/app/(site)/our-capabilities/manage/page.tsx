@@ -6,23 +6,51 @@ import { ServiceCard } from "@/components/ui/ServiceCard";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 import styles from "../Capabilities.module.scss";
+import { client } from "@/lib/sanity";
+import { heroQuery, pillarQuery } from "@/lib/queries";
+import { urlFor } from "@/lib/sanity";
+import { PortableText } from '@portabletext/react';
 
 export const metadata: Metadata = {
   title: "Manage | GrowValley Works",
   description: "Accounting, payroll, HR administration, tax compliance, and employer-of-record. The financial and people operations behind your business.",
 };
 
-export default function ManagePage() {
+export default async function ManagePage() {
+  let heroData = null;
+  let pillarData = null;
+
+  try {
+    [heroData, pillarData] = await Promise.all([
+      client.fetch(heroQuery, { pageSlug: "manage" }),
+      client.fetch(pillarQuery, { slug: "manage" })
+    ]);
+  } catch (err) {
+    console.error("Manage Page Fetch Error:", err);
+  }
+
+  const defaultHero = {
+    eyebrow: "SERVICES / MANAGE",
+    headline: "Manage",
+    subheadline: "GrowValley manages accounting, payroll, HR administration, tax compliance, and employer-of-record across your entities so your team is not doing it. Built for businesses operating at scale, not just starting out.",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1400",
+  };
+
+  const displayHero = heroData || defaultHero;
+  const heroImage = heroData?.image ? urlFor(heroData.image).url() : displayHero.image;
+
   return (
     <main>
       {/* SECTION 1: HERO */}
       <Hero
         isShort
-        eyebrow="SERVICES / MANAGE"
-        headline="Manage"
-        subheadline="GrowValley manages accounting, payroll, HR administration, tax compliance, and employer-of-record across your entities so your team is not doing it. Built for businesses operating at scale, not just starting out."
-        image="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1400"
-        hasCTA={false}
+        eyebrow={displayHero.eyebrow}
+        headline={displayHero.headline}
+        subheadline={displayHero.subheadline}
+        image={heroImage}
+        hasCTA={displayHero.hasCTA}
+        ctaText={displayHero.ctaText}
+        ctaHref={displayHero.ctaHref}
       />
 
       {/* SECTION 2: POSITIONING STATEMENT */}
@@ -31,15 +59,23 @@ export default function ManagePage() {
           <div className={styles.introContent}>
             <span className={styles.sectionEyebrow}>OUR APPROACH</span>
             <h2 className={styles.introHeading}>
-              At a certain size, back-office complexity stops being an inconvenience and starts being a liability.
+              {pillarData?.approachHeadline || "At a certain size, back-office complexity stops being an inconvenience and starts being a liability."}
             </h2>
             <div className={styles.introBody}>
-              <p className={styles.introParagraph}>
-                Managing payroll across entities, staying current on tax obligations in multiple jurisdictions, and keeping HR records clean under local labour law is not simple work. It is not work your finance team should be doing manually either.
-              </p>
-              <p className={styles.introParagraph}>
-                GrowValley takes on these functions directly. We run them on a defined schedule, with the right oversight built in, and we report to you as a partner, not a vendor chasing approvals.
-              </p>
+              {pillarData?.approachBody ? (
+                <div className={styles.introParagraph}>
+                  <PortableText value={pillarData.approachBody} />
+                </div>
+              ) : (
+                <>
+                  <p className={styles.introParagraph}>
+                    Managing payroll across entities, staying current on tax obligations in multiple jurisdictions, and keeping HR records clean under local labour law is not simple work. It is not work your finance team should be doing manually either.
+                  </p>
+                  <p className={styles.introParagraph}>
+                    GrowValley takes on these functions directly. We run them on a defined schedule, with the right oversight built in, and we report to you as a partner, not a vendor chasing approvals.
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -130,7 +166,7 @@ export default function ManagePage() {
           <div className={styles.stripContent}>
             <span className={styles.stripBrand}>BUILT FOR OPERATORS</span>
             <h2 className={styles.stripText} style={{ fontStyle: 'normal', fontWeight: 600 }}>
-              We do not just record what happened. We keep your business out of trouble.
+              {pillarData?.positioningText || "We do not just record what happened. We keep your business out of trouble."}
             </h2>
             <p style={{ opacity: 0.8, fontSize: '1.2rem', maxWidth: '800px' }}>
               Back-office work looks routine until something goes wrong. GrowValley is structured to prevent them. Our team runs your financial and people operations on a fixed schedule, across every jurisdiction you operate in.
@@ -143,22 +179,31 @@ export default function ManagePage() {
       <section className={styles.section}>
         <div className="container">
           <div className={styles.statsGridPillar}>
-            <div className={styles.statItem}>
-              <span className={styles.statNumber}>5</span>
-              <p className={styles.statLabel}>Functions managed under one engagement</p>
-            </div>
-            <div className={styles.statItem}>
-              <span className={styles.statNumber}>20+</span>
-              <p className={styles.statLabel}>Jurisdictions covered for payroll and tax</p>
-            </div>
-            <div className={styles.statItem}>
-              <span className={styles.statNumber}>4 pillars</span>
-              <p className={styles.statLabel}>One firm, not four separate vendors</p>
-            </div>
-            <div className={styles.statItem}>
-              <span className={styles.statNumber}>Monthly</span>
-              <p className={styles.statLabel}>Reporting cycle with no chasing required</p>
-            </div>
+            {pillarData?.stats ? pillarData.stats.map((s: any, i: number) => (
+              <div key={i} className={styles.statItem}>
+                <span className={styles.statNumber}>{s.number}</span>
+                <p className={styles.statLabel}>{s.label}</p>
+              </div>
+            )) : (
+              <>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>5</span>
+                  <p className={styles.statLabel}>Functions managed under one engagement</p>
+                </div>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>20+</span>
+                  <p className={styles.statLabel}>Jurisdictions covered for payroll and tax</p>
+                </div>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>4 pillars</span>
+                  <p className={styles.statLabel}>One firm, not four separate vendors</p>
+                </div>
+                <div className={styles.statItem}>
+                  <span className={styles.statNumber}>Monthly</span>
+                  <p className={styles.statLabel}>Reporting cycle with no chasing required</p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -168,11 +213,11 @@ export default function ManagePage() {
         <div className="container">
           <div className={styles.ctaBannerBox}>
             <div className={styles.ctaBannerText}>
-              <h2>Stop running the back office. We will run it for you.</h2>
-              <p>GrowValley provides the financial and people infrastructure serious businesses need to operate cleanly at scale. One firm, accountable across every function.</p>
+              <h2>{pillarData?.ctaHeadline || "Stop running the back office. We will run it for you."}</h2>
+              <p>{pillarData?.ctaBody || "GrowValley provides the financial and people infrastructure serious businesses need to operate cleanly at scale. One firm, accountable across every function."}</p>
             </div>
             <Link href="/contact">
-              <Button size="lg" variant="secondary">Get Started</Button>
+              <Button size="lg" variant="secondary">{pillarData?.ctaButtonLabel || "Get Started"}</Button>
             </Link>
           </div>
         </div>

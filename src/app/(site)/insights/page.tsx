@@ -5,8 +5,8 @@ import { client } from "@/lib/sanity";
 import {
     featuredInsightQuery,
     editorsPickQuery,
-    latestInsightsQuery,
-    allInsightsForIndexQuery,
+    insightsQuery,
+    allInsightsQuery,
 } from '@/lib/queries';
 import InsightsContent from "./InsightsContent";
 
@@ -43,8 +43,8 @@ export default async function InsightsPage() {
         [featured, editorsPicks, latest, allInsights] = await Promise.all([
             client.fetch(featuredInsightQuery),
             client.fetch(editorsPickQuery),
-            client.fetch(latestInsightsQuery),
-            client.fetch(allInsightsForIndexQuery),
+            client.fetch(insightsQuery),
+            client.fetch(allInsightsQuery),
         ]);
     } catch (error) {
         console.error("Error fetching Insights CMS data on Server:", error);

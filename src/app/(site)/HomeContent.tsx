@@ -20,12 +20,16 @@ interface HomeContentProps {
   heroData: any;
   insights: any[];
   dataSectionData: any;
+  whoWeWorkWithData?: any;
+  solutionsData?: any;
 }
 
 export default function HomeContent({
   heroData,
   insights,
   dataSectionData,
+  whoWeWorkWithData,
+  solutionsData,
 }: HomeContentProps) {
   const defaultHero = {
     eyebrow: "GROWVALLEY WORKS",
@@ -33,7 +37,7 @@ export default function HomeContent({
     subheadline:
       "Company formation, government compliance, accounting, payroll, and international expansion. Handled by one firm.",
     ctaText: "Let's Work",
-    ctaHref: "/our-capabilities",
+    ctaHref: "/contact",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1400",
   };
 
@@ -92,23 +96,23 @@ export default function HomeContent({
 
       <section className="section-padding">
         <div className={`container ${styles.noPaddingMobile}`}>
-            <div className={styles.whySplitLayout}>
-              <div className={styles.whySplitLeft}>
-                <div className={styles.introCardDark}>
-                  <h3>
-                    GrowValley is not a business setup company. We run the infrastructure that keeps entities compliant, solvent, and operational after the license is signed.
-                  </h3>
-                </div>
+          <div className={styles.whySplitLayout}>
+            <div className={styles.whySplitLeft}>
+              <div className={styles.introCardDark}>
+                <h3>
+                  GrowValley is not a business setup company. We run the infrastructure that keeps entities compliant, solvent, and operational after the license is signed.
+                </h3>
               </div>
+            </div>
 
-              <div className={styles.whySplitRight}>
+            <div className={styles.whySplitRight}>
 
               <div className={styles.whyCard}>
                 <div className={styles.whyCardInner}>
                   <div className={styles.whyCardFront}>
-                      <div className={styles.whyCardIcon}>
-                        <ShieldCheck size={48} strokeWidth={1} />
-                      </div>
+                    <div className={styles.whyCardIcon}>
+                      <ShieldCheck size={48} strokeWidth={1} />
+                    </div>
                     <div className={styles.whyCardLabel}>
                       Integrated Across Functions
                     </div>
@@ -124,9 +128,9 @@ export default function HomeContent({
               <div className={styles.whyCard}>
                 <div className={styles.whyCardInner}>
                   <div className={styles.whyCardFront}>
-                      <div className={styles.whyCardIcon}>
-                        <Layers size={48} strokeWidth={1} />
-                      </div>
+                    <div className={styles.whyCardIcon}>
+                      <Layers size={48} strokeWidth={1} />
+                    </div>
                     <div className={styles.whyCardLabel}>
                       Structured for Scale
                     </div>
@@ -142,9 +146,9 @@ export default function HomeContent({
               <div className={styles.whyCard}>
                 <div className={styles.whyCardInner}>
                   <div className={styles.whyCardFront}>
-                      <div className={styles.whyCardIcon}>
-                        <Globe size={48} strokeWidth={1} />
-                      </div>
+                    <div className={styles.whyCardIcon}>
+                      <Globe size={48} strokeWidth={1} />
+                    </div>
                     <div className={styles.whyCardLabel}>
                       Operational in Multiple Jurisdictions
                     </div>
@@ -156,12 +160,12 @@ export default function HomeContent({
                   </div>
                 </div>
               </div>
-              </div>
             </div>
+          </div>
 
-            <div className={styles.whySection}>
-              <h2 className={styles.whyHeadingMain}>Many firms help you start. We handle what comes after.</h2>
-              <p className={styles.whySubheadlineMain}>
+          <div className={styles.whySection}>
+            <h2 className={styles.whyHeadingMain}>Many firms help you start. We handle what comes after.</h2>
+            <p className={styles.whySubheadlineMain}>
               GrowValley is the execution arm of the GrowValley ecosystem.
             </p>
             <p className={styles.whyBodyMain}>
@@ -187,8 +191,8 @@ export default function HomeContent({
           </Link>
         </div>
       </section>
-      <Solutions />
-      <WhoWeWorkWith />
+      <Solutions cmsData={solutionsData} />
+      <WhoWeWorkWith cmsData={whoWeWorkWithData} />
       {features.insights && (
         <InsightsCarousel
           title="Latest from GrowValley"

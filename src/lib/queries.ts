@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
 export const heroQuery = groq`
-  *[_type == "hero" && pageSlug == $pageSlug][0] {
+  *[_type == "hero-works" && pageSlug == $pageSlug][0] {
     eyebrow,
     headline,
     subheadline,
@@ -13,7 +13,7 @@ export const heroQuery = groq`
 `;
 
 export const dataSectionQuery = groq`
-  *[_type == "dataSection"] | order(_updatedAt desc)[0] {
+  *[_type == "data-section-works"] | order(_updatedAt desc)[0] {
     headline,
     description,
     stats[] {
@@ -26,7 +26,7 @@ export const dataSectionQuery = groq`
 `;
 
 export const insightsQuery = groq`
-  *[_type == "insight"] | order(publishedAt desc)[0...3] {
+  *[_type == "insight-works"] | order(publishedAt desc)[0...3] {
     _id,
     title,
     "slug": slug.current,
@@ -38,7 +38,7 @@ export const insightsQuery = groq`
 `;
 
 export const allInsightsQuery = groq`
-  *[_type == "insight"] | order(publishedAt desc) {
+  *[_type == "insight-works"] | order(publishedAt desc) {
     _id,
     title,
     "slug": slug.current,
@@ -50,7 +50,7 @@ export const allInsightsQuery = groq`
 `;
 
 export const insightBySlugQuery = groq`
-  *[_type == "insight" && slug.current == $slug][0] {
+  *[_type == "insight-works" && slug.current == $slug][0] {
     _id,
     title,
     "slug": slug.current,
@@ -62,11 +62,8 @@ export const insightBySlugQuery = groq`
   }
 `;
 
-// ─── Insights Index Page Queries ─────────────────────────────────────────
-
-// The most recently updated featured article wins (safety net for duplicate featured)
 export const featuredInsightQuery = groq`
-  *[_type == "insight" && featured == true] | order(_updatedAt desc)[0] {
+  *[_type == "insight-works" && featured == true] | order(_updatedAt desc)[0] {
     _id,
     title,
     "slug": slug.current,
@@ -78,32 +75,7 @@ export const featuredInsightQuery = groq`
 `;
 
 export const editorsPickQuery = groq`
-  *[_type == "insight" && editorsPick == true] | order(_updatedAt desc)[0...3] {
-    _id,
-    title,
-    "slug": slug.current,
-    tag,
-    excerpt,
-    mainImage,
-    publishedAt
-  }
-`;
-
-export const latestInsightsQuery = groq`
-  *[_type == "insight"] | order(publishedAt desc)[0...3] {
-    _id,
-    title,
-    "slug": slug.current,
-    tag,
-    excerpt,
-    mainImage,
-    publishedAt
-  }
-`;
-
-// All insights for the tab + grid section (no limit, handled client-side with Load More)
-export const allInsightsForIndexQuery = groq`
-  *[_type == "insight"] | order(publishedAt desc) {
+  *[_type == "insight-works" && editorsPick == true] | order(_updatedAt desc)[0...3] {
     _id,
     title,
     "slug": slug.current,
@@ -115,7 +87,7 @@ export const allInsightsForIndexQuery = groq`
 `;
 
 export const leadershipQuery = groq`
-  *[_type == "leadership"] | order(_updatedAt desc)[0] {
+  *[_type == "leadership-works"] | order(_updatedAt desc)[0] {
     eyebrow,
     name,
     title,
@@ -127,36 +99,78 @@ export const leadershipQuery = groq`
   }
 `;
 
-export const caseStudiesQuery = groq`
-  *[_type == "caseStudy"] | order(order asc, _createdAt desc) {
-    _id,
+export const pillarQuery = groq`
+  *[_type == "pillar-works" && slug.current == $slug][0] {
     title,
-    coverImage,
-    "pdfUrl": pdfFile.asset->url
+    "slug": slug.current,
+    heroHeadline,
+    heroSubheadline,
+    heroImage,
+    approachHeadline,
+    approachBody,
+    whoWeWorkWith,
+    howItWorks,
+    positioningText,
+    stats,
+    nextSectionTitle,
+    nextSectionBody,
+    ctaHeadline,
+    ctaBody,
+    ctaButtonLabel
   }
 `;
 
-export const serviceCategoriesQuery = groq`
-  *[_type == "serviceCategory"] | order(order asc) {
-    _id,
+export const serviceQuery = groq`
+  *[_type == "service-works" && slug.current == $slug][0] {
     title,
     "slug": slug.current,
-    sectionId,
-    description
+    "pillarSlug": pillar->slug.current,
+    heroHeadline,
+    heroSubheadline,
+    valuePropHeadline,
+    valuePropAccent,
+    valuePropBody,
+    problemHeadline,
+    problemBody,
+    problemBullets,
+    howWeHelpSubtitle,
+    helpCards,
+    networkHeadline,
+    networkSubheadline,
+    network,
+    featureEyebrow,
+    featureHeadline,
+    featureBody,
+    featureBullets,
+    stats,
+    whatsIncluded,
+    ctaHeadline,
+    ctaBody,
+    ctaButtonLabel
   }
 `;
 
-export const allServicesQuery = groq`
-  *[_type == "service"] | order(order asc) {
-    _id,
-    title,
-    "slug": slug.current,
-    "category": category->{
+export const whoWeWorkWithQuery = groq`
+  *[_type == "who-we-work-with-works"][0] {
+    headline,
+    description,
+    categories[] {
       title,
-      "slug": slug.current
-    },
-    iconName,
-    description
+      description,
+      iconName
+    }
   }
 `;
 
+export const solutionsQuery = groq`
+  *[_type == "solutions-works"][0] {
+    headline,
+    description,
+    items[] {
+      id,
+      title,
+      subtitle,
+      href
+    }
+  }
+`;

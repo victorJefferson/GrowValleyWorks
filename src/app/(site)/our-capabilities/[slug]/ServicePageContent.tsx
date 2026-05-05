@@ -39,14 +39,17 @@ const SERVICE_SECTION_IMAGES: Record<string, any> = {
   // but they can be customized per slug just like before.
 };
 
-export default function ServicePageContent({ service }: { service: ServiceDetail }) {
-  if (!service) return null;
+export default function ServicePageContent({ service, cmsData }: { service: ServiceDetail, cmsData?: any }) {
+  if (!service && !cmsData) return null;
 
-  const content = servicePageContent[service.slug];
-  if (!content) {
+  const slug = service?.slug || cmsData?.slug?.current || cmsData?.slug;
+  const fallbackContent = servicePageContent[slug] || {};
+  const content = { ...fallbackContent, ...cmsData };
+
+  if (!content || Object.keys(content).length === 0) {
     return (
       <div className="container" style={{ padding: '10rem 0', textAlign: 'center' }}>
-        <h2>Service content not found for slug: {service.slug}</h2>
+        <h2>Service content not found for slug: {slug}</h2>
       </div>
     );
   }
