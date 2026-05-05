@@ -25,7 +25,7 @@
     overflow: hidden;
 
     /* Dark base so text is readable even before the image loads */
-    background-color: hsl(150, 40%, 5%);
+    background-color: hsl(var(--primary-h), 40%, 5%);
 
     &.isShort {
         height: 50vh; /* Increased from 40vh to give more breathing room */
@@ -77,10 +77,10 @@
     /* Strong dark on the left for text, gentle fade to transparent on the right */
     background: linear-gradient(
         105deg,
-        hsl(150, 40%, 4%) 0%,
-        hsl(150, 40%, 6%) 30%,
-        hsla(150, 35%, 8%, 0.75) 55%,
-        hsla(150, 30%, 10%, 0.25) 80%,
+        hsl(var(--primary-h), 40%, 4%) 0%,
+        hsl(var(--primary-h), 40%, 6%) 30%,
+        hsla(var(--primary-h), 35%, 8%, 0.75) 55%,
+        hsla(var(--primary-h), 30%, 10%, 0.25) 80%,
         transparent 100%
     );
 

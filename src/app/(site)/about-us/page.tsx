@@ -54,7 +54,20 @@ export default async function AboutUsPage() {
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1400",
   };
 
+  const defaultDataSection = {
+    headline: "Operations under management.",
+    description:
+      "GrowValley Works is the operational backbone of serious businesses. UAE-headquartered with active capability across international markets.",
+    stats: [
+      { prefix: "", number: 400, suffix: "+", label: "Entities Under Management" },
+      { number: 25, suffix: "+", label: "Jurisdictions Active" },
+      { number: 12, suffix: "", label: "Functions Handled In-House" },
+      { number: 1, suffix: "", label: "Point of Accountability" },
+    ],
+  };
+
   const displayHero = heroData || defaultHero;
+  const displayDataSection = dataSectionData || defaultDataSection;
   const heroImage = heroData?.image
     ? urlFor(heroData.image).url()
     : displayHero.image;
@@ -106,9 +119,9 @@ export default async function AboutUsPage() {
         </section>
       )}
       <DataSection
-        headline={dataSectionData.headline}
-        description={dataSectionData.description}
-        stats={dataSectionData.stats}
+        headline={displayDataSection.headline}
+        description={displayDataSection.description}
+        stats={displayDataSection.stats}
       />
       <section className="section-padding">
         <div className="container">

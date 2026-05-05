@@ -57,10 +57,10 @@ export default function HomeContent({
       try {
         return urlFor(heroData.image).url();
       } catch (e) {
-        return "/images/hero_model_v3.png";
+        return "/images/home_image.png";
       }
     }
-    return "/images/hero_model_v3.png";
+    return "/images/home_image.png";
   };
 
   const dynamicInsights: InsightItem[] = insights.map((item: any) => ({

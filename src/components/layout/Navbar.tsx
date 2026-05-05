@@ -35,10 +35,10 @@ export function Navbar() {
       name: "Our Services",
       href: "/our-capabilities",
       children: [
-        { name: "Establish", href: "/our-capabilities/wealth-management", description: "Company formation, free zone setup, corporate structuring, and trust arrangements." },
-        { name: "Operate", href: "/our-capabilities/family-office-services", description: "PRO services, entity management, regulatory filings, and corporate administration." },
-        { name: "Manage", href: "/our-capabilities/private-access-to-opportunities", description: "Accounting, payroll, HR administration, tax compliance, and Employer of Record." },
-        { name: "Expand", href: "/our-capabilities/succession-planning-services", description: "International expansion, multi-entity structuring, and cross-border compliance." },
+        { name: "Establish", href: "/our-capabilities/establish", description: "Company formation, free zone setup, corporate structuring, and trust arrangements." },
+        { name: "Operate", href: "/our-capabilities/operate", description: "PRO services, entity management, regulatory filings, and corporate administration." },
+        { name: "Manage", href: "/our-capabilities/manage", description: "Accounting, payroll, HR administration, tax compliance, and Employer of Record." },
+        { name: "Expand", href: "/our-capabilities/expand", description: "International expansion, multi-entity structuring, and cross-border compliance." },
       ]
     },
     ...(features.insights ? [{ name: "Insights", href: "/insights" }] : []),

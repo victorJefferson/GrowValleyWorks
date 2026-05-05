@@ -11,28 +11,28 @@ const solutions = [
     title: "Establish",
     subtitle:
       "A badly structured entity creates problems that compound over years. We get the formation right from the start: the right jurisdiction, the right structure, the right vehicle for what you are actually building.",
-    href: "/our-capabilities/wealth-management",
+    href: "/our-capabilities/establish",
   },
   {
     id: "operate",
     title: "Operate",
     subtitle:
       "Staying registered is not passive. Government touchpoints, renewals, filings, and entity maintenance require consistent attention. Most businesses do not realise how much is slipping until a deadline is missed. We make sure it is not.",
-    href: "/our-capabilities/family-office-services",
+    href: "/our-capabilities/operate",
   },
   {
     id: "manage",
     title: "Manage",
     subtitle:
       "Payroll that runs late, books that are three months behind, tax filings done at the last minute. These are not administrative problems. They are business risks. We run the financial and HR back-office so your team's attention stays where it belongs.",
-    href: "/our-capabilities/private-access-to-opportunities",
+    href: "/our-capabilities/manage",
   },
   {
     id: "expand",
     title: "Expand",
     subtitle:
       "Opening in a new market involves a sequence of structural, legal, and compliance decisions that have to happen in the right order. We have done this across jurisdictions. We coordinate the execution so your expansion does not stall before it starts.",
-    href: "/our-capabilities/succession-planning-services",
+    href: "/our-capabilities/expand",
   },
 ];
 

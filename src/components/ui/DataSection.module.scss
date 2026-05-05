@@ -10,7 +10,7 @@
 
 .dataSectionInner {
     background-color: var(--color-accent-blue);
-    color: var(--color-primary-navy);
+    color: var(--color-white);
     border-radius: var(--border-radius-hero);
     padding: 4rem 2rem;
     overflow: hidden;
@@ -42,7 +42,7 @@
     max-width: 480px;
 
     .headline {
-        color: var(--color-primary-navy);
+        color: var(--color-white);
         font-size: clamp(2.5rem, 4vw, 3.5rem);
         font-weight: 500;
         margin-bottom: 1rem;
@@ -53,12 +53,12 @@
         font-size: 1.125rem;
         line-height: 1.6;
         margin-bottom: 2rem;
-        color: var(--color-primary-navy);
+        color: var(--color-white);
     }
 
     .ctaButton {
-        background-color: var(--color-primary-navy);
-        color: var(--color-white);
+        background-color: var(--color-white);
+        color: var(--color-primary-navy);
     }
 }
 
@@ -84,13 +84,13 @@
         font-size: clamp(3rem, 5vw, 4.5rem);
         font-weight: 600;
         line-height: 1.1;
-        color: var(--color-primary-navy);
+        color: var(--color-white);
         letter-spacing: -0.02em;
     }
 
     .statLabel {
         font-size: 1rem;
-        color: var(--color-primary-navy);
+        color: var(--color-white);
         line-height: 1.4;
     }
 }

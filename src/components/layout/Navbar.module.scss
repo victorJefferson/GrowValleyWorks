@@ -338,7 +338,7 @@
     outline: none;
 
     &:hover {
-        background-color: hsla(150, 20%, 98%, 1);
+        background-color: hsla(var(--primary-h), 20%, 98%, 1);
 
         .megaMenuItemLabel {
             color: var(--color-accent-blue);

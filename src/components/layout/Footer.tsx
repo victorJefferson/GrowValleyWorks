@@ -62,22 +62,22 @@ export function Footer() {
             <h4>Our Services</h4>
             <ul>
               <li>
-                <Link href="/our-capabilities/wealth-management">
+                <Link href="/our-capabilities/establish">
                   Establish
                 </Link>
               </li>
               <li>
-                <Link href="/our-capabilities/family-office-services">
+                <Link href="/our-capabilities/operate">
                   Operate
                 </Link>
               </li>
               <li>
-                <Link href="/our-capabilities/private-access-to-opportunities">
+                <Link href="/our-capabilities/manage">
                   Manage
                 </Link>
               </li>
               <li>
-                <Link href="/our-capabilities/succession-planning-services">
+                <Link href="/our-capabilities/expand">
                   Expand
                 </Link>
               </li>
