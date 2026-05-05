@@ -1,170 +1,246 @@
 export const establishData: Record<string, any> = {
   "company-formation": {
-    heroHeadline: "Formation is not just paperwork. It is structural design.",
-    heroSubheadline: "Mainland, free zone, or offshore. We handle the full formation process from document preparation through trade licence issuance. No delays from missing paperwork or wrong submissions.",
-    valuePropHeadline: "Get the entity right",
-    valuePropAccent: "from the start.",
-    valuePropBody: "A badly structured entity creates problems that compound over years. We get the formation right from the start: the right jurisdiction, the right structure, the right vehicle for what you are actually building.",
-    problemHighlight: "FORMATION DONE RIGHT",
-    problemHeadline: "Avoid the cost of correcting a bad setup.",
-    problemBody: "Many businesses rush formation and end up with restricted activities, incompatible banking profiles, or limits on visas. We prevent these issues.",
+    heroHeadline: "Company Formation",
+    heroSubheadline: "The jurisdiction you choose, the structure you register, and the documents you sign in the first weeks of a business determine what is possible for years after. GrowValley gets this right before anything is filed.",
+    valuePropHeadline: "Formation is the first decision",
+    valuePropAccent: "that affects every decision after it.",
+    valuePropBody: "Most businesses treat formation as an admin step. It is not. The license category you register determines which activities you can legally conduct. The ownership structure you file determines who controls what and under which conditions. The jurisdiction you choose determines your banking options, your tax position, and your ability to bring in investors or expand across borders. None of this is reversible without cost.",
+    problemHighlight: "FORMATION ERRORS",
+    problemHeadline: "Most formation errors are not discovered at formation.",
+    problemBody: "They appear eighteen months later, when you try to open a bank account and the bank does not work with your free zone authority. Or when an investor asks for a shareholder structure your current setup cannot support. These problems are fixable, but fixing them mid-operation means time, legal fees, and business interruption you did not plan for.",
     problemBullets: [
-      "Jurisdiction and activity matching",
-      "Full document preparation and submission",
-      "Trade licence issuance and initial compliance"
+      "Wrong license category that restricts your actual business activities",
+      "Ownership structure that blocks investor entry or exit without a full restructure",
+      "Jurisdiction with no banking relationships that match your operational needs",
+      "Timeline and regulatory requirements that were never confirmed before commitment"
     ],
-    howWeHelpSubtitle: "We design the structure. You run the business.",
+    howWeHelpSubtitle: "Formation managed start to finish, with the downstream consequences considered from the start",
     helpCards: [
-      { iconName: "Building2", title: "Mainland Formation", desc: "Setting up LLCs and professional firms in the UAE mainland." },
-      { iconName: "Globe", title: "Free Zone Setup", desc: "Navigating over 40 free zones to find the exact fit." },
-      { iconName: "Layers", title: "Offshore Entities", desc: "Structuring for asset protection and international holding." }
+      { iconName: "CheckCircle", title: "No Gaps in the Process", desc: "We manage every document, every authority submission, and every follow-up. There is no handoff where something gets lost." },
+      { iconName: "MapPin", title: "Jurisdiction Guidance That Fits", desc: "We map your activity, ownership, and banking requirements to the formation option that actually works, not the one that is fastest to quote." },
+      { iconName: "Building2", title: "Ready for Banking From Day One", desc: "We prepare your formation documents with banking requirements built in. Your account opening does not stall because paperwork was not structured correctly." }
     ],
-    featureEyebrow: "END-TO-END",
-    featureHeadline: "We handle the entire process.",
-    featureBody: "From initial name reservation to final trade licence issuance, we manage the timeline so you don't have to chase government departments.",
+    featureEyebrow: "STRUCTURED. COMPLIANT. READY.",
+    featureHeadline: "A correctly formed company costs the same as an incorrectly formed one. Until it does not.",
+    featureBody: "GrowValley's formation practice covers UAE mainland, all major free zones, and offshore jurisdictions. Our job is not to file your paperwork fast. It is to make sure what gets filed is correct, complete, and built to support what comes next.",
     featureBullets: [
-      "Activity selection and approval",
-      "MoA drafting and notarisation",
-      "Lease agreement coordination"
+      "UAE mainland company formation across DED and all mainland authorities",
+      "Free zone registration across DIFC, ADGM, JAFZA, DMCC, DWC, RAKEZ, IFZA, and others",
+      "Offshore incorporation across BVI, Cayman, ADGM SPV, and similar jurisdictions",
+      "MOA, AOA, and constitutional document drafting",
+      "Share certificate and nominee documentation preparation",
+      "PRO coordination for all government authority submissions"
     ],
     stats: [
-      { num: "400+", desc: "Entities successfully formed" },
-      { num: "100%", desc: "Focus on structural integrity" }
+      { num: "500+", desc: "Entities formed across UAE and international jurisdictions" },
+      { num: "30+", desc: "Jurisdictions covered across our active formation practice" },
+      { num: "15+", desc: "Free zones we work in regularly" },
+      { num: "3 days", desc: "Average time from instruction to first draft document pack" }
     ],
     whatsIncluded: {
-      column1: ["Jurisdiction advisory", "Document drafting", "Submission management"],
-      column2: ["Government fee coordination", "Trade licence issuance", "Post-formation handover"]
+      column1: [
+        "Jurisdiction and structure assessment",
+        "License type and activity code selection",
+        "Authority submission and follow-up management",
+        "MOA and AOA drafting",
+        "Share certificate preparation",
+        "Registered address coordination"
+      ],
+      column2: [
+        "Nominee shareholder and director documentation",
+        "Bank account introduction (where applicable)",
+        "Post-formation compliance checklist",
+        "Digital document vault setup",
+        "Direct liaison with free zone or mainland authority",
+        "Formation completion report and handover"
+      ]
     },
-    ctaHeadline: "Ready to set up?",
-    ctaBody: "Tell us what you are building. We will tell you the best way to structure it.",
-    ctaButtonLabel: "CONTACT US",
-    heroCtaLabel: "SPEAK TO AN EXPERT",
+    ctaHeadline: "Ready to form your company?",
+    ctaBody: "Tell us what you are building, where you need to operate, and what the structure needs to support. We will give you a direct answer and manage everything from there.",
+    ctaButtonLabel: "Start Your Formation",
     categoryLabel: "Establish"
   },
   "free-zone-setup": {
-    heroHeadline: "40+ Free Zones. One clear choice.",
-    heroSubheadline: "We advise on the right zone for your specific business and manage the full application process, ensuring you get the right benefits without hidden restrictions.",
-    valuePropHeadline: "Not all free zones",
-    valuePropAccent: "are created equal.",
-    valuePropBody: "Each free zone has different rules on ownership, activities, visas, and banking compatibility. Choosing the wrong one can stall your operations.",
-    problemHighlight: "NAVIGATING THE OPTIONS",
-    problemHeadline: "Cut through the marketing.",
-    problemBody: "We know which free zones deliver on their promises and which have hidden costs or banking difficulties.",
+    heroHeadline: "Free Zone Setup",
+    heroSubheadline: "The UAE has over 40 free zones. Each has its own license categories, banking relationships, ownership rules, and compliance obligations. GrowValley identifies the right one and manages the full setup.",
+    valuePropHeadline: "Most businesses find out they chose",
+    valuePropAccent: "the wrong free zone after they have already registered.",
+    valuePropBody: "Each free zone is governed by its own authority, with specific rules about what activities are permitted, which banks will work with its licensees, what physical presence is required, and how many visas can be allocated. They determine whether your business can actually operate the way you need it to. GrowValley maps these requirements against your business before you commit.",
+    problemHighlight: "EXIT COSTS",
+    problemHeadline: "The wrong free zone costs more to exit than it cost to enter.",
+    problemBody: "Businesses pick free zones based on advertised fees and setup speed. Then they discover the zone's license categories do not cover their actual activity. Or the bank they need to work with does not have a relationship with that authority. By the time this becomes clear, they are already registered and facing a costly restructure.",
     problemBullets: [
-      "Objective comparison of free zones",
-      "Alignment with your operational needs",
-      "Full application and visa management"
+      "Activity eligibility confirmed against your specific business model",
+      "Banking compatibility checked with your target banks before registration",
+      "Visa quota mapped against your actual headcount requirements",
+      "Physical presence obligations confirmed before you sign a lease"
     ],
-    howWeHelpSubtitle: "We find the perfect fit.",
+    howWeHelpSubtitle: "Active in 15+ free zones across the UAE, with the working knowledge to tell the difference",
     helpCards: [
-      { iconName: "Search", title: "Needs Analysis", desc: "Matching your business model to free zone regulations." },
-      { iconName: "FileText", title: "Application Management", desc: "Handling all portal submissions and documentation." },
-      { iconName: "Users", title: "Visa Processing", desc: "Managing investor and employee visa quotas." }
+      { iconName: "Search", title: "Free Zone Matching", desc: "We assess your business activity, ownership, banking needs, and growth plans against each zone's rules." },
+      { iconName: "FileText", title: "Full Registration Management", desc: "We do not hand you a checklist. We handle authority submissions and every follow-up until your license is in hand." },
+      { iconName: "RefreshCw", title: "First Renewal Preparation", desc: "Before your setup is complete, we confirm exactly what your free zone requires annually. No surprises at renewal." }
     ],
-    featureEyebrow: "EXPERT GUIDANCE",
-    featureHeadline: "We know the reality on the ground.",
-    featureBody: "We place clients in free zones based on operational reality, not just setup costs.",
+    featureEyebrow: "SPECIFIC. MANAGED. COMPLETE.",
+    featureHeadline: "40+ free zones. One right answer for your business. We know which one.",
+    featureBody: "GrowValley operates across all major UAE free zones, including DIFC, ADGM, JAFZA, DMCC, DWC, RAKEZ, and IFZA. We do not recommend based on setup fee alone. We recommend based on what your business requires, including banking, visas, and compliance.",
     featureBullets: [
-      "Banking compatibility checks",
-      "Facility and warehouse availability",
-      "Future expansion flexibility"
+      "Free zone selection with documented rationale",
+      "License application and activity category matching",
+      "Authority document preparation and submission",
+      "Regulatory follow-up until license is issued",
+      "Visa quota assessment and allocation planning",
+      "Post-setup annual compliance obligations confirmed in writing"
     ],
     stats: [
-      { num: "40+", desc: "Free zones covered" },
-      { num: "Zero", desc: "Bias towards any specific zone" }
+      { num: "400+", desc: "Free zone entities set up across our active jurisdictions" },
+      { num: "15+", desc: "Free zones we work in as a matter of regular practice" },
+      { num: "40+", desc: "License categories across our active free zone authorities" },
+      { num: "Top 6", desc: "Free zone banking relationships mapped across our setups" }
     ],
     whatsIncluded: {
-      column1: ["Free zone comparison", "Application drafting", "Security approvals"],
-      column2: ["E-channel registration", "Establishment card", "Initial visa quotas"]
+      column1: [
+        "Free zone selection and suitability assessment",
+        "Activity and license category matching",
+        "Authority pre-approval (where required)",
+        "Document preparation and submission",
+        "Registered address coordination",
+        "License issuance management"
+      ],
+      column2: [
+        "Share certificate and MOA drafting",
+        "Visa quota planning and allocation",
+        "Physical or flexi-desk office coordination",
+        "Bank account introduction",
+        "Post-setup annual compliance brief",
+        "Digital document vault"
+      ]
     },
-    ctaHeadline: "Which free zone is right for you?",
-    ctaBody: "Let's review your business plan and find the exact match.",
-    ctaButtonLabel: "CONTACT US",
-    heroCtaLabel: "SPEAK TO AN EXPERT",
+    ctaHeadline: "Not sure which free zone fits?",
+    ctaBody: "Tell us what your business does, where it needs to operate, and what the structure has to support. We will give you a direct recommendation and manage the rest.",
+    ctaButtonLabel: "Talk to Our Team",
     categoryLabel: "Establish"
   },
   "corporate-structuring": {
-    heroHeadline: "Architecture for scale and protection.",
-    heroSubheadline: "Holding companies, subsidiary networks, SPVs, and cross-border structures. We design the legal and ownership architecture that matches your operating model.",
-    valuePropHeadline: "Built to last.",
-    valuePropAccent: "Built to scale.",
-    valuePropBody: "A single entity rarely serves a growing enterprise. We separate risk, optimize tax, and clarify governance through proper multi-entity structuring.",
-    problemHighlight: "STRUCTURAL INTEGRITY",
-    problemHeadline: "Don't let a flat structure hold you back.",
-    problemBody: "Mixing IP, operating risk, and real estate in one entity is dangerous. We design structures that protect assets and facilitate investment.",
+    heroHeadline: "Corporate Structuring",
+    heroSubheadline: "How your business is structured determines what you can do with it. GrowValley designs holding structures, subsidiary arrangements, and ownership frameworks built around your commercial, tax, and legal objectives.",
+    valuePropHeadline: "Structure is not an admin task.",
+    valuePropAccent: "It is a decision with consequences that compound over time.",
+    valuePropBody: "The gap between a company that is formed and one that is structured correctly is where most businesses lose ground. A single-entity setup becomes a problem when investors ask questions, when you start operating across borders, or when you need to move IP cleanly. GrowValley designs structures that hold up before the pressure arrives, not after.",
+    problemHighlight: "PERFORMANCE RISK",
+    problemHeadline: "Most structures are built for the day they are created, not the year they need to perform.",
+    problemBody: "A single entity registered in a free zone works fine at year one. By year three, when you are running operations across three markets and preparing for an investor round, that same structure creates real problems: blocked investor entry, unintended tax exposure, and costly restructuring.",
     problemBullets: [
-      "Risk ring-fencing",
-      "Tax optimization",
-      "Investment readiness"
+      "Investor entry blocked because ownership structure cannot accommodate new share classes",
+      "IP sitting in a trading entity with no clean way to separate or protect it",
+      "Tax exposure created by intercompany transactions that were never properly documented",
+      "Cross-border operations generating compliance obligations the original structure was not built to handle"
     ],
-    howWeHelpSubtitle: "Designing the blueprint.",
+    howWeHelpSubtitle: "Corporate architecture designed for what your business is becoming, not just what it is today",
     helpCards: [
-      { iconName: "Layers", title: "Holding Companies", desc: "Top-level entities for asset holding and dividend routing." },
-      { iconName: "Network", title: "SPV Setup", desc: "Special Purpose Vehicles for specific investments or projects." },
-      { iconName: "Globe", title: "Cross-Border", desc: "Integrating UAE entities with global structures." }
+      { iconName: "Layers", title: "Full Picture Design", desc: "We review your ownership, operations, expansion, and risk before recommending a structure that reflects where you are going." },
+      { iconName: "Building2", title: "Holding & Operating Pairing", desc: "We match operating entities with the right holding jurisdiction (UAE, DIFC, ADGM, Offshore) based on tax and asset protection." },
+      { iconName: "RefreshCw", title: "Restructuring Existing Entities", desc: "If your current structure is creating friction or blocking options, we assess, design, and execute the restructure." }
     ],
-    featureEyebrow: "ADVANCED STRUCTURING",
-    featureHeadline: "Clear governance, protected assets.",
-    featureBody: "We build structures that stand up to due diligence from investors, banks, and regulators.",
+    featureEyebrow: "DELIBERATE. SCALABLE. PROTECTED.",
+    featureHeadline: "The right structure is invisible when it works. Expensive when it does not.",
+    featureBody: "GrowValley's structuring practice operates across UAE mainland, free zones, and offshore jurisdictions. We work with founders, operators, and family offices to design arrangements that reflect actual commercial objectives. We document every decision and map every intercompany flow.",
     featureBullets: [
-      "Shareholder agreement alignment",
-      "Intercompany agreements",
-      "Substance requirements planning"
+      "Holding company setup across UAE, DIFC, ADGM, BVI, and Cayman",
+      "Subsidiary and branch office structuring across operating jurisdictions",
+      "Multi-jurisdiction ownership mapping and full documentation",
+      "IP holding, royalty flows, and intercompany agreement design",
+      "Shareholder agreement and cap table coordination",
+      "Restructuring assessment and execution for scaling businesses"
     ],
     stats: [
-      { num: "200+", desc: "Structures designed" },
-      { num: "100%", desc: "Due diligence ready" }
+      { num: "200+", desc: "Structures designed across our client base" },
+      { num: "20+", desc: "Jurisdictions in our active structuring practice" },
+      { num: "4", desc: "GrowValley pillars built to operate on a correctly structured entity" },
+      { num: "1", desc: "Single point of accountability across every jurisdiction" }
     ],
     whatsIncluded: {
-      column1: ["Structural blueprint design", "Entity incorporation", "Shareholder documentation"],
-      column2: ["Intercompany agreements", "Regulatory compliance mapping", "Banking structure advisory"]
+      column1: [
+        "Business model and objective assessment",
+        "Jurisdictional analysis and recommendation",
+        "Holding and subsidiary structure design",
+        "Ownership and control mapping",
+        "Shareholder agreement coordination",
+        "Constitutional document drafting"
+      ],
+      column2: [
+        "IP and royalty structure design (where applicable)",
+        "Intercompany agreement frameworks",
+        "Tax residency and treaty positioning review",
+        "Restructuring roadmap for existing entities",
+        "Authority coordination and registration management",
+        "Structure documentation and full review pack"
+      ]
     },
-    ctaHeadline: "Need a better structure?",
-    ctaBody: "Let's discuss how to optimize your current setup or build a new one correctly.",
-    ctaButtonLabel: "CONTACT US",
-    heroCtaLabel: "SPEAK TO AN EXPERT",
+    ctaHeadline: "Building a business that will scale?",
+    ctaBody: "Structure it before the complexity arrives. Tell us what you are building toward and where the current setup falls short.",
+    ctaButtonLabel: "Review My Structure",
     categoryLabel: "Establish"
   },
   "trust-and-fiduciary": {
-    heroHeadline: "Protecting wealth across generations.",
-    heroSubheadline: "Trust structures for asset protection, succession planning, and cross-border estate management. We work with qualified fiduciaries to design and establish the right vehicle.",
-    valuePropHeadline: "Certainty in an",
-    valuePropAccent: "uncertain world.",
-    valuePropBody: "We help families and individuals ring-fence assets and ensure smooth transition of wealth according to their exact wishes.",
-    problemHighlight: "ASSET PROTECTION",
-    problemHeadline: "Don't leave succession to chance.",
-    problemBody: "Without a trust or foundation, assets can be tied up in probate, exposed to claims, or distributed against your wishes.",
+    heroHeadline: "Trust & Fiduciary Setup",
+    heroSubheadline: "Protecting assets and preserving control across generations requires legal arrangements that are built carefully and documented fully. GrowValley establishes trust and fiduciary structures built to hold.",
+    valuePropHeadline: "What you build should last longer",
+    valuePropAccent: "than the conditions you built it in.",
+    valuePropBody: "A trust is not a product you select. It is a legal arrangement you design. The beneficiary structure, the trustee appointment, the jurisdiction, the asset types: each decision has legal and tax implications that interact with each other and with the laws of multiple countries. GrowValley builds these correctly the first time.",
+    problemHighlight: "FOUNDATION GAPS",
+    problemHeadline: "Most asset protection structures are set up too late, or built on the wrong foundation.",
+    problemBody: "Trust and fiduciary structures are typically organized after the wealth exists and pressure has started. By that point, assets are already in jurisdictions that limit options. GrowValley works with clients before the complexity arrives, so the protection is part of the original architecture.",
     problemBullets: [
-      "Probate avoidance",
-      "Asset ring-fencing",
-      "Controlled distribution"
+      "Asset protection established before disputes or legal claims create constraints",
+      "Jurisdiction selected for legal enforceability and treaty standing, not for cost",
+      "Beneficiary arrangements designed with precision: who receives what, when, and how",
+      "Regulatory and reporting obligations mapped in full before the structure is signed"
     ],
-    howWeHelpSubtitle: "Securing the future.",
+    howWeHelpSubtitle: "Trust and fiduciary structures built across the jurisdictions that carry legal weight",
     helpCards: [
-      { iconName: "ShieldCheck", title: "Trust Design", desc: "Drafting the deed and letter of wishes." },
-      { iconName: "Building2", title: "Foundations", desc: "Establishing UAE foundations (DIFC, ADGM, RAK ICC)." },
-      { iconName: "Users", title: "Fiduciary Selection", desc: "Matching you with the right professional trustees." }
+      { iconName: "ShieldCheck", title: "Trust Establishment", desc: "We establish DIFC, ADGM, and offshore trust structures based on asset types and long-term estate objectives." },
+      { iconName: "FileText", title: "Trustee & Documentation", desc: "We provide independent trustee services with complete documentation of roles, responsibilities, and reporting." },
+      { iconName: "Building2", title: "Foundations & Vehicles", desc: "We design and establish foundations or private trust companies suited to the specific purpose and succession objective." }
     ],
-    featureEyebrow: "LONG-TERM VISION",
-    featureHeadline: "Structures that outlive you.",
-    featureBody: "We ensure your legacy is managed exactly as you intend, providing financial security for your beneficiaries.",
+    featureEyebrow: "PROTECTED. DOCUMENTED. LASTING.",
+    featureHeadline: "Serious asset protection is built into the structure. It cannot be added afterward.",
+    featureBody: "GrowValley's fiduciary practice operates across DIFC, ADGM, BVI, Cayman, and Jersey. Each jurisdiction carries different enforceability standards and treaty standing. We select the jurisdiction that fits the structure, not the one that is simplest to explain.",
     featureBullets: [
-      "Family governance integration",
-      "Cross-border tax considerations",
-      "Protector appointments"
+      "DIFC and ADGM trust establishment across regulated UAE jurisdictions",
+      "Offshore trust structures across BVI, Cayman, Jersey, and Guernsey",
+      "Private trust company setup and governance documentation",
+      "Foundation and endowment structures for family and institutional purposes",
+      "Trustee, protector, and enforcer appointment with full written documentation",
+      "Annual compliance obligations and reporting structure mapped at setup"
     ],
     stats: [
-      { num: "15+", desc: "Jurisdictions covered" },
-      { num: "100%", desc: "Discretion and confidentiality" }
+      { num: "100+", desc: "Trust and fiduciary structures established" },
+      { num: "DIFC + ADGM", desc: "Two regulated UAE jurisdictions in our active trust practice" },
+      { num: "10+", desc: "Offshore jurisdictions covered across our fiduciary work" },
+      { num: "Full", desc: "Written documentation of every appointment and obligation" }
     ],
     whatsIncluded: {
-      column1: ["Trust/Foundation advisory", "Deed drafting", "Letter of wishes guidance"],
-      column2: ["Registration and setup", "Trustee coordination", "Asset transfer planning"]
+      column1: [
+        "Jurisdiction selection and legal suitability assessment",
+        "Trust deed drafting and review",
+        "Trustee and protector appointment",
+        "Beneficiary documentation and deed preparation",
+        "Asset transfer and contribution framework",
+        "Foundation deed and constitutional documents"
+      ],
+      column2: [
+        "Private trust company establishment (where applicable)",
+        "Regulatory filing and authority registration",
+        "Annual compliance obligations brief",
+        "Reporting structure and obligation mapping",
+        "Independent trustee coordination and oversight",
+        "Digital document vault and record management"
+      ]
     },
-    ctaHeadline: "Planning for the future?",
-    ctaBody: "Let's secure your assets and outline your succession plan.",
-    ctaButtonLabel: "CONTACT US",
-    heroCtaLabel: "SPEAK TO AN EXPERT",
+    ctaHeadline: "Building structures that should outlast you?",
+    ctaBody: "The right arrangement starts with a specific conversation about what you are protecting, for whom, and over what timeframe. That is where we begin.",
+    ctaButtonLabel: "Discuss Your Structure",
     categoryLabel: "Establish"
   }
 };

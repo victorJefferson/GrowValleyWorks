@@ -3,133 +3,127 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { Hero } from '@/components/ui/Hero';
 import { ServiceCard } from "@/components/ui/ServiceCard";
-import { CapabilitiesLeader } from "@/components/ui/CapabilitiesLeader";
 import { Button } from "@/components/ui/Button";
+import { ArrowRight } from "lucide-react";
 import styles from "../Capabilities.module.scss";
 
 export const metadata: Metadata = {
   title: "Operate | GrowValley Works",
-  description: "PRO and government services, entity management, regulatory filings, and corporate administration. Staying compliant without the overhead.",
+  description: "PRO services, entity management, regulatory filings, and corporate administration. Running the infrastructure of your business.",
 };
 
 export default function OperatePage() {
   return (
     <main>
+      {/* SECTION 1: HERO */}
       <Hero
         isShort
-        eyebrow="Our Services — Operate"
-        headline={<>Operate</>}
-        subheadline="Staying registered and compliant is not a passive task. It requires consistent attention across government touchpoints, filings, renewals, and entity obligations. We handle it."
-        image="https://images.unsplash.com/photo-1568992687947-868a62a9f521?auto=format&fit=crop&q=80&w=1400"
+        eyebrow="SERVICES / OPERATE"
+        headline="Operate"
+        subheadline="Running a business in the UAE requires continuous interaction with government authorities, regulators, and licensing bodies. We handle that interaction so your operations do not stop when it gets complicated."
+        image="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1400"
         hasCTA={false}
       />
 
-      {/* SECTION 2 — PHILOSOPHY */}
+      {/* SECTION 2: OUR APPROACH */}
       <section className={`${styles.introSection} ${styles.bgLight}`}>
         <div className="container">
           <div className={styles.introContent}>
-            <span className={styles.sectionEyebrow}>Our Approach</span>
+            <span className={styles.sectionEyebrow}>OUR APPROACH</span>
             <h2 className={styles.introHeading}>
-              Most businesses do not realise how much is slipping until a deadline is missed.
+              Formation is a moment. Operating compliance is a calendar that never stops.
             </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'center' }}>
+            <div className={styles.introBody}>
               <p className={styles.introParagraph}>
-                Licences expire. Visas lapse. Government portals require submissions that no one has calendared. Entity records fall out of date. These are not exceptional events — they are the normal operating rhythm of running a legal entity in the UAE.
+                These obligations repeat, overlap, and carry penalties when missed. Most businesses manage them reactively. 
               </p>
               <p className={styles.introParagraph}>
-                We absorb that rhythm. Every renewal, every filing, every government submission runs on schedule without your team having to manage it.
+                GrowValley tracks every deadline, prepares every submission in advance, and handles every government interaction through advisors who do this as their primary work.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3 — SERVICES */}
-      <section className={styles.section} style={{ paddingTop: '5rem', paddingBottom: '3rem' }}>
+      {/* SECTION 3: WHO WE WORK WITH */}
+      <section className={styles.section}>
         <div className="container">
-          <div className={styles.sectionHeaderSimple} style={{ textAlign: 'center' }}>
-            <h2 className="section-title">
-              Four services within Operate.
-            </h2>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionEyebrow}>WHO WE WORK WITH</span>
           </div>
+          <div className={styles.whoGrid}>
+            <div className={styles.whoBlock}>
+              <p>Founders and operators running UAE-registered entities who need PRO services, visa and permit processing, and government authority liaison managed without building a dedicated internal team for it.</p>
+            </div>
+            <div className={styles.whoBlock}>
+              <p>Multi-entity businesses operating across mainland and free zone jurisdictions, where compliance deadlines, renewal cycles, and regulatory filing calendars require coordinated tracking across multiple legal structures simultaneously.</p>
+            </div>
+            <div className={styles.whoBlock}>
+              <p>Companies whose compliance is currently managed by whoever is available, where deadlines are tracked in inboxes rather than systems, and where one missed renewal or late filing would create a problem they could not easily undo.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* SECTION 4: SERVICE CARDS */}
+      <section className={`${styles.section} ${styles.bgLight}`}>
+        <div className="container">
           <div className={styles.serviceGrid}>
             <ServiceCard
-              key="pro-and-government-services"
               title="PRO & Government Services"
-              description="Visa applications, Emirates ID, medical fitness, labour card, MOL and MOHRE filings. Every government touchpoint managed end to end, with no missed deadlines."
+              description="Visa applications, work permit processing, Emirates ID renewals, labor card management, and direct liaison with UAE federal and emirate-level government authorities."
               slug="pro-and-government-services"
               iconName="Briefcase"
+              ctaText="PRO & Government Services →"
             />
             <ServiceCard
-              key="entity-management"
               title="Entity Management"
-              description="Trade licence renewals, Memorandum of Association amendments, shareholder changes, and registered address maintenance. Your entity records kept accurate and current."
+              description="Trade license renewals, Memorandum of Association amendments, registered address management, trade name maintenance, and full entity lifecycle administration."
               slug="entity-management"
               iconName="Building2"
+              ctaText="Entity Management →"
             />
             <ServiceCard
-              key="regulatory-filings"
               title="Regulatory Filings"
-              description="UBO registration, ESR notifications and reports, AML compliance submissions, and DIFC or ADGM reporting requirements handled by specialists in each framework."
+              description="Mandatory submissions to the UAE Ministry of Economy, relevant free zone authorities, and sector-specific regulators. UBO, ESR, and AML filings prepared and submitted correctly."
               slug="regulatory-filings"
               iconName="ScrollText"
+              ctaText="Regulatory Filings →"
             />
             <ServiceCard
-              key="corporate-administration"
               title="Corporate Administration"
-              description="Board resolutions, minutes, statutory registers, and corporate secretarial compliance. The documentation layer that keeps your governance clean and your records defensible."
+              description="Board resolutions, signatory updates, power of attorney documentation, corporate secretary functions, and the full range of administrative requirements."
               slug="corporate-administration"
               iconName="Layers"
+              ctaText="Corporate Administration →"
             />
           </div>
         </div>
       </section>
 
-      {/* SECTION 4 — PULL QUOTE */}
-      <section className={`${styles.bgLight}`} style={{ padding: '8rem 0' }}>
+      {/* SECTION 5: POSITIONING STRIP */}
+      <section className={styles.positioningStrip}>
         <div className="container">
-          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-            <span style={{ fontSize: '5rem', color: 'var(--color-accent-blue)', opacity: 0.2, lineHeight: 0, display: 'block', marginBottom: '2rem', fontFamily: 'serif' }}>&ldquo;</span>
-            <blockquote style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', color: 'var(--color-primary-navy)', lineHeight: 1.4, fontWeight: 500, fontStyle: 'italic', margin: 0 }}>
-              Compliance is not something you check once. It is a continuous operating requirement. The businesses that treat it that way are the ones that do not get caught out.
-            </blockquote>
-            <cite style={{ display: 'block', marginTop: '2.5rem', fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-accent-blue)', textTransform: 'uppercase', letterSpacing: '0.1em', fontStyle: 'normal' }}>
-              GrowValley Works
-            </cite>
+          <div className={styles.stripContent}>
+            <p className={styles.stripText}>
+              A missed renewal is not an oversight. In the UAE, it is a fine, a freeze, or a forced cancellation. We track the deadlines, manage the authorities, and make sure none of that reaches you.
+            </p>
+            <span className={styles.stripBrand}>GrowValley</span>
           </div>
         </div>
       </section>
 
-      {/* SECTION 5 — LEADER */}
-      <CapabilitiesLeader
-        eyebrow="The Team"
-        title={<>Government liaison specialists<br />who know the system.</>}
-        description="Our PRO and compliance team manages relationships with over a dozen government entities across the UAE. Every submission is tracked, every deadline is owned, every escalation is handled before it becomes your problem."
-        image="/images/placeholderPerson.jpg"
-        name="Matthias Keller"
-        designation="Head of Government & Compliance Operations"
-      />
-
-      {/* SECTION 6 — CTA */}
-      <section className={styles.ctaBanner} style={{ paddingBottom: 'var(--section-gap)' }}>
+      {/* SECTION 6: CTA BANNER */}
+      <section className={styles.ctaBannerSection}>
         <div className="container">
-          <div className={styles.ctaBannerPanel} style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '3rem', textAlign: 'left' }}>
-            <div style={{ flex: '1 1 500px' }}>
-              <h2 style={{ color: 'var(--color-white)', marginBottom: '1rem', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 500, lineHeight: 1.15 }}>
-                Let&apos;s talk about your compliance position.
-              </h2>
-              <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1.25rem', margin: 0, lineHeight: 1.6 }}>
-                Tell us how your entity is currently managed. We will tell you where the exposure is and how we fix it.
-              </p>
+          <div className={styles.ctaBannerBox}>
+            <div className={styles.ctaBannerText}>
+              <h2>Your compliance calendar should not live in someone's inbox.</h2>
+              <p>GrowValley manages PRO services, entity maintenance, regulatory filings, and corporate administration as a structured, tracked operation. Tell us what your entity needs and we will take it from there.</p>
             </div>
-            <div style={{ flex: '0 0 auto', display: 'flex', justifyContent: 'flex-start' }}>
-              <Link href="/contact" style={{ display: 'inline-block' }}>
-                <Button size="lg" variant="secondary" style={{ padding: '1.25rem 3rem', fontSize: '1.1rem', borderRadius: '3rem' }}>
-                  Let&apos;s Work
-                </Button>
-              </Link>
-            </div>
+            <Link href="/contact">
+              <Button size="lg" variant="secondary">Speak to Our Team</Button>
+            </Link>
           </div>
         </div>
       </section>

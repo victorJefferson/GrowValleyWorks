@@ -236,7 +236,33 @@ export default function ServicePageContent({ service }: { service: ServiceDetail
         </section>
       )}
 
-      {/* ── 8. What's Included ── */}
+      {/* ── 8. Network and Reach (Optional for Market Entry) ── */}
+      {content.network && (
+        <section className={styles.howWeHelp} style={{ backgroundColor: 'var(--color-surface-1)' }}>
+          <div className="container">
+            <div className={styles.hwHead}>
+              <h2>{content.networkHeadline || "Our Network and Reach"}</h2>
+              <p>{content.networkSubheadline}</p>
+            </div>
+            <div className={styles.hwGrid}>
+              {content.network.map((card: any, i: number) => {
+                const Icon = iconMap[card.iconName] || Globe;
+                return (
+                  <div key={i} className={styles.hwCard} style={{ backgroundColor: 'var(--color-white)' }}>
+                    <div className={styles.hwIcon}>
+                      <Icon size={28} strokeWidth={1.5} />
+                    </div>
+                    <h4>{card.title}</h4>
+                    <p>{card.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── 9. What's Included ── */}
       {content.whatsIncluded && (
         <section className={styles.whatsIncluded}>
           <div className="container">

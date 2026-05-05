@@ -3,101 +3,169 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { Hero } from '@/components/ui/Hero';
 import { ServiceCard } from "@/components/ui/ServiceCard";
-import { CapabilitiesLeader } from "@/components/ui/CapabilitiesLeader";
 import { Button } from "@/components/ui/Button";
+import { ArrowRight } from "lucide-react";
 import styles from "../Capabilities.module.scss";
 
 export const metadata: Metadata = {
   title: "Expand | GrowValley Works",
-  description: "International expansion, multi-entity structuring, cross-border compliance, and market entry support. Moving into new markets without losing operational control.",
+  description: "International expansion, multi-entity structuring, and cross-border compliance. The operational work that turns a new market into a running business.",
 };
 
 export default function ExpandPage() {
   return (
     <main>
+      {/* SECTION 1: HERO */}
       <Hero
         isShort
-        eyebrow="Our Services — Expand"
-        headline={<>Expand</>}
-        subheadline="Opening in a new market involves a sequence of structural, legal, and compliance decisions that have to happen in the right order. We coordinate the execution so your expansion does not stall before it starts."
-        image="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=1400"
+        eyebrow="SERVICES / EXPAND"
+        headline="Expand"
+        subheadline="GrowValley handles the legal, structural, and compliance work behind international expansion. From entity setup to cross-border filings, we run the infrastructure so you can run the business."
+        image="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=1400"
         hasCTA={false}
       />
 
+      {/* SECTION 2: POSITIONING */}
       <section className={`${styles.introSection} ${styles.bgLight}`}>
         <div className="container">
           <div className={styles.introContent}>
-            <span className={styles.sectionEyebrow}>Our Approach</span>
+            <span className={styles.sectionEyebrow}>OUR APPROACH</span>
             <h2 className={styles.introHeading}>
-              Expansion fails when the infrastructure does not keep up with the ambition.
+              Most businesses can enter a new market. Few are built to operate in one.
             </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'center' }}>
+            <div className={styles.introBody}>
               <p className={styles.introParagraph}>
-                Most businesses enter new markets before the entity structure, compliance obligations, and operational backbone are ready. The result is delays, cost overruns, and regulatory exposure that could have been avoided.
+                International expansion creates a new layer of legal and regulatory obligation, often across multiple jurisdictions at once. Entity structure, compliance calendars, local licensing, multi-entity governance: these are not administrative details.
               </p>
               <p className={styles.introParagraph}>
-                We sequence the expansion correctly — entity first, compliance framework second, operational infrastructure third — so the business can operate from day one in the new market.
+                They are the foundations the business runs on. GrowValley builds those foundations and maintains them as your footprint grows.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className={styles.section} style={{ paddingTop: '5rem', paddingBottom: '3rem' }}>
+      {/* SECTION 3: PROBLEM */}
+      <section className={styles.section}>
         <div className="container">
-          <div className={styles.sectionHeaderSimple} style={{ textAlign: 'center' }}>
-            <h2 className="section-title">Four services within Expand.</h2>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionEyebrow}>THE PROBLEM</span>
+          </div>
+          <div className={styles.introContent} style={{ textAlign: 'left', margin: '0 0 3rem 0' }}>
+            <h2 className={styles.introHeading} style={{ fontSize: '2.5rem' }}>
+              Expansion moves fast. The operational complexity behind it usually does not.
+            </h2>
+            <p className={styles.introParagraph}>
+              The decision to enter a new market is often made in weeks. The legal, structural, and compliance work required to support that move takes months, and gets harder when it is handled in pieces by vendors who do not share context.
+            </p>
+          </div>
+          <div className={styles.whoGrid}>
+            <div className={styles.whoBlock}>
+              <p>Entities incorporated in the wrong structure create tax and liability exposure that is difficult to unwind later.</p>
+            </div>
+            <div className={styles.whoBlock}>
+              <p>Fragmented vendors across jurisdictions mean no single party holds the full picture of your compliance position.</p>
+            </div>
+            <div className={styles.whoBlock}>
+              <p>A gap in one market can block banking, operations, or regulatory standing in another.</p>
+            </div>
+            <div className={styles.whoBlock}>
+              <p>Internal teams absorb the administrative burden of expansion, pulling focus from the business itself.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: HOW WE HELP */}
+      <section className={`${styles.section} ${styles.bgLight}`}>
+        <div className="container">
+          <div className={styles.sectionHeader} style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <span className={styles.sectionEyebrow}>What GrowValley Does in Expand</span>
+            <p className={styles.introParagraph}>We design the right structure for your growth footprint and manage the ongoing compliance.</p>
           </div>
           <div className={styles.serviceGrid}>
-            <ServiceCard key="international-expansion" title="International Expansion" description="Entity setup, regulatory registration, and operational infrastructure across target markets. We coordinate the full sequence so the expansion lands ready to operate." slug="international-expansion" iconName="Globe" />
-            <ServiceCard key="multi-entity-structuring" title="Multi-Entity Structuring" description="Holding company design, subsidiary networks, and intercompany frameworks for groups operating across multiple jurisdictions. Clean structure, clear governance." slug="multi-entity-structuring" iconName="Layers" />
-            <ServiceCard key="cross-border-compliance" title="Cross-Border Compliance" description="Transfer pricing documentation, substance requirements, permanent establishment analysis, and multi-jurisdiction tax compliance. Managed by specialists in each regime." slug="cross-border-compliance" iconName="ShieldCheck" />
-            <ServiceCard key="market-entry-support" title="Market Entry Support" description="Market-specific regulatory guidance, local partner introductions, banking and account opening support, and operational setup coordination for new market entry." slug="market-entry-support" iconName="Target" />
+            <ServiceCard
+              title="International Expansion"
+              description="We manage the process of entering a new market from start to finish: jurisdiction selection, entity formation, licensing, and regulatory setup."
+              slug="international-expansion"
+              iconName="Globe"
+              ctaText="International Expansion →"
+            />
+            <ServiceCard
+              title="Multi-Entity Structuring"
+              description="We design holding and subsidiary structures across jurisdictions that protect assets, simplify governance, and reduce cross-border tax exposure."
+              slug="multi-entity-structuring"
+              iconName="Layers"
+              ctaText="Multi-Entity Structuring →"
+            />
+            <ServiceCard
+              title="Cross-Border Compliance"
+              description="We manage the ongoing regulatory filings, reporting obligations, and compliance requirements across every market you operate in."
+              slug="cross-border-compliance"
+              iconName="ShieldCheck"
+              ctaText="Cross-Border Compliance →"
+            />
+            <ServiceCard
+              title="Market Entry Support"
+              description="Getting into a new market requires more than an entity. It requires a business that is ready to operate: local approvals, commercial registration, and banking."
+              slug="market-entry-support"
+              iconName="Target"
+              ctaText="Market Entry Support →"
+            />
           </div>
         </div>
       </section>
 
-      <section className={`${styles.bgLight}`} style={{ padding: '8rem 0' }}>
+      {/* SECTION 6: CONVICTION */}
+      <section className={styles.positioningStrip}>
         <div className="container">
-          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-            <span style={{ fontSize: '5rem', color: 'var(--color-accent-blue)', opacity: 0.2, lineHeight: 0, display: 'block', marginBottom: '2rem', fontFamily: 'serif' }}>&ldquo;</span>
-            <blockquote style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', color: 'var(--color-primary-navy)', lineHeight: 1.4, fontWeight: 500, fontStyle: 'italic', margin: 0 }}>
-              The businesses that expand successfully are not the ones that move fastest. They are the ones that move with the structure already in place.
-            </blockquote>
-            <cite style={{ display: 'block', marginTop: '2.5rem', fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-accent-blue)', textTransform: 'uppercase', letterSpacing: '0.1em', fontStyle: 'normal' }}>
-              GrowValley Works
-            </cite>
+          <div className={styles.stripContent}>
+            <span className={styles.stripBrand}>BUILT FOR SCALE</span>
+            <h2 className={styles.stripText} style={{ fontStyle: 'normal', fontWeight: 600 }}>
+              Expansion is not a milestone. It is an ongoing operation.
+            </h2>
+            <p style={{ opacity: 0.8, fontSize: '1.2rem', maxWidth: '800px' }}>
+              Most firms will help you incorporate in a new country. Few stay with you through the regulatory cycle, the entity changes, the banking relationships, and the compliance calendar that follows.
+            </p>
           </div>
         </div>
       </section>
 
-      <CapabilitiesLeader
-        eyebrow="The Team"
-        title={<>International expansion advisors<br />with in-market experience.</>}
-        description="Our expansion team has supported businesses entering markets across the GCC, Europe, and Southeast Asia. Every engagement is led by a specialist with direct experience in the target jurisdiction."
-        image="/images/placeholderPerson.jpg"
-        name="Viktor Novak"
-        designation="International Expansion Advisor"
-      />
-
-      <section className={styles.ctaBanner} style={{ paddingBottom: 'var(--section-gap)' }}>
+      {/* SECTION 7: STATS STRIP */}
+      <section className={styles.section}>
         <div className="container">
-          <div className={styles.ctaBannerPanel} style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '3rem', textAlign: 'left' }}>
-            <div style={{ flex: '1 1 500px' }}>
-              <h2 style={{ color: 'var(--color-white)', marginBottom: '1rem', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 500, lineHeight: 1.15 }}>
-                Let&apos;s talk about your expansion.
-              </h2>
-              <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1.25rem', margin: 0, lineHeight: 1.6 }}>
-                Tell us where you are expanding and what the timeline looks like. We will map the structural and compliance requirements before you move.
-              </p>
+          <div className={styles.statsGridPillar}>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>30+</span>
+              <p className={styles.statLabel}>Jurisdictions Covered</p>
             </div>
-            <div style={{ flex: '0 0 auto', display: 'flex', justifyContent: 'flex-start' }}>
-              <Link href="/contact" style={{ display: 'inline-block' }}>
-                <Button size="lg" variant="secondary" style={{ padding: '1.25rem 3rem', fontSize: '1.1rem', borderRadius: '3rem' }}>
-                  Let&apos;s Work
-                </Button>
-              </Link>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>6</span>
+              <p className={styles.statLabel}>Expansion Specialists On Roster</p>
             </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>4</span>
+              <p className={styles.statLabel}>Integrated Service Areas</p>
+            </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>1</span>
+              <p className={styles.statLabel}>Point of Contact Across All Workstreams</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 9: CTA BANNER */}
+      <section className={styles.ctaBannerSection}>
+        <div className="container">
+          <div className={styles.ctaBannerBox}>
+            <div className={styles.ctaBannerText}>
+              <h2>Entering a new market? Get the structure right before you move.</h2>
+              <p>GrowValley manages the legal, structural, and compliance work behind international expansion. One team, every jurisdiction, no gaps.</p>
+            </div>
+            <Link href="/contact">
+              <Button size="lg" variant="secondary">Talk to Our Expansion Team</Button>
+            </Link>
           </div>
         </div>
       </section>

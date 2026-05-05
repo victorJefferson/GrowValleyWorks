@@ -3,102 +3,177 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { Hero } from '@/components/ui/Hero';
 import { ServiceCard } from "@/components/ui/ServiceCard";
-import { CapabilitiesLeader } from "@/components/ui/CapabilitiesLeader";
 import { Button } from "@/components/ui/Button";
+import { ArrowRight } from "lucide-react";
 import styles from "../Capabilities.module.scss";
 
 export const metadata: Metadata = {
   title: "Manage | GrowValley Works",
-  description: "Accounting, payroll, HR administration, tax compliance, and Employer of Record. The financial and people infrastructure handled end to end.",
+  description: "Accounting, payroll, HR administration, tax compliance, and employer-of-record. The financial and people operations behind your business.",
 };
 
 export default function ManagePage() {
   return (
     <main>
+      {/* SECTION 1: HERO */}
       <Hero
         isShort
-        eyebrow="Our Services — Manage"
-        headline={<>Manage</>}
-        subheadline="Payroll that runs late, books that are three months behind, tax filings done at the last minute — these are not administrative problems. They are business risks."
-        image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1400"
+        eyebrow="SERVICES / MANAGE"
+        headline="Manage"
+        subheadline="GrowValley manages accounting, payroll, HR administration, tax compliance, and employer-of-record across your entities so your team is not doing it. Built for businesses operating at scale, not just starting out."
+        image="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1400"
         hasCTA={false}
       />
 
+      {/* SECTION 2: POSITIONING STATEMENT */}
       <section className={`${styles.introSection} ${styles.bgLight}`}>
         <div className="container">
           <div className={styles.introContent}>
-            <span className={styles.sectionEyebrow}>Our Approach</span>
+            <span className={styles.sectionEyebrow}>OUR APPROACH</span>
             <h2 className={styles.introHeading}>
-              The back-office does not need to be your problem.
+              At a certain size, back-office complexity stops being an inconvenience and starts being a liability.
             </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'center' }}>
+            <div className={styles.introBody}>
               <p className={styles.introParagraph}>
-                Most operators are carrying more back-office risk than they realise. Payroll processed manually. Accounts reconciled quarterly instead of monthly. VAT returns filed close to deadline.
+                Managing payroll across entities, staying current on tax obligations in multiple jurisdictions, and keeping HR records clean under local labour law is not simple work. It is not work your finance team should be doing manually either.
               </p>
               <p className={styles.introParagraph}>
-                We take the entire function off your plate and run it with the rigour it requires. Accurate, on time, documented — every time.
+                GrowValley takes on these functions directly. We run them on a defined schedule, with the right oversight built in, and we report to you as a partner, not a vendor chasing approvals.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className={styles.section} style={{ paddingTop: '5rem', paddingBottom: '3rem' }}>
+      {/* SECTION 3: PROBLEM SECTION */}
+      <section className={styles.section}>
         <div className="container">
-          <div className={styles.sectionHeaderSimple} style={{ textAlign: 'center' }}>
-            <h2 className="section-title">Five services within Manage.</h2>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionEyebrow}>THE PROBLEM</span>
+          </div>
+          <div className={styles.introContent} style={{ textAlign: 'left', margin: '0 0 3rem 0' }}>
+            <h2 className={styles.introHeading} style={{ fontSize: '2.5rem' }}>
+              Most back-office failures are not one-off mistakes. They are systems that were never built.
+            </h2>
+            <p className={styles.introParagraph}>
+              Companies that grow faster than their internal infrastructure tend to absorb errors quietly until they cannot. Payroll runs on spreadsheets. Tax filings are tracked in someone's calendar. HR records are incomplete. These are not signs of a bad team. They are signs of a business that has outgrown its setup.
+            </p>
+          </div>
+          <div className={styles.whoGrid}>
+            <div className={styles.whoBlock}>
+              <p>Payroll errors in the UAE and across borders create legal exposure that compounds quickly.</p>
+            </div>
+            <div className={styles.whoBlock}>
+              <p>Missed tax filing deadlines accumulate penalties across multiple registrations simultaneously.</p>
+            </div>
+            <div className={styles.whoBlock}>
+              <p>HR records maintained without proper process create inconsistency and litigation risk.</p>
+            </div>
+            <div className={styles.whoBlock}>
+              <p>Fragmented vendors mean no single party is accountable when something is missed.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: SERVICE CARDS */}
+      <section className={`${styles.section} ${styles.bgLight}`}>
+        <div className="container">
+          <div className={styles.sectionHeader} style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <span className={styles.sectionEyebrow}>Five Functions. One Team.</span>
+            <p className={styles.introParagraph}>GrowValley manages the financial and people operations that have to run correctly every month.</p>
           </div>
           <div className={styles.serviceGrid}>
-            <ServiceCard key="accounting-and-bookkeeping" title="Accounting & Bookkeeping" description="Monthly bookkeeping, reconciliations, management accounts, and financial statements. Accurate records maintained on a consistent cadence — not as an afterthought at year end." slug="accounting-and-bookkeeping" iconName="BarChart3" />
-            <ServiceCard key="payroll" title="Payroll" description="End-to-end payroll processing compliant with UAE Labour Law and WPS requirements. Every employee paid accurately and on time." slug="payroll" iconName="Users" />
-            <ServiceCard key="hr-administration" title="HR Administration" description="Employment contracts, HR policy documentation, leave management, and personnel file maintenance. The administrative layer that keeps your workforce management defensible." slug="hr-administration" iconName="Briefcase" />
-            <ServiceCard key="tax-compliance" title="Tax Compliance" description="VAT registration, quarterly VAT return preparation and filing, Corporate Tax registration and compliance. Every obligation met on schedule." slug="tax-compliance" iconName="ShieldCheck" />
-            <ServiceCard key="employer-of-record" title="Employer of Record" description="Employ staff in the UAE without setting up a local entity. We act as the legal employer, handling payroll, HR administration, visa sponsorship, and full compliance." slug="employer-of-record" iconName="Network" />
+            <ServiceCard
+              title="Accounting and Bookkeeping"
+              description="Monthly ledger management, reconciliations, management accounts, and financial reporting, prepared on schedule and ready for audit."
+              slug="accounting-and-bookkeeping"
+              iconName="BarChart3"
+              ctaText="Accounting & Bookkeeping →"
+            />
+            <ServiceCard
+              title="Payroll"
+              description="We process payroll across UAE and international entities, manage WPS compliance, and handle disbursements on time. Accurate payroll is a legal obligation."
+              slug="payroll"
+              iconName="Users"
+              ctaText="Payroll →"
+            />
+            <ServiceCard
+              title="HR Administration"
+              description="Employment contracts, onboarding, offboarding, HR records, and end-of-service gratuity calculations in line with local labour law."
+              slug="hr-administration"
+              iconName="Briefcase"
+              ctaText="HR Administration →"
+            />
+            <ServiceCard
+              title="Tax Compliance"
+              description="VAT registration and return filing, corporate tax registration, and your compliance calendar across all active jurisdictions."
+              slug="tax-compliance"
+              iconName="ShieldCheck"
+              ctaText="Tax Compliance →"
+            />
+            <ServiceCard
+              title="Employer of Record"
+              description="Employ staff in markets where you do not yet have a registered entity. Your people are hired legally and paid correctly."
+              slug="employer-of-record"
+              iconName="Network"
+              ctaText="Employer of Record →"
+              className={styles.centerBottomCard}
+            />
           </div>
         </div>
       </section>
 
-      <section className={`${styles.bgLight}`} style={{ padding: '8rem 0' }}>
+      {/* SECTION 5: CONVICTION SECTION */}
+      <section className={styles.positioningStrip}>
         <div className="container">
-          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-            <span style={{ fontSize: '5rem', color: 'var(--color-accent-blue)', opacity: 0.2, lineHeight: 0, display: 'block', marginBottom: '2rem', fontFamily: 'serif' }}>&ldquo;</span>
-            <blockquote style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', color: 'var(--color-primary-navy)', lineHeight: 1.4, fontWeight: 500, fontStyle: 'italic', margin: 0 }}>
-              Finance and HR administration done properly is invisible. Done badly, it is all you talk about.
-            </blockquote>
-            <cite style={{ display: 'block', marginTop: '2.5rem', fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-accent-blue)', textTransform: 'uppercase', letterSpacing: '0.1em', fontStyle: 'normal' }}>
-              GrowValley Works
-            </cite>
+          <div className={styles.stripContent}>
+            <span className={styles.stripBrand}>BUILT FOR OPERATORS</span>
+            <h2 className={styles.stripText} style={{ fontStyle: 'normal', fontWeight: 600 }}>
+              We do not just record what happened. We keep your business out of trouble.
+            </h2>
+            <p style={{ opacity: 0.8, fontSize: '1.2rem', maxWidth: '800px' }}>
+              Back-office work looks routine until something goes wrong. GrowValley is structured to prevent them. Our team runs your financial and people operations on a fixed schedule, across every jurisdiction you operate in.
+            </p>
           </div>
         </div>
       </section>
 
-      <CapabilitiesLeader
-        eyebrow="The Team"
-        title={<>Finance and HR specialists<br />who run the function.</>}
-        description="Our accounting, payroll, and HR team handles the back-office for businesses across multiple sectors and entity types."
-        image="/images/placeholderPerson.jpg"
-        name="Nur Aisyah Rahman"
-        designation="Head of Finance & Back-Office Operations"
-      />
-
-      <section className={styles.ctaBanner} style={{ paddingBottom: 'var(--section-gap)' }}>
+      {/* SECTION 6: STATS STRIP */}
+      <section className={styles.section}>
         <div className="container">
-          <div className={styles.ctaBannerPanel} style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '3rem', textAlign: 'left' }}>
-            <div style={{ flex: '1 1 500px' }}>
-              <h2 style={{ color: 'var(--color-white)', marginBottom: '1rem', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 500, lineHeight: 1.15 }}>
-                Let&apos;s talk about your back-office.
-              </h2>
-              <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1.25rem', margin: 0, lineHeight: 1.6 }}>
-                Tell us how your accounting, payroll, and HR are currently handled. We will tell you what needs to change.
-              </p>
+          <div className={styles.statsGridPillar}>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>5</span>
+              <p className={styles.statLabel}>Functions managed under one engagement</p>
             </div>
-            <div style={{ flex: '0 0 auto', display: 'flex', justifyContent: 'flex-start' }}>
-              <Link href="/contact" style={{ display: 'inline-block' }}>
-                <Button size="lg" variant="secondary" style={{ padding: '1.25rem 3rem', fontSize: '1.1rem', borderRadius: '3rem' }}>
-                  Let&apos;s Work
-                </Button>
-              </Link>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>20+</span>
+              <p className={styles.statLabel}>Jurisdictions covered for payroll and tax</p>
             </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>4 pillars</span>
+              <p className={styles.statLabel}>One firm, not four separate vendors</p>
+            </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>Monthly</span>
+              <p className={styles.statLabel}>Reporting cycle with no chasing required</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8: CTA BANNER */}
+      <section className={styles.ctaBannerSection}>
+        <div className="container">
+          <div className={styles.ctaBannerBox}>
+            <div className={styles.ctaBannerText}>
+              <h2>Stop running the back office. We will run it for you.</h2>
+              <p>GrowValley provides the financial and people infrastructure serious businesses need to operate cleanly at scale. One firm, accountable across every function.</p>
+            </div>
+            <Link href="/contact">
+              <Button size="lg" variant="secondary">Get Started</Button>
+            </Link>
           </div>
         </div>
       </section>

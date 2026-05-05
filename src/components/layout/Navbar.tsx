@@ -93,7 +93,7 @@ export function Navbar() {
 
                           <PopoverPanel transition className={styles.megaMenu}>
                             <div className={`container ${styles.megaMenuContent}`}>
-                              {link.name === "Expertise" ? (
+                              {link.name === "Our Services" ? (
                                 <>
                                   <div className={styles.megaMenuLeft}>
                                     <div className={styles.megaMenuHeader}>

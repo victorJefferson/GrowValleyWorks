@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { Hero } from '@/components/ui/Hero';
 import { ServiceCard } from "@/components/ui/ServiceCard";
-import { CapabilitiesLeader } from "@/components/ui/CapabilitiesLeader";
 import { Button } from "@/components/ui/Button";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import styles from "../Capabilities.module.scss";
 
 export const metadata: Metadata = {
@@ -15,121 +15,195 @@ export const metadata: Metadata = {
 export default function EstablishPage() {
   return (
     <main>
+      {/* SECTION 1: HERO */}
       <Hero
         isShort
-        eyebrow="Our Services — Establish"
-        headline={<>Establish</>}
-        subheadline="The right entity. The right structure. The right jurisdiction. Getting this right from the start is what determines how much you spend correcting it later."
+        eyebrow="SERVICES / ESTABLISH"
+        headline="Establish"
+        subheadline="The structure you set up today will either support your next ten decisions or complicate them. We make sure it is the former."
         image="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1400"
         hasCTA={false}
       />
 
-      {/* SECTION 2 — PHILOSOPHY */}
+      {/* SECTION 2: OUR APPROACH */}
       <section className={`${styles.introSection} ${styles.bgLight}`}>
         <div className="container">
           <div className={styles.introContent}>
-            <span className={styles.sectionEyebrow}>Our Approach</span>
+            <span className={styles.sectionEyebrow}>OUR APPROACH</span>
             <h2 className={styles.introHeading}>
-              A badly structured entity creates problems that compound over years.
+              Formation is an hour of paperwork. Structure is a decision you live with for years.
             </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'center' }}>
+            <div className={styles.introBody}>
               <p className={styles.introParagraph}>
-                We get the formation right from the start: the right jurisdiction, the right structure, the right vehicle for what you are actually building.
+                Most businesses are incorporated quickly and correctly. The problems come later: when a shareholder wants out, when a foreign investor needs a clean cap table, when a tax authority examines a holding arrangement that was never properly designed.
               </p>
               <p className={styles.introParagraph}>
-                Whether you are setting up your first UAE entity, restructuring a holding company, or establishing a trust arrangement, we design the structure around your operational and commercial reality — not around what is easiest to file.
+                We work on the front end of that problem. We handle company formation, free zone selection, corporate structuring, and trust arrangements with the rigour those decisions require, because revisiting structure mid-growth is significantly more expensive than getting it right at the start.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3 — SERVICES */}
-      <section className={styles.section} style={{ paddingTop: '5rem', paddingBottom: '3rem' }}>
+      {/* SECTION 3: WHO THIS IS FOR */}
+      <section className={styles.section}>
         <div className="container">
-          <div className={styles.sectionHeaderSimple} style={{ textAlign: 'center' }}>
-            <h2 className="section-title">
-              Four services within Establish.
-            </h2>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionEyebrow}>WHO WE WORK WITH</span>
           </div>
+          <div className={styles.whoGrid}>
+            <div className={styles.whoBlock}>
+              <p>Founders entering the UAE for the first time, choosing between mainland, free zone, and offshore options and needing clear guidance on which structure fits their operating model and ownership goals.</p>
+            </div>
+            <div className={styles.whoBlock}>
+              <p>Growth-stage companies restructuring an existing entity, adding subsidiaries, or preparing for capital raises that require a cleaner, more defensible corporate architecture.</p>
+            </div>
+            <div className={styles.whoBlock}>
+              <p>International businesses setting up a UAE presence and needing a structure that connects correctly to their existing global entities, tax positions, and compliance obligations.</p>
+            </div>
+            <div className={styles.whoBlock}>
+              <p>Founders and families separating personal assets from operating businesses, requiring trust arrangements and fiduciary structures that work across jurisdictions and hold up under scrutiny from tax and legal authorities.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* SECTION 4: SERVICE CARDS */}
+      <section className={`${styles.section} ${styles.bgLight}`}>
+        <div className="container">
           <div className={styles.serviceGrid}>
             <ServiceCard
-              key="company-formation"
-              title="Company Formation"
-              description="Mainland, free zone, or offshore. We handle the full formation process from document preparation through trade licence issuance. No delays from missing paperwork or wrong submissions."
+              title="Company Formation (UAE + Global)"
+              description="We handle the full formation process: entity type selection, jurisdiction assessment, licensing, ownership structure, and documentation. Our advisors cover UAE mainland, all major free zones, offshore jurisdictions, and international markets."
               slug="company-formation"
               iconName="Building2"
+              ctaText="Company Formation →"
             />
             <ServiceCard
-              key="free-zone-setup"
               title="Free Zone Setup"
-              description="Over 40 free zones in the UAE, each with different rules on ownership, activity, visas, and tax. We advise on the right zone for your specific business and manage the full application."
+              description="Choosing the wrong free zone costs money and time to correct. We assess your business model, ownership requirements, sector, and cost parameters, then recommend the free zone that fits."
               slug="free-zone-setup"
               iconName="Globe"
+              ctaText="Free Zone Setup →"
             />
             <ServiceCard
-              key="corporate-structuring"
               title="Corporate Structuring"
-              description="Holding companies, subsidiary networks, SPVs, and cross-border structures. We design the legal and ownership architecture that matches your operating model and expansion plans."
+              description="An incorporated company and a well-structured company are not the same thing. We design holding arrangements, subsidiary frameworks, and ownership structures built for your actual goals."
               slug="corporate-structuring"
               iconName="Layers"
+              ctaText="Corporate Structuring →"
             />
             <ServiceCard
-              key="trust-and-fiduciary"
-              title="Trust & Fiduciary Setup"
-              description="Trust structures for asset protection, succession planning, and cross-border estate management. We work with qualified fiduciaries to design and establish the right vehicle."
+              title="Trust & Fiduciary"
+              description="For founders and families who need to separate personal wealth from operating entities, we establish trust structures that work across jurisdictions and withstand examination by tax authorities."
               slug="trust-and-fiduciary"
               iconName="ShieldCheck"
+              ctaText="Trust & Fiduciary →"
             />
           </div>
         </div>
       </section>
 
-      {/* SECTION 4 — PULL QUOTE */}
-      <section className={`${styles.bgLight}`} style={{ padding: '8rem 0' }}>
+      {/* SECTION 5: HOW IT WORKS */}
+      <section className={styles.section}>
         <div className="container">
-          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-            <span style={{ fontSize: '5rem', color: 'var(--color-accent-blue)', opacity: 0.2, lineHeight: 0, display: 'block', marginBottom: '2rem', fontFamily: 'serif' }}>&ldquo;</span>
-            <blockquote style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', color: 'var(--color-primary-navy)', lineHeight: 1.4, fontWeight: 500, fontStyle: 'italic', margin: 0 }}>
-              The entity you set up on day one will still be there when you are dealing with tax audits, investor due diligence, or a business sale. The structure matters.
-            </blockquote>
-            <cite style={{ display: 'block', marginTop: '2.5rem', fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-accent-blue)', textTransform: 'uppercase', letterSpacing: '0.1em', fontStyle: 'normal' }}>
-              GrowValley Works
-            </cite>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionEyebrow}>HOW IT WORKS</span>
+          </div>
+          <div className={styles.howItWorksGrid}>
+            <div className={styles.step}>
+              <div className={styles.stepHeader}>
+                <span className={styles.stepNumber}>01</span>
+                <h3>Briefing</h3>
+              </div>
+              <p>We start with a structured conversation about your business model, ownership, operating geography, and forward plans. We do not recommend a structure until we understand what you are building.</p>
+            </div>
+            <div className={styles.step}>
+              <div className={styles.stepHeader}>
+                <span className={styles.stepNumber}>02</span>
+                <h3>Structural Assessment</h3>
+              </div>
+              <p>We present the jurisdictional and structural options relevant to your situation, with a clear recommendation and the reasoning behind it. No shortlists without guidance.</p>
+            </div>
+            <div className={styles.step}>
+              <div className={styles.stepHeader}>
+                <span className={styles.stepNumber}>03</span>
+                <h3>Formation and Setup</h3>
+              </div>
+              <p>We manage every step of the formation process: applications, documentation, regulatory submissions, and government approvals. We handle the back-and-forth directly.</p>
+            </div>
+            <div className={styles.step}>
+              <div className={styles.stepHeader}>
+                <span className={styles.stepNumber}>04</span>
+                <h3>Completion and Handover</h3>
+              </div>
+              <p>You receive a complete corporate file. If you need ongoing entity management or back-office operations, our Operate and Manage teams take it from here.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 5 — LEADER */}
-      <CapabilitiesLeader
-        eyebrow="The Team"
-        title={<>Corporate structuring specialists<br />with cross-border expertise.</>}
-        description="Our formation team does not just fill out forms. They advise on the structural integrity of your business, ensuring it is built for the scale and complexity you intend to reach."
-        image="/images/placeholderPerson.jpg"
-        name="Elena Rostova"
-        designation="Head of Corporate Structuring"
-      />
-
-      {/* SECTION 6 — CTA */}
-      <section className={styles.ctaBanner} style={{ paddingBottom: 'var(--section-gap)' }}>
+      {/* SECTION 6: POSITIONING STRIP */}
+      <section className={styles.positioningStrip}>
         <div className="container">
-          <div className={styles.ctaBannerPanel} style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '3rem', textAlign: 'left' }}>
-            <div style={{ flex: '1 1 500px' }}>
-              <h2 style={{ color: 'var(--color-white)', marginBottom: '1rem', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 500, lineHeight: 1.15 }}>
-                Ready to establish your structure?
-              </h2>
-              <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1.25rem', margin: 0, lineHeight: 1.6 }}>
-                Tell us what you are building. We will map the optimal jurisdiction and entity structure for your commercial goals.
-              </p>
+          <div className={styles.stripContent}>
+            <p className={styles.stripText}>
+              Most firms will incorporate you. Few will tell you why the structure matters three years from now. That distinction is what we are here for.
+            </p>
+            <span className={styles.stripBrand}>GrowValley</span>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: BY THE NUMBERS */}
+      <section className={styles.section}>
+        <div className="container">
+          <div className={styles.statsGridPillar}>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>40+</span>
+              <p className={styles.statLabel}>UAE free zones assessed and working across</p>
             </div>
-            <div style={{ flex: '0 0 auto', display: 'flex', justifyContent: 'flex-start' }}>
-              <Link href="/contact" style={{ display: 'inline-block' }}>
-                <Button size="lg" variant="secondary" style={{ padding: '1.25rem 3rem', fontSize: '1.1rem', borderRadius: '3rem' }}>
-                  Let&apos;s Work
-                </Button>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>15+</span>
+              <p className={styles.statLabel}>jurisdictions covered for international formation</p>
+            </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>6</span>
+              <p className={styles.statLabel}>specialist advisors across formation, structuring, and fiduciary</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 9: WHAT COMES NEXT */}
+      <section className={`${styles.section} ${styles.bgLight}`}>
+        <div className="container">
+          <div className={styles.nextSection}>
+            <div className={styles.nextContent}>
+              <span className={styles.sectionEyebrow}>AFTER ESTABLISH</span>
+              <h2 className={styles.nextHeading}>Formation is the start, not the finish.</h2>
+              <p className={styles.nextBody}>
+                Once your entity is correctly structured, it needs to run. Our Operate team handles PRO services, entity management, regulatory filings, and corporate administration. Our Manage team covers accounting, payroll, HR admin, and tax compliance. When you are ready to grow beyond your current market, our Expand team manages international expansion.
+              </p>
+              <Link href="/our-capabilities" className={styles.nextLink}>
+                See all service pillars <ArrowRight size={16} />
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 10: CTA BANNER */}
+      <section className={styles.ctaBannerSection}>
+        <div className="container">
+          <div className={styles.ctaBannerBox}>
+            <div className={styles.ctaBannerText}>
+              <h2>Starting a conversation costs nothing. Getting the structure wrong does.</h2>
+              <p>Tell us about your business, where you are operating, and what you are building. We will advise on the right structure before you commit to one.</p>
+            </div>
+            <Link href="/contact">
+              <Button size="lg" variant="secondary">Talk to an Establish Advisor</Button>
+            </Link>
           </div>
         </div>
       </section>
