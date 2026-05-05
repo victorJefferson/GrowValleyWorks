@@ -75,7 +75,7 @@ export const InsightsCarousel: React.FC<InsightsCarouselProps> = ({
                 <h2 className={styles.insightsHeading}>{title}</h2>
                 <p className={styles.insightsIntro}>{description}</p>
                 <Link href={exploreLink.href} className={styles.exploreLink}>
-                  {exploreLink.text} &rarr;
+                  {exploreLink.text} <ArrowRight size={18} />
                 </Link>
               </div>
 

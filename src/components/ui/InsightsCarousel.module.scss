@@ -69,7 +69,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--color-accent-blue);
+  color: var(--color-primary-navy);
   font-weight: 600;
   text-decoration: none;
   transition: transform 0.3s ease;
@@ -231,15 +231,15 @@
 .pillTag {
   display: inline-block;
   padding: 0.35rem 0.85rem;
-  background-color: var(--color-accent-blue-soft);
-  color: var(--color-accent-blue);
+  background-color: rgba(14, 25, 52, 0.05); /* Soft navy background */
+  color: var(--color-primary-navy);
   border-radius: 50px;
   font-size: 0.75rem;
   font-weight: 600;
 }
 
 .arrowIcon {
-  color: var(--color-accent-blue);
+  color: var(--color-primary-navy);
   transition: transform 0.3s ease;
 }
 
