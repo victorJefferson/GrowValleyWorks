@@ -1,4 +1,4 @@
 export const features = {
-  insights: true,
+  insights: false,
   caseStudies: false,
 };
