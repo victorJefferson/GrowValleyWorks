@@ -353,6 +353,58 @@
     max-width: 800px;
 }
 
+.positioningSplit {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    text-align: left;
+    margin: 6rem 0 4rem;
+
+    @media (min-width: 1024px) {
+        flex-direction: row;
+        gap: 5rem;
+        align-items: center;
+    }
+}
+
+.positioningLeft {
+    flex: 1;
+
+    h2 {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        line-height: 1.1;
+        color: var(--color-primary-navy);
+        font-weight: 400;
+        margin: 0;
+    }
+}
+
+.positioningRight {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+    .subheadline {
+        font-size: 1.25rem;
+        line-height: 1.4;
+        font-weight: 500;
+        color: var(--color-primary-navy);
+        margin: 0;
+
+        @media (min-width: 1024px) {
+            font-size: 1.5rem;
+        }
+    }
+    
+    .body {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        color: var(--color-text-body);
+        margin: 0;
+    }
+}
+
 .whySplitLayout {
     display: flex;
     flex-direction: column;

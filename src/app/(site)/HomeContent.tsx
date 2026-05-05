@@ -163,18 +163,19 @@ export default function HomeContent({
             </div>
           </div>
 
-          <div className={styles.whySection}>
-            <h2 className={styles.whyHeadingMain}>Many firms help you start. We handle what comes after.</h2>
-            <p className={styles.whySubheadlineMain}>
-              GrowValley is the execution arm of the GrowValley ecosystem.
-            </p>
-            <p className={styles.whyBodyMain}>
-              GrowValley Ventures deploys capital. GrowValley Capital advises on strategy. We run the operations.
-              That means company formation, PRO and government liaison, accounting, payroll, tax
-              compliance, and international structuring. The work that is not your core business but stops
-              everything if it fails.
-            </p>
-
+          <div className={styles.positioningSplit}>
+            <div className={styles.positioningLeft}>
+              <h2>Many firms help you start. We handle what comes after.</h2>
+            </div>
+            <div className={styles.positioningRight}>
+              <p className={styles.subheadline}>
+                GrowValley is the execution arm of the GrowValley ecosystem.
+              </p>
+              <p className={styles.body}>
+                GrowValley Ventures deploys capital. GrowValley Capital advises on strategy. We run the operations.<br /><br />
+                That means company formation, PRO and government liaison, accounting, payroll, tax compliance, and international structuring. The work that is not your core business but stops everything if it fails.
+              </p>
+            </div>
           </div>
         </div>
       </section>
