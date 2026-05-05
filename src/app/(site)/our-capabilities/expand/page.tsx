@@ -89,28 +89,29 @@ export default function ExpandPage() {
               description="We manage the process of entering a new market from start to finish: jurisdiction selection, entity formation, licensing, and regulatory setup."
               slug="international-expansion"
               iconName="Globe"
-              ctaText="International Expansion →"
+              ctaText="Read More"
             />
             <ServiceCard
               title="Multi-Entity Structuring"
               description="We design holding and subsidiary structures across jurisdictions that protect assets, simplify governance, and reduce cross-border tax exposure."
               slug="multi-entity-structuring"
               iconName="Layers"
-              ctaText="Multi-Entity Structuring →"
+              ctaText="Read More"
             />
             <ServiceCard
               title="Cross-Border Compliance"
               description="We manage the ongoing regulatory filings, reporting obligations, and compliance requirements across every market you operate in."
               slug="cross-border-compliance"
               iconName="ShieldCheck"
-              ctaText="Cross-Border Compliance →"
+              ctaText="Read More"
             />
             <ServiceCard
               title="Market Entry Support"
               description="Getting into a new market requires more than an entity. It requires a business that is ready to operate: local approvals, commercial registration, and banking."
               slug="market-entry-support"
               iconName="Target"
-              ctaText="Market Entry Support →"
+              ctaText="Read More"
+              className={styles.centerBottomCard}
             />
           </div>
         </div>

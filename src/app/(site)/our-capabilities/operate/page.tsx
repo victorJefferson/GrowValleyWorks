@@ -71,31 +71,32 @@ export default function OperatePage() {
           <div className={styles.serviceGrid}>
             <ServiceCard
               title="PRO & Government Services"
-              description="Visa applications, work permit processing, Emirates ID renewals, labor card management, and direct liaison with UAE federal and emirate-level government authorities."
+              description="New visa processing, residency renewals, golden visa applications, family sponsorship, and corporate cancellations. We manage the Ministry of Labour, Immigration, and relevant authorities directly."
               slug="pro-and-government-services"
               iconName="Briefcase"
-              ctaText="PRO & Government Services →"
+              ctaText="Read More"
             />
             <ServiceCard
               title="Entity Management"
               description="Trade license renewals, Memorandum of Association amendments, registered address management, trade name maintenance, and full entity lifecycle administration."
               slug="entity-management"
               iconName="Building2"
-              ctaText="Entity Management →"
+              ctaText="Read More"
             />
             <ServiceCard
               title="Regulatory Filings"
               description="Mandatory submissions to the UAE Ministry of Economy, relevant free zone authorities, and sector-specific regulators. UBO, ESR, and AML filings prepared and submitted correctly."
               slug="regulatory-filings"
               iconName="ScrollText"
-              ctaText="Regulatory Filings →"
+              ctaText="Read More"
             />
             <ServiceCard
               title="Corporate Administration"
               description="Board resolutions, signatory updates, power of attorney documentation, corporate secretary functions, and the full range of administrative requirements."
               slug="corporate-administration"
               iconName="Layers"
-              ctaText="Corporate Administration →"
+              ctaText="Read More"
+              className={styles.centerBottomCard}
             />
           </div>
         </div>

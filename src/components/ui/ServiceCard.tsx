@@ -38,13 +38,15 @@ interface ServiceCardProps {
   slug: string;
   iconName: string;
   category?: string;
+  ctaText?: string;
+  className?: string;
 }
 
-export function ServiceCard({ title, description, slug, iconName }: ServiceCardProps) {
+export function ServiceCard({ title, description, slug, iconName, ctaText, className }: ServiceCardProps) {
   const Icon = iconMap[iconName] || Briefcase;
 
   return (
-    <Link href={`/our-capabilities/${slug}`} className={styles.serviceCard}>
+    <Link href={`/our-capabilities/${slug}`} className={`${styles.serviceCard} ${className || ""}`}>
       <div className={styles.iconWrapper}>
         <Icon size={32} strokeWidth={1.5} />
       </div>
@@ -53,6 +55,7 @@ export function ServiceCard({ title, description, slug, iconName }: ServiceCardP
       <p className={styles.description}>{description}</p>
       
       <div className={styles.footer}>
+        {ctaText && <span className={styles.ctaLabel}>{ctaText}</span>}
         <ArrowRight className={styles.arrow} size={24} />
       </div>
     </Link>

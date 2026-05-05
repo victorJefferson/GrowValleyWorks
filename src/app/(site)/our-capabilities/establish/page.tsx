@@ -77,28 +77,29 @@ export default function EstablishPage() {
               description="We handle the full formation process: entity type selection, jurisdiction assessment, licensing, ownership structure, and documentation. Our advisors cover UAE mainland, all major free zones, offshore jurisdictions, and international markets."
               slug="company-formation"
               iconName="Building2"
-              ctaText="Company Formation →"
+              ctaText="Read More"
             />
             <ServiceCard
               title="Free Zone Setup"
               description="Choosing the wrong free zone costs money and time to correct. We assess your business model, ownership requirements, sector, and cost parameters, then recommend the free zone that fits."
               slug="free-zone-setup"
               iconName="Globe"
-              ctaText="Free Zone Setup →"
+              ctaText="Read More"
             />
             <ServiceCard
               title="Corporate Structuring"
               description="An incorporated company and a well-structured company are not the same thing. We design holding arrangements, subsidiary frameworks, and ownership structures built for your actual goals."
               slug="corporate-structuring"
               iconName="Layers"
-              ctaText="Corporate Structuring →"
+              ctaText="Read More"
             />
             <ServiceCard
               title="Trust & Fiduciary"
               description="For founders and families who need to separate personal wealth from operating entities, we establish trust structures that work across jurisdictions and withstand examination by tax authorities."
               slug="trust-and-fiduciary"
               iconName="ShieldCheck"
-              ctaText="Trust & Fiduciary →"
+              ctaText="Read More"
+              className={styles.centerBottomCard}
             />
           </div>
         </div>

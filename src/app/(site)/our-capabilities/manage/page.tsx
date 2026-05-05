@@ -89,35 +89,35 @@ export default function ManagePage() {
               description="Monthly ledger management, reconciliations, management accounts, and financial reporting, prepared on schedule and ready for audit."
               slug="accounting-and-bookkeeping"
               iconName="BarChart3"
-              ctaText="Accounting & Bookkeeping →"
+              ctaText="Read More"
             />
             <ServiceCard
               title="Payroll"
               description="We process payroll across UAE and international entities, manage WPS compliance, and handle disbursements on time. Accurate payroll is a legal obligation."
               slug="payroll"
               iconName="Users"
-              ctaText="Payroll →"
+              ctaText="Read More"
             />
             <ServiceCard
               title="HR Administration"
               description="Employment contracts, onboarding, offboarding, HR records, and end-of-service gratuity calculations in line with local labour law."
               slug="hr-administration"
               iconName="Briefcase"
-              ctaText="HR Administration →"
+              ctaText="Read More"
             />
             <ServiceCard
               title="Tax Compliance"
               description="VAT registration and return filing, corporate tax registration, and your compliance calendar across all active jurisdictions."
               slug="tax-compliance"
               iconName="ShieldCheck"
-              ctaText="Tax Compliance →"
+              ctaText="Read More"
             />
             <ServiceCard
               title="Employer of Record"
               description="Employ staff in markets where you do not yet have a registered entity. Your people are hired legally and paid correctly."
               slug="employer-of-record"
               iconName="Network"
-              ctaText="Employer of Record →"
+              ctaText="Read More"
               className={styles.centerBottomCard}
             />
           </div>
