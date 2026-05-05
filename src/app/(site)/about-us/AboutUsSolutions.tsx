@@ -5,37 +5,36 @@ import styles from "./AboutUs.module.scss";
 
 // Fallback structured exactly like the CMS data we'd receive
 const fallbackCategories = [
-  { _id: 'cat1', title: 'Wealth Management', description: 'For clients who want their wealth managed with the same rigour applied to institutional capital.', sectionId: 'wealth-management' },
-  { _id: 'cat2', title: 'Family Office Services', description: 'For clients whose needs extend beyond investment. We coordinate every engagement on your behalf.', sectionId: 'family-office' },
-  { _id: 'cat3', title: 'Private Access to Opportunities', description: 'For qualified investors who expect more than the open market offers.', sectionId: 'private-access' },
-  { _id: 'cat4', title: 'Succession Planning Services', description: 'For clients who want their wealth to outlast them across generations.', sectionId: 'succession-planning' }
+  { _id: 'cat1', title: 'Establish', description: 'Getting the entity and structure right from the start. Jurisdiction selection, formation, and trust arrangements.', sectionId: 'establish' },
+  { _id: 'cat2', title: 'Operate', description: 'Handling the ongoing interaction with authorities. PRO services, renewals, and corporate administration.', sectionId: 'operate' },
+  { _id: 'cat3', title: 'Manage', description: 'Running the financial and HR back-office. Accounting, payroll, and tax compliance across entities.', sectionId: 'manage' },
+  { _id: 'cat4', title: 'Expand', description: 'Managing the legal and structural complexity of entering new markets. Cross-border growth, handled.', sectionId: 'expand' }
 ];
 
-// Fallback services manually mapping to those categories if no CMS data exists
 const fallbackServices = [
-  // Wealth Management (virtual services just to populate the 4 points)
-  { category: { title: "Wealth Management" }, title: "Strategy", description: "Institutional-grade strategy design based on your unique goals." },
-  { category: { title: "Wealth Management" }, title: "Execution", description: "Disciplined implementation from day one with total accountability." },
-  { category: { title: "Wealth Management" }, title: "Ongoing Oversight", description: "Continuous monitoring and review of your entire wealth position." },
-  { category: { title: "Wealth Management" }, title: "One Accountable Team", description: "Every dimension of wealth delivered by a single integrated unit." },
+  // Establish
+  { pillarTitle: "Establish", title: "Company Formation", description: "UAE mainland, free zone, and international entity setup handled end to end." },
+  { pillarTitle: "Establish", title: "Corporate Structuring", description: "Designing holding arrangements and subsidiary frameworks built for scale." },
+  { pillarTitle: "Establish", title: "Free Zone Selection", description: "Assessment of the right jurisdiction based on sector, ownership, and goals." },
+  { pillarTitle: "Establish", title: "Trust & Fiduciary", description: "Establishing fiduciary structures that protect assets and separate risk." },
 
-  // Family Office
-  { category: { title: "Family Office Services" }, title: "Legal & Fiduciary", description: "Coordinating specialist legal advice for complex wealth demands." },
-  { category: { title: "Family Office Services" }, title: "Philanthropy", description: "Structured giving aligned to your legacy and values." },
-  { category: { title: "Family Office Services" }, title: "M&A", description: "Advisory coordination for corporate transactions and liquidity events." },
-  { category: { title: "Family Office Services" }, title: "Reporting", description: "Unified reporting across all assets, entities, and jurisdictions." },
+  // Operate
+  { pillarTitle: "Operate", title: "PRO Services", description: "Managing government liaison, visa processing, and document clearing directly." },
+  { pillarTitle: "Operate", title: "Entity Management", description: "Continuous oversight of corporate records, licensing, and regulatory standing." },
+  { pillarTitle: "Operate", title: "Commercial Registration", description: "Handling renewals and updates to your commercial and trade licenses." },
+  { pillarTitle: "Operate", title: "Regulatory Filings", description: "Ensuring all periodic government reporting is completed on time, every time." },
 
-  // Private Access
-  { category: { title: "Private Access to Opportunities" }, title: "PE Transactions", description: "Access to private equity deals sourced through deep relationships." },
-  { category: { title: "Private Access to Opportunities" }, title: "VC Transactions", description: "Venture deals structured and placed by proven practitioners." },
-  { category: { title: "Private Access to Opportunities" }, title: "Real Estate Access", description: "Off-market real estate transactions spanning global jurisdictions." },
-  { category: { title: "Private Access to Opportunities" }, title: "Relationship Based", description: "Opportunities sourced through networks, not public listings." },
+  // Manage
+  { pillarTitle: "Manage", title: "Accounting & Tax", description: "Professional bookkeeping and VAT compliance across all your jurisdictions." },
+  { pillarTitle: "Manage", title: "Payroll & HR Admin", description: "Handling the monthly payroll cycle, WPS, and human resource administration." },
+  { pillarTitle: "Manage", title: "Corporate Tax", description: "Preparing and filing corporate tax returns in line with current UAE regulation." },
+  { pillarTitle: "Manage", title: "Back Office Ops", description: "Outsourcing the administrative burden so your team can focus on growth." },
 
-  // Succession
-  { category: { title: "Succession Planning Services" }, title: "Protect Assets", description: "Holding structures designed to safeguard wealth integrity." },
-  { category: { title: "Succession Planning Services" }, title: "Minimise Cost", description: "Redesigning arrangements to reduce unnecessary operational costs." },
-  { category: { title: "Succession Planning Services" }, title: "Wealth Transfer", description: "Constructing succession frameworks that hold for generations." },
-  { category: { title: "Succession Planning Services" }, title: "Robust Planning", description: "Precision planning that reflects your intentions and protects family." }
+  // Expand
+  { pillarTitle: "Expand", title: "Market Entry", description: "Strategic and operational support for entering new jurisdictions efficiently." },
+  { pillarTitle: "Expand", title: "Multi-Entity Control", description: "Unified management of entities across multiple regional and global markets." },
+  { pillarTitle: "Expand", title: "Cross-Border Setup", description: "Coordinating entity formation and compliance across different legal systems." },
+  { pillarTitle: "Expand", title: "Licensing Strategy", description: "Advising on the right licenses for international growth and cross-border ops." }
 ];
 
 export function AboutUsSolutions({ 
@@ -55,7 +54,7 @@ export function AboutUsSolutions({
   if (!currentCategory) return null;
 
   // Find all services linked to this category
-  const currentServices = services.filter(s => s.category?.title === currentCategory.title);
+  const currentServices = services.filter(s => s.pillarTitle === currentCategory.title);
 
   return (
     <section className={styles.solutionsSection}>

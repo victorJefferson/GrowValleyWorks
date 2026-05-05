@@ -88,6 +88,17 @@ export default defineConfig({
           subheadline: 'The execution layer of the GrowValley ecosystem.',
         },
       },
+      {
+        id: 'hero-careers-works',
+        title: 'Hero (Careers - Works)',
+        schemaType: 'hero-works',
+        value: {
+          pageSlug: 'careers',
+          eyebrow: 'JOBS',
+          headline: "We don't hire for roles. We hire for impact.",
+          subheadline: "GrowValley sits at a rare intersection: wealth management, venture building, and active capital deployment.",
+        },
+      },
     ],
   },
 

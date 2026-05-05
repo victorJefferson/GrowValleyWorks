@@ -27,6 +27,8 @@ export default defineType({
                     { title: "Operate Pillar", value: "operate" },
                     { title: "Manage Pillar", value: "manage" },
                     { title: "Expand Pillar", value: "expand" },
+                    { title: "Careers", value: "careers" },
+                    { title: "Experts", value: "experts" },
                     { title: "Contact", value: "contact" },
                 ],
             },

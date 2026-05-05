@@ -12,6 +12,7 @@ import {
 
 import { ServiceDetail } from "@/config/services";
 import { Button } from "@/components/ui/Button";
+import { urlFor } from "@/lib/sanity";
 import styles from "./ServicePage.module.scss";
 
 // Import data from split files
@@ -39,7 +40,7 @@ const SERVICE_SECTION_IMAGES: Record<string, any> = {
   // but they can be customized per slug just like before.
 };
 
-export default function ServicePageContent({ service, cmsData }: { service: ServiceDetail, cmsData?: any }) {
+export default function ServicePageContent({ service, cmsData }: { service?: ServiceDetail, cmsData?: any }) {
   if (!service && !cmsData) return null;
 
   const slug = service?.slug || cmsData?.slug?.current || cmsData?.slug;
@@ -54,10 +55,10 @@ export default function ServicePageContent({ service, cmsData }: { service: Serv
     );
   }
 
-  const sectionImgs = SERVICE_SECTION_IMAGES[service.slug] || {};
+  const sectionImgs = (service?.slug ? SERVICE_SECTION_IMAGES[service.slug] : {}) || {};
   const defaultImg = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1400&auto=format&fit=crop";
 
-  const heroImg = sectionImgs.hero ?? defaultImg;
+  const heroImg = content.heroImage ? urlFor(content.heroImage).url() : (sectionImgs.hero ?? defaultImg);
   const problemImg = sectionImgs.problem ?? heroImg;
   const featureImg = sectionImgs.feature ?? heroImg;
   const includedImg = sectionImgs.included ?? heroImg;
@@ -72,31 +73,31 @@ export default function ServicePageContent({ service, cmsData }: { service: Serv
             <ChevronRight className={styles.separator} size={14} />
             <Link href="/our-capabilities">Our Services</Link>
             <ChevronRight className={styles.separator} size={14} />
-            <Link href={`/our-capabilities/${service.category.toLowerCase().replace(/\s+/g, '-')}`}>
-              {content.categoryLabel || service.category}
+            <Link href={`/our-capabilities/${(service?.category || content.pillarSlug || "establish").toLowerCase().replace(/\s+/g, '-')}`}>
+              {content.categoryLabel || service?.category || content.pillarTitle || "Services"}
             </Link>
             <ChevronRight className={styles.separator} size={14} />
-            <span className={styles.current}>{service.title}</span>
+            <span className={styles.current}>{content.title || service?.title}</span>
           </nav>
 
           <div className={styles.heroSplit}>
             <div className={styles.heroLeft}>
               <h1 className={content.heroHeadline && content.heroHeadline.length > 50 ? styles.longHeadline : ""}>
-                {content.heroHeadline || service.title}
+                {content.heroHeadline || content.title || service?.title}
               </h1>
-              <p>{content.heroSubheadline || service.description}</p>
+              <p>{content.heroSubheadline || service?.description}</p>
               <Link href="/contact">
                 <Button size="lg">{content.heroCtaLabel || content.ctaButtonLabel || "SPEAK TO AN EXPERT"}</Button>
               </Link>
             </div>
             <div className={styles.heroRight}>
-              <img src={heroImg} alt={service.title} />
+              <img src={heroImg} alt={content.title || service?.title} />
               <div className={styles.heroRightOverlay} />
               <div className={styles.heroCaption}>
                 <div className={styles.overlayBreadcrumb}>
-                  <span className={styles.categoryPart}>{content.categoryLabel || service.category}</span>
+                  <span className={styles.categoryPart}>{content.categoryLabel || service?.category || content.pillarTitle}</span>
                   <span className={styles.separatorPart}> / </span>
-                  <span className={styles.titlePart}>{service.title}</span>
+                  <span className={styles.titlePart}>{content.title || service?.title}</span>
                 </div>
               </div>
             </div>
@@ -149,7 +150,7 @@ export default function ServicePageContent({ service, cmsData }: { service: Serv
         <div className="container">
           <div className={styles.problemCard}>
             <div className={styles.problemImageCol}>
-              <img src={problemImg} alt={service.title} />
+              <img src={problemImg} alt={service?.title} />
               <div className={styles.problemHighlight}>
                 <strong>{content.problemImageText || content.problemHighlight}</strong>
                 <span className={styles.underlineAccent} />
@@ -201,7 +202,7 @@ export default function ServicePageContent({ service, cmsData }: { service: Serv
           <div className="container">
             <div className={styles.fsGrid}>
               <div className={styles.fsVisual}>
-                <img src={featureImg} alt={service.title} />
+                <img src={featureImg} alt={service?.title} />
                 <div className={styles.fsVisualPattern} />
               </div>
               <div className={styles.fsContent}>
@@ -271,7 +272,7 @@ export default function ServicePageContent({ service, cmsData }: { service: Serv
           <div className="container">
             <div className={styles.wiCard}>
               <div className={styles.wiContent}>
-                <h3>What&apos;s included with GrowValley&apos;s {service.title}</h3>
+                <h3>What&apos;s included with GrowValley&apos;s {service?.title}</h3>
                 <p className={styles.wiSubtext}>Everything required to manage your business properly, from day one.</p>
                 <div className={styles.wiGrid}>
                   <ul>
@@ -287,7 +288,7 @@ export default function ServicePageContent({ service, cmsData }: { service: Serv
                 </div>
               </div>
               <div className={styles.wiImage}>
-                <img src={includedImg} alt={service.title} />
+                <img src={includedImg} alt={service?.title} />
                 <div className={styles.wiImageOverlay} />
               </div>
             </div>

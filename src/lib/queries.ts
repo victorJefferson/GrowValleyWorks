@@ -199,6 +199,7 @@ export const allServicesQuery = groq`
     title,
     "slug": slug.current,
     "pillarSlug": pillar->slug.current,
+    "pillarTitle": pillar->title,
     description
   }
 `;
