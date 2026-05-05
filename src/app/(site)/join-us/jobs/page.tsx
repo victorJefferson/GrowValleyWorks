@@ -33,7 +33,7 @@ export default async function JobsPage() {
     eyebrow: "JOBS",
     headline: "We don't hire for roles. We hire for impact.",
     subheadline: "GrowValley sits at a rare intersection: wealth management, venture building, and active capital deployment. That means the people who thrive here aren't looking for a quiet corner of finance. They're looking for a place where their thinking actually changes outcomes.",
-    image: "/images/careers_hero.png",
+    image: "/images/join_us.png",
   };
 
   const displayHero = heroData || defaultHero;

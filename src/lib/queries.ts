@@ -174,3 +174,31 @@ export const solutionsQuery = groq`
     }
   }
 `;
+
+export const caseStudiesQuery = groq`
+  *[_type == "case-study-works"] | order(order asc) {
+    _id,
+    title,
+    coverImage,
+    "pdfUrl": pdfFile.asset->url
+  }
+`;
+
+export const serviceCategoriesQuery = groq`
+  *[_type == "pillar-works"] | order(title asc) {
+    _id,
+    title,
+    "slug": slug.current,
+    description
+  }
+`;
+
+export const allServicesQuery = groq`
+  *[_type == "service-works"] | order(title asc) {
+    _id,
+    title,
+    "slug": slug.current,
+    "pillarSlug": pillar->slug.current,
+    description
+  }
+`;

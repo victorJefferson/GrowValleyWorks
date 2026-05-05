@@ -6,6 +6,7 @@ import pillarWorks from "./pillar-works";
 import serviceWorks from "./service-works";
 import whoWeWorkWithWorks from "./who-we-work-with-works";
 import solutionsWorks from "./solutions-works";
+import caseStudyWorks from "./case-study-works";
 import consentLog from "./consentLog";
 
 export const schemaTypes = [
@@ -17,5 +18,6 @@ export const schemaTypes = [
     serviceWorks,
     whoWeWorkWithWorks,
     solutionsWorks,
+    caseStudyWorks,
     consentLog
 ];
