@@ -1,0 +1,155 @@
+.whoWeWorkWithPremium {
+    margin: auto;
+    margin-bottom: 3rem;
+    width: calc(100% - 2rem);
+    color: var(--color-primary-navy);
+
+    @media (min-width: 768px) {
+        width: calc(100% - 3rem);
+    }
+
+    @media (min-width: 1248px) {
+        max-width: var(--max-width-container);
+        width: 100%;
+    }
+}
+
+.whoWeWorkWithInner {
+    background-color: var(--color-surface-tertiary);
+    border-radius: var(--border-radius-hero);
+    padding: 3rem 1.25rem;
+    overflow: hidden;
+
+    @media (min-width: 768px) {
+        padding: 5rem 3rem;
+    }
+
+    @media (min-width: 1024px) {
+        padding: 6rem 5rem;
+    }
+}
+
+.sectionHeading {
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 2.5rem;
+    color: var(--color-primary-navy);
+    font-weight: 400;
+    text-align: center;
+}
+
+.partnerCardsBento {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0;
+
+    @media (min-width: 768px) {
+        gap: 1.25rem;
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 200px;
+        gap: 1.5rem;
+    }
+}
+
+.bentoCard {
+    background: var(--color-surface-tertiary);
+    border: 1.5px solid hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.15);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        border-color: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.3);
+    }
+
+    .bentoContent {
+        position: relative;
+        z-index: 3;
+        padding: 1.5rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        pointer-events: none;
+
+        @media (min-width: 768px) {
+            padding: 2.5rem;
+        }
+    }
+
+    p {
+        font-size: 1.25rem;
+        color: var(--color-primary-navy);
+        font-weight: 500;
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+        margin: 0;
+
+        @media (min-width: 768px) {
+            font-size: 1.125rem;
+            line-height: 1.4;
+        }
+    }
+}
+
+.cardHero {
+    @media (min-width: 1024px) {
+        grid-column: span 2;
+        grid-row: span 2;
+
+        p {
+            font-size: 2.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+        }
+    }
+}
+
+.cardWide {
+    @media (min-width: 1024px) {
+        grid-column: span 2;
+        grid-row: span 2;
+
+        p {
+            font-size: 2.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+        }
+    }
+}
+
+.cardSquare {
+    @media (min-width: 1024px) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    p {
+        font-size: 1.25rem;
+        font-weight: 500;
+    }
+}
+
+.cardPanorama {
+    @media (min-width: 1024px) {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    p {
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+}

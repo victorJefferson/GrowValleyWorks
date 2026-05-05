@@ -1,0 +1,96 @@
+.dataSection {
+    margin: auto;
+    width: calc(100% - 2.5rem);
+
+    @media (min-width: 1248px) {
+        max-width: var(--max-width-container);
+        width: 100%;
+    }
+}
+
+.dataSectionInner {
+    background-color: var(--color-accent-blue);
+    color: var(--color-primary-navy);
+    border-radius: var(--border-radius-hero);
+    padding: 4rem 2rem;
+    overflow: hidden;
+
+    @media (min-width: 768px) {
+        padding: 5rem 3rem;
+    }
+
+    @media (min-width: 1024px) {
+        padding: 6rem 5rem;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    @media (min-width: 900px) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5rem;
+    }
+}
+
+.leftColumn {
+    flex: 1;
+    max-width: 480px;
+
+    .headline {
+        color: var(--color-primary-navy);
+        font-size: clamp(2.5rem, 4vw, 3.5rem);
+        font-weight: 500;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+    }
+
+    .description {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        color: var(--color-primary-navy);
+    }
+
+    .ctaButton {
+        background-color: var(--color-primary-navy);
+        color: var(--color-white);
+    }
+}
+
+.rightColumn {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+
+    @media (min-width: 500px) {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 3.5rem;
+        column-gap: 2rem;
+    }
+
+    .statItem {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .statValue {
+        font-size: clamp(3rem, 5vw, 4.5rem);
+        font-weight: 600;
+        line-height: 1.1;
+        color: var(--color-primary-navy);
+        letter-spacing: -0.02em;
+    }
+
+    .statLabel {
+        font-size: 1rem;
+        color: var(--color-primary-navy);
+        line-height: 1.4;
+    }
+}

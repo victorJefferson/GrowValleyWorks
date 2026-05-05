@@ -1,0 +1,128 @@
+.overview {
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+    text-align: center;
+}
+
+.eyebrow {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent-blue);
+    margin-bottom: 1rem;
+}
+
+.heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-primary-navy);
+}
+
+.body {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.tileGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (min-width: 1200px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.tile {
+    background-color: var(--color-surface-tertiary);
+    padding: 3rem;
+    border-radius: var(--border-radius-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+        transform: translateY(-5px);
+        background-color: var(--color-surface-secondary);
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+        color: var(--color-primary-navy);
+        line-height: 1.2;
+    }
+    
+    p {
+        font-size: 1rem;
+        color: var(--color-text-muted);
+        line-height: 1.6;
+    }
+}
+
+.bgTertiary {
+    background-color: var(--color-surface-tertiary);
+}
+
+.roundedPanel {
+    background-color: var(--color-surface-tertiary);
+    border-radius: var(--border-radius-hero);
+    padding: 3rem 2rem;
+    overflow: hidden;
+
+    @media (min-width: 768px) {
+        padding: 4rem 3rem;
+    }
+
+    @media (min-width: 1024px) {
+        padding: 5rem 4rem;
+    }
+}
+
+.accessSection {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    
+    @media (min-width: 1024px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.accessContent {
+    flex: 1;
+    max-width: 600px;
+}
+
+.accessCta {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ctaCard {
+    background-color: var(--color-white);
+    padding: 3rem;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    
+    h3 {
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+    }
+}
