@@ -353,23 +353,65 @@
     max-width: 800px;
 }
 
-.whyCardGrid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    text-align: center;
-    max-width: var(--max-width-container);
-    margin: 0 auto;
-
-    @media (min-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.whySplitLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    text-align: left;
 
     @media (min-width: 1024px) {
-        grid-template-columns: repeat(4, 1fr);
+        flex-direction: row;
+        gap: 2.5rem;
+        align-items: stretch;
     }
 }
 
+.whySplitLeft {
+    flex: 1;
+    
+    @media (min-width: 1024px) {
+        flex: 0 0 45%;
+    }
+}
+
+.whySplitRight {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.introCardDark {
+    background-color: var(--color-primary-navy);
+    color: var(--color-white);
+    padding: 3rem;
+    border-radius: var(--border-radius-card);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.1);
+
+    h3 {
+        font-size: clamp(1.75rem, 3vw, 2.5rem);
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: var(--color-white);
+    }
+
+    @media (min-width: 1024px) {
+        padding: 4rem;
+    }
+
+    transition: all 0.4s ease;
+    &:hover {
+        border-color: var(--color-accent-blue);
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+}
 
 .whyCard {
     position: relative;
@@ -394,8 +436,11 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    aspect-ratio: 1 / 1;
-    min-height: 0;
+    min-height: 200px; /* Reduced from 320px for the vertical stack */
+    
+    @media (min-width: 1024px) {
+        min-height: 200px;
+    }
 }
 
 .whyCardFront,
@@ -443,7 +488,7 @@
 
 .whyCardIcon {
     color: var(--color-primary-navy);
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem; /* Reduced for stack */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -451,11 +496,11 @@
 }
 
 .whyCardLabel {
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.35rem; /* Slightly smaller for stack */
+    font-weight: 600;
     color: var(--color-primary-navy);
     line-height: 1.2;
-    max-width: 240px;
+    max-width: 100%;
     text-align: center;
 }
 

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Hero } from "@/components/ui/Hero";
 import { DataSection } from "@/components/ui/DataSection";
-import { ArrowRight, Layers, ShieldCheck, Target, Network } from "lucide-react";
+import { ArrowRight, Layers, ShieldCheck, Globe, Target } from "lucide-react";
 import Link from "next/link";
 import { urlFor } from "@/lib/sanity";
 import {
@@ -92,30 +92,23 @@ export default function HomeContent({
 
       <section className="section-padding">
         <div className={`container ${styles.noPaddingMobile}`}>
-          <div className={styles.whySection}>
-
-            <div className={styles.whyCardGrid}>
-              <div className={styles.whyCard}>
-                <div className={styles.whyCardInner}>
-                  <div className={styles.whyCardFront}>
-                    <div className={styles.whyCardLabel}>
-                      GrowValley is not a business setup company. We run the infrastructure that keeps entities compliant, solvent, and operational after the license is signed.
-                    </div>
-                  </div>
-                  <div className={styles.whyCardBack}>
-                    <p>
-                      GrowValley is not a business setup company. We run the infrastructure that keeps entities compliant, solvent, and operational after the license is signed.
-                    </p>
-                  </div>
+            <div className={styles.whySplitLayout}>
+              <div className={styles.whySplitLeft}>
+                <div className={styles.introCardDark}>
+                  <h3>
+                    GrowValley is not a business setup company. We run the infrastructure that keeps entities compliant, solvent, and operational after the license is signed.
+                  </h3>
                 </div>
               </div>
 
+              <div className={styles.whySplitRight}>
+
               <div className={styles.whyCard}>
                 <div className={styles.whyCardInner}>
                   <div className={styles.whyCardFront}>
-                    <div className={styles.whyCardIcon}>
-                      <ShieldCheck size={64} strokeWidth={1} />
-                    </div>
+                      <div className={styles.whyCardIcon}>
+                        <ShieldCheck size={48} strokeWidth={1} />
+                      </div>
                     <div className={styles.whyCardLabel}>
                       Integrated Across Functions
                     </div>
@@ -131,9 +124,9 @@ export default function HomeContent({
               <div className={styles.whyCard}>
                 <div className={styles.whyCardInner}>
                   <div className={styles.whyCardFront}>
-                    <div className={styles.whyCardIcon}>
-                      <Layers size={64} strokeWidth={1} />
-                    </div>
+                      <div className={styles.whyCardIcon}>
+                        <Layers size={48} strokeWidth={1} />
+                      </div>
                     <div className={styles.whyCardLabel}>
                       Structured for Scale
                     </div>
@@ -149,9 +142,9 @@ export default function HomeContent({
               <div className={styles.whyCard}>
                 <div className={styles.whyCardInner}>
                   <div className={styles.whyCardFront}>
-                    <div className={styles.whyCardIcon}>
-                      <Network size={64} strokeWidth={1} />
-                    </div>
+                      <div className={styles.whyCardIcon}>
+                        <Globe size={48} strokeWidth={1} />
+                      </div>
                     <div className={styles.whyCardLabel}>
                       Operational in Multiple Jurisdictions
                     </div>
@@ -163,10 +156,12 @@ export default function HomeContent({
                   </div>
                 </div>
               </div>
+              </div>
             </div>
 
-            <h2 className={styles.whyHeadingMain}>Many firms help you start. We handle what comes after.</h2>
-            <p className={styles.whySubheadlineMain}>
+            <div className={styles.whySection}>
+              <h2 className={styles.whyHeadingMain}>Many firms help you start. We handle what comes after.</h2>
+              <p className={styles.whySubheadlineMain}>
               GrowValley is the execution arm of the GrowValley ecosystem.
             </p>
             <p className={styles.whyBodyMain}>
