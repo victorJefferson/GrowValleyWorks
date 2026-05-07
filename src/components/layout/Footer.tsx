@@ -44,7 +44,6 @@ export function Footer({ settings }: { settings?: any }) {
       columnTitle: "About Us",
       links: [
         { name: "About GrowValley Works", href: "/about-us" },
-        { name: "Leadership", href: "/about-us/leadership" },
         { name: "Team", href: "/about-us/team" },
       ]
     },
