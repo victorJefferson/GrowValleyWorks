@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Insights | GrowValley",
         description: "Perspectives on capital, investment, and portfolio construction.",
-        url: "https://gv.ventures/insights",
+        url: "https://gv.works/insights",
         images: [
             {
-                url: "/images/growValleyVentures.png",
+                url: "/images/growvalleyworks.png",
                 width: 1200,
                 height: 630,
                 alt: "GrowValley Insights",

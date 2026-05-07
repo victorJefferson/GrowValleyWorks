@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "growvalleyventures",
+  "name": "growvalleyworks",
   "main": ".open-next/worker.js",
   "assets": {
     "directory": ".open-next/assets",
@@ -13,7 +13,7 @@
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "growvalleyventures"
+      "service": "growvalleyworks"
     }
   ],
   "observability": {

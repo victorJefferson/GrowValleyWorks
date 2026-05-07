@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description: "The operational backbone of serious businesses. Company formation, compliance, payroll, and international expansion — one firm.",
     images: [
       {
-        url: "/images/growValleyVentures.png",
+        url: "/images/growvalleyworks.png",
         width: 1200,
         height: 630,
         alt: "GrowValley Works — Operational Infrastructure",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "GrowValley Works",
     description: "Company formation, government compliance, accounting, payroll, and international expansion. Handled by one firm.",
-    images: ["/images/growValleyVentures.png"],
+    images: ["/images/growvalleyworks.png"],
   },
   robots: {
     index: true,
