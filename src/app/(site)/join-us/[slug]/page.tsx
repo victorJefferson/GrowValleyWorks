@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/ui/Hero";
-import styles from "../../JoinUs.module.scss";
+import styles from "../JoinUs.module.scss";
 import { client } from "@/lib/sanity";
 import { pageQuery } from "@/lib/queries";
 import { urlFor } from "@/lib/sanity";
