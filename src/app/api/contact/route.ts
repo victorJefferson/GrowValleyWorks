@@ -66,7 +66,7 @@ export async function POST(request: Request) {
             },
             body: JSON.stringify({
                 ...formData,
-                source: "GrowValley Website - Contact Form",
+                source: "GrowValley Works",
                 submittedAt: new Error().stack?.includes("GMT") ? new Date().toISOString() : new Date().toLocaleString(),
             }),
         });

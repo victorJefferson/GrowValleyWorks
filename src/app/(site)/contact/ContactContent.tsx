@@ -22,11 +22,10 @@ const locations = [
 ];
 
 const areasOfInterest = [
-    "Direct Portfolio Investment",
-    "Structured Co-Investment",
-    "Institutional Capital Partnerships",
-    "Investment Structuring",
-    "Capital Governance",
+    "Establish",
+    "Operate",
+    "Manage",
+    "Expand",
     "General Enquiry"
 ];
 
