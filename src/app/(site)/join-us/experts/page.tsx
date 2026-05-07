@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Experts | GrowValley",
     description: "Join the GrowValley network of industry specialists and experts.",
-    url: "https://gv.ventures/join-us/experts",
+    url: "https://gv.works/join-us/experts",
   },
 };
 
@@ -92,7 +92,7 @@ export default async function ExpertsPage() {
                 <p>
                   {data?.ctaBody ?? "We don't bring experts in on a fixed cycle. When a client situation calls for something specific, we go to the people we already know. If you want to be one of those people when the moment comes, tell us about your work. The right message gets a response."}
                 </p>
-                <Link href={data?.ctaButtonHref ?? "mailto:experts@gv.ventures"}>
+                <Link href={data?.ctaButtonHref ?? "mailto:reach@growvalley.co"}>
                   <Button variant="primary" size="lg">
                     {data?.ctaButtonLabel ?? "Tell Us About Your Work"}
                   </Button>

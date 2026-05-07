@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Investors | GrowValley",
     description: "Access exclusive investment opportunities with GrowValley.",
-    url: "https://gv.ventures/join-us/investors",
+    url: "https://gv.works/join-us/investors",
   },
 };
 
@@ -92,7 +92,7 @@ export default async function InvestorsPage() {
                 <p>
                   {data?.ctaBody ?? "GrowValley isn't structured for volume. We take on investors where we can do the work properly and add something real. Capacity is limited and the mandate is focused. If you want to understand what that looks like in practice, reach out."}
                 </p>
-                <Link href={data?.ctaButtonHref ?? "mailto:investors@gv.ventures"}>
+                <Link href={data?.ctaButtonHref ?? "mailto:reach@growvalley.co"}>
                   <Button variant="primary" size="lg">
                     {data?.ctaButtonLabel ?? "Talk to an Advisor"}
                   </Button>

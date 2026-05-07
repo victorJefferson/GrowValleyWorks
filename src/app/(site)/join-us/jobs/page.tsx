@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Jobs | GrowValley",
     description: "Explore career opportunities at GrowValley.",
-    url: "https://gv.ventures/join-us/jobs",
+    url: "https://gv.works/join-us/jobs",
   },
 };
 
@@ -86,7 +86,7 @@ export default async function JobsPage() {
                 <p>
                   {data?.ctaBody ?? "We don't hire on a fixed schedule. When we find the right person, we find a way to bring them in. If you think GrowValley is where you should be, tell us why. The right message gets a response."}
                 </p>
-                <Link href={data?.ctaButtonHref ?? "mailto:careers@gv.ventures"}>
+                <Link href={data?.ctaButtonHref ?? "mailto:reach@growvalley.co"}>
                   <Button variant="primary" size="lg">
                     {data?.ctaButtonLabel ?? "Send Us Your CV"}
                   </Button>

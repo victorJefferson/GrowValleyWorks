@@ -78,7 +78,7 @@ export function Footer({ settings }: { settings?: any }) {
           <div className={styles.contactCallout}>
             <h3>Got a question?</h3>
             <h3>Get in touch</h3>
-            <a href="tel:+97141234567" className={styles.phoneLink}>
+            <a href="tel:+971501696971" className={styles.phoneLink}>
               +971 50 169 6971
             </a>
             <Link href="/contact" className={styles.enquiryLink}>

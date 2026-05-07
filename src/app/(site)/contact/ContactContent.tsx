@@ -135,7 +135,7 @@ export default function ContactContent() {
             name: "Dubai Head Office",
             address: "GrowValley Group Offices\nDubai, United Arab Emirates",
             phone: "+971 50 169 6971",
-            email: "reach@gv.ventures"
+            email: "reach@growvalley.co"
         }
     ];
 

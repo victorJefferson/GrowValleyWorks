@@ -128,7 +128,7 @@ export default defineType({
       name: "ctaButtonHref",
       title: "CTA Panel: Button Link",
       type: "string",
-      initialValue: "mailto:careers@gv.ventures",
+      initialValue: "mailto:reach@growvalley.co",
     }),
   ],
 });

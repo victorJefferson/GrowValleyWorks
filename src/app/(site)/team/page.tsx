@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Our Team | GrowValley",
     description: "GrowValley investment and advisory team.",
-    url: "https://gv.ventures/team",
+    url: "https://gv.works/team",
   },
 };
 

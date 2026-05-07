@@ -155,7 +155,7 @@ export default function HomeContent({
               <p className={styles.subheadline}>
                 {homePageSettings?.positioningSubheadline || "GrowValley is the execution arm of the GrowValley ecosystem."}
               </p>
-              <p className={styles.body} dangerouslySetInnerHTML={{ __html: homePageSettings?.positioningBody ? homePageSettings.positioningBody.replace(/\n/g, '<br />') : "GrowValley Ventures deploys capital. GrowValley Capital advises on strategy. We run the operations.<br /><br />That means company formation, PRO and government liaison, accounting, payroll, tax compliance, and international structuring. The work that is not your core business but stops everything if it fails." }} />
+              <p className={styles.body} dangerouslySetInnerHTML={{ __html: homePageSettings?.positioningBody ? homePageSettings.positioningBody.replace(/\n/g, '<br />') : "GrowValley Works is the operational infrastructure arm of the GrowValley ecosystem.<br /><br />That means company formation, PRO and government liaison, accounting, payroll, tax compliance, and international structuring. The work that is not your core business but stops everything if it fails." }} />
             </div>
           </div>
         </div>
