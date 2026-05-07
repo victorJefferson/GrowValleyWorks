@@ -3,13 +3,13 @@ import ContactContent from "./ContactContent";
 
 export const metadata: Metadata = {
     title: {
-        absolute: "CONTACT | GrowValley"
+        absolute: "Contact Us | GrowValley Works"
     },
-    description: "Get in touch with the GrowValley team for institutional partnership enquiries, direct portfolio investment, and capital governance advisory.",
+    description: "Get in touch with the GrowValley team for corporate services, entity management, and operational infrastructure support.",
     openGraph: {
-        title: "CONTACT | GrowValley",
-        description: "Connect with GrowValley.",
-        url: "https://gv.ventures/contact",
+        title: "Contact Us | GrowValley Works",
+        description: "Connect with GrowValley Works.",
+        url: "https://gv.works/contact",
     },
 };
 

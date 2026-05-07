@@ -8,7 +8,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import styles from "./AboutUs.module.scss";
 import { client } from "@/lib/sanity";
-import { heroQuery, leadershipQuery, caseStudiesQuery, serviceCategoriesQuery, allServicesQuery, dataSectionQuery } from "@/lib/queries";
+import { heroQuery, leadershipQuery, caseStudiesQuery, serviceCategoriesQuery, allServicesQuery, dataSectionQuery, aboutUsPageQuery } from "@/lib/queries";
 import { urlFor } from "@/lib/sanity";
 import { DataSection } from "@/components/ui/DataSection";
 import { features } from "@/config/features";
@@ -33,15 +33,17 @@ export default async function AboutUsPage() {
   let categories: any[] = [];
   let services: any[] = [];
   let dataSectionData = null;
+  let aboutUsPageSettings = null;
 
   try {
-    [heroData, leadershipData, caseStudiesData, categories, services, dataSectionData] = await Promise.all([
+    [heroData, leadershipData, caseStudiesData, categories, services, dataSectionData, aboutUsPageSettings] = await Promise.all([
       client.fetch(heroQuery, { pageSlug: "about" }),
       client.fetch(leadershipQuery),
       client.fetch(caseStudiesQuery),
       client.fetch(serviceCategoriesQuery),
       client.fetch(allServicesQuery),
-      client.fetch(dataSectionQuery)
+      client.fetch(dataSectionQuery),
+      client.fetch(aboutUsPageQuery)
     ]);
   } catch (err) {
     console.error("About Us Data Fetch Error:", err);
@@ -88,15 +90,15 @@ export default async function AboutUsPage() {
           <div className={styles.roundedPanel}>
             <div className={styles.splitIntro}>
               <div className={styles.introContent}>
-                <span className={styles.eyebrow}>NOT A SETUP COMPANY</span>
-                <h2 className={styles.heading}>Most firms help businesses start. GrowValley Works is built for what comes after.</h2>
+                <span className={styles.eyebrow}>{aboutUsPageSettings?.introEyebrow || "NOT A SETUP COMPANY"}</span>
+                <h2 className={styles.heading}>{aboutUsPageSettings?.introHeading || "Most firms help businesses start. GrowValley Works is built for what comes after."}</h2>
                 <p className={styles.body}>
-                  We are the execution layer — the team that handles company formation, government relations, regulatory compliance, accounting, payroll, and cross-border structuring. The work that is invisible when it runs correctly and expensive when it does not.
+                  {aboutUsPageSettings?.introBody || "We are the execution layer — the team that handles company formation, government relations, regulatory compliance, accounting, payroll, and cross-border structuring. The work that is invisible when it runs correctly and expensive when it does not."}
                 </p>
               </div>
               <div className={styles.introImage}>
                 <img
-                  src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80&w=600&h=400"
+                  src={aboutUsPageSettings?.introImage ? urlFor(aboutUsPageSettings.introImage).url() : "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80&w=600&h=400"}
                   alt="GrowValley Works Team"
                   width="600"
                   height="400"
@@ -108,7 +110,11 @@ export default async function AboutUsPage() {
         </div>
       </section>
       {/* Vistra Inspired Solutions Section */}
-      <AboutUsSolutions initialCategories={categories} initialServices={services} />
+      <AboutUsSolutions 
+        initialCategories={categories} 
+        initialServices={services} 
+        solutionsImage={aboutUsPageSettings?.solutionsImage}
+      />
 
       {/* Case Studies Carousel */}
       {features.caseStudies && caseStudiesData && caseStudiesData.length > 0 && (
@@ -127,16 +133,16 @@ export default async function AboutUsPage() {
         <div className="container">
           <div className={styles.groupPanel}>
             <h2 className={styles.headingWhite}>
-              Operations done right are invisible. Done wrong, they stop everything.
+              {aboutUsPageSettings?.ctaHeadline || "Operations done right are invisible. Done wrong, they stop everything."}
             </h2>
             <div className={styles.ctaGroup}>
-              <Link href="/contact">
+              <Link href={aboutUsPageSettings?.ctaButtonLink || "/contact"}>
                 <Button
                   size="lg"
                   variant="secondary"
                   className="uppercase-button"
                 >
-                  Talk to an Advisor
+                  {aboutUsPageSettings?.ctaButtonLabel || "Talk to an Advisor"}
                 </Button>
               </Link>
             </div>

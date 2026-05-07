@@ -8,7 +8,19 @@ import { Solutions } from "@/components/sections/Solutions/Solutions";
 import { WhoWeWorkWith } from "@/components/sections/WhoWeWorkWith/WhoWeWorkWith";
 import styles from "./Capabilities.module.scss";
 
-export default function CapabilitiesContent({ heroData }: { heroData?: any }) {
+interface CapabilitiesContentProps {
+  heroData?: any;
+  capabilitiesPageSettings?: any;
+  solutionsData?: any;
+  whoWeWorkWithData?: any;
+}
+
+export default function CapabilitiesContent({ 
+  heroData, 
+  capabilitiesPageSettings,
+  solutionsData,
+  whoWeWorkWithData
+}: CapabilitiesContentProps) {
   const defaultHero = {
     eyebrow: "GROWVALLEY WORKS",
     headline: "Our Services",
@@ -37,30 +49,30 @@ export default function CapabilitiesContent({ heroData }: { heroData?: any }) {
       <section className={styles.introSection}>
         <div className="container">
           <div className={styles.introContent}>
-            <h2 className={styles.introHeading}>Infrastructure that serious businesses cannot afford to get wrong.</h2>
-            <p className={styles.introParagraph}>
-              Every service we offer exists to protect your operations, your compliance position, and your ability to move when you need to. We cover the functions that cause the most damage when they are handled badly — and we run them so you do not have to think about them.
-            </p>
+            <h2 className={styles.introHeading}>
+              {capabilitiesPageSettings?.introHeading || "Infrastructure that serious businesses cannot afford to get wrong."}
+            </h2>
+            <p className={styles.introParagraph} dangerouslySetInnerHTML={{ __html: capabilitiesPageSettings?.introParagraph ? capabilitiesPageSettings.introParagraph.replace(/\n/g, '<br />') : "Every service we offer exists to protect your operations, your compliance position, and your ability to move when you need to. We cover the functions that cause the most damage when they are handled badly — and we run them so you do not have to think about them." }} />
           </div>
         </div>
       </section>
 
       {/* SECTION 3: Solutions Section (dark green) */}
-      <Solutions />
+      <Solutions cmsData={solutionsData} />
 
       {/* SECTION 4: WHO WE WORK WITH */}
-      <WhoWeWorkWith />
+      <WhoWeWorkWith cmsData={whoWeWorkWithData} />
 
       {/* SECTION 5: BOTTOM CTA */}
       <section className={styles.ctaBanner}>
         <div className="container">
           <div className={styles.ctaBannerPanel}>
             <h2 className={styles.speakToAnExpertBannerHeading}>
-              Most engagements start with a conversation about one problem. They grow from there.
+              {capabilitiesPageSettings?.bottomCtaHeadline || "Most engagements start with a conversation about one problem. They grow from there."}
             </h2>
-            <Link href="/contact">
+            <Link href={capabilitiesPageSettings?.bottomCtaButtonLink || "/contact"}>
               <Button size="lg" variant="secondary">
-                Let&apos;s Talk
+                {capabilitiesPageSettings?.bottomCtaButtonText || "Let's Talk"}
               </Button>
             </Link>
           </div>

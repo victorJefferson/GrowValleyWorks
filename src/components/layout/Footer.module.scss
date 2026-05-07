@@ -55,8 +55,21 @@
     margin-bottom: 2.5rem;
 }
 
+.phoneLink {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-primary-navy);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: var(--color-accent);
+    }
+}
+
 .enquiryLink {
-    margin-top: 1.75rem;
+    margin-top: 1rem; // Reduced from 1.75rem to balance with phone link
     color: var(--color-primary);
     /* Blue, matching Vistra */
     font-weight: 700;

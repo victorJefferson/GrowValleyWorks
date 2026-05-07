@@ -87,15 +87,26 @@ export const editorsPickQuery = groq`
 `;
 
 export const leadershipQuery = groq`
-  *[_type == "leadership-works"] | order(_updatedAt desc)[0] {
-    eyebrow,
+  *[_type == "leadership-works"] | order(_createdAt asc) {
+    _id,
     name,
     title,
     bio,
+    image,
     stats[] {
       value,
       label
     }
+  }
+`;
+
+export const teamQuery = groq`
+  *[_type == "team-works"] | order(_createdAt asc) {
+    _id,
+    name,
+    role,
+    image,
+    category
   }
 `;
 
@@ -108,15 +119,26 @@ export const pillarQuery = groq`
     heroImage,
     approachHeadline,
     approachBody,
-    whoWeWorkWith,
     howItWorks,
     positioningText,
+    cardGridEyebrow,
+    cardGridHeadline,
+    cardGridBody,
+    whoWeWorkWith,
     stats,
+    servicesEyebrow,
+    servicesHeadline,
     nextSectionTitle,
     nextSectionBody,
     ctaHeadline,
     ctaBody,
-    ctaButtonLabel
+    ctaButtonLabel,
+    "services": *[_type == "service-works" && references(^._id)] {
+      title,
+      "slug": slug.current,
+      description,
+      iconName
+    }
   }
 `;
 
@@ -125,14 +147,22 @@ export const serviceQuery = groq`
     title,
     "slug": slug.current,
     "pillarSlug": pillar->slug.current,
+    "pillarTitle": pillar->title,
     heroHeadline,
+    heroImage,
     heroSubheadline,
+    heroCtaLabel,
+    heroCtaLink,
     valuePropHeadline,
     valuePropAccent,
     valuePropBody,
     problemHeadline,
+    problemImage,
+    problemHighlight,
     problemBody,
     problemBullets,
+    problemCtaLabel,
+    problemCtaLink,
     howWeHelpSubtitle,
     helpCards,
     networkHeadline,
@@ -140,13 +170,26 @@ export const serviceQuery = groq`
     network,
     featureEyebrow,
     featureHeadline,
+    featureImage,
     featureBody,
     featureBullets,
+    featureCtaLabel,
+    featureCtaLink,
     stats,
+    featureGridEyebrow,
+    featureGridHeadline,
+    featureGridBody,
+    featureGridCards[] {
+      title,
+      description,
+      iconName
+    },
+    whatsIncludedImage,
     whatsIncluded,
     ctaHeadline,
     ctaBody,
-    ctaButtonLabel
+    ctaButtonLabel,
+    ctaButtonLink
   }
 `;
 
@@ -189,7 +232,9 @@ export const serviceCategoriesQuery = groq`
     _id,
     title,
     "slug": slug.current,
-    description
+    description,
+    aboutUsSubtitle,
+    aboutUsServices
   }
 `;
 
@@ -201,5 +246,121 @@ export const allServicesQuery = groq`
     "pillarSlug": pillar->slug.current,
     "pillarTitle": pillar->title,
     description
+  }
+`;
+
+export const siteSettingsQuery = groq`
+  *[_type == "siteSettings-works"][0] {
+    title,
+    mainNavigation[] {
+      name,
+      href,
+      description,
+      children[] {
+        name,
+        href,
+        description
+      }
+    },
+    footerNavigation[] {
+      columnTitle,
+      links[] {
+        name,
+        href
+      }
+    }
+  }
+`;
+
+export const pageQuery = groq`
+  *[_type == "page-works" && slug.current == $slug][0] {
+    title,
+    "slug": slug.current,
+    heroEyebrow,
+    heroHeadline,
+    heroSubheadline,
+    heroImage,
+    pullQuote,
+    splitEyebrow,
+    splitHeading,
+    splitBody,
+    ctaEyebrow,
+    ctaHeading,
+    ctaBody,
+    ctaButtonLabel,
+    ctaButtonLink
+  }
+`;
+
+export const homePageQuery = groq`
+  *[_type == "homePage-works"][0] {
+    whySplitLeftText,
+    whyCards[] {
+      iconName,
+      label,
+      description
+    },
+    positioningHeadline,
+    positioningSubheadline,
+    positioningBody,
+    miniCtaHeadline,
+    miniCtaButtonText,
+    miniCtaButtonLink,
+    bottomCtaHeadline,
+    bottomCtaButtonText,
+    bottomCtaButtonLink
+  }
+`;
+
+export const capabilitiesPageQuery = groq`
+  *[_type == "capabilitiesPage-works"][0] {
+    introHeading,
+    introParagraph,
+    bottomCtaHeadline,
+    bottomCtaButtonText,
+    bottomCtaButtonLink
+  }
+`;
+
+export const aboutUsPageQuery = groq`
+  *[_type == "aboutUsPage-works"][0] {
+    introEyebrow,
+    introHeading,
+    introBody,
+    introImage,
+    solutionsImage,
+    ctaHeadline,
+    ctaButtonLabel,
+    ctaButtonLink
+  }
+`;
+
+export const legalPageQuery = groq`
+  *[_type == "legalPage-works" && slug.current == $slug][0] {
+    title,
+    lastUpdated,
+    heroImage,
+    content
+  }
+`;
+export const joinUsPageQuery = groq`
+  *[_type == "joinUsPage-works" && pageKey == $pageKey][0] {
+    pageKey,
+    heroEyebrow,
+    heroHeadline,
+    heroSubheadline,
+    heroImage,
+    heroImagePath,
+    pullQuote1,
+    pullQuote2,
+    whoEyebrow,
+    whoHeadline,
+    whoBody1,
+    whoBody2,
+    ctaEyebrow,
+    ctaHeadline,
+    ctaBody,
+    ctaButtonLabel,
+    ctaButtonHref
   }
 `;

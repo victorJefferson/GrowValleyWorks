@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/ui/Hero";
 import styles from "../JoinUs.module.scss";
-import { client } from "@/lib/sanity";
-import { heroQuery } from "@/lib/queries";
-import { urlFor } from "@/lib/sanity";
+import { client, urlFor } from "@/lib/sanity";
+import { joinUsPageQuery } from "@/lib/queries";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "Jobs | GrowValley",
-  },
-  description:
-    "We don't hire for roles. We hire for impact. Join the GrowValley team.",
+  title: { absolute: "Jobs | GrowValley" },
+  description: "We don't hire for roles. We hire for impact. Join the GrowValley team.",
   openGraph: {
     title: "Jobs | GrowValley",
     description: "Explore career opportunities at GrowValley.",
@@ -22,33 +18,22 @@ export const metadata: Metadata = {
 };
 
 export default async function JobsPage() {
-  let heroData = null;
-  try {
-    heroData = await client.fetch(heroQuery, { pageSlug: "careers" });
-  } catch (err) {
-    console.error("Jobs Hero Fetch Error:", err);
-  }
+  const data = await client
+    .fetch(joinUsPageQuery, { pageKey: "jobs" })
+    .catch(() => null);
 
-  const defaultHero = {
-    eyebrow: "JOBS",
-    headline: "We don't hire for roles. We hire for impact.",
-    subheadline: "GrowValley sits at a rare intersection: wealth management, venture building, and active capital deployment. That means the people who thrive here aren't looking for a quiet corner of finance. They're looking for a place where their thinking actually changes outcomes.",
-    image: "/images/join_us.png",
-  };
-
-  const displayHero = heroData || defaultHero;
-  const heroImage = heroData?.image ? urlFor(heroData.image).url() : displayHero.image;
+  const heroImageUrl = data?.heroImage
+    ? urlFor(data.heroImage).url()
+    : data?.heroImagePath ?? "/images/join_us.png";
 
   return (
     <main>
       <Hero
-        eyebrow="JOBS"
-        headline={displayHero.headline}
-        subheadline={displayHero.subheadline}
-        ctaText={displayHero.ctaText}
-        ctaHref={displayHero.ctaHref}
-        hasCTA={displayHero.hasCTA}
-        image={heroImage}
+        eyebrow={data?.heroEyebrow ?? "JOBS"}
+        headline={data?.heroHeadline ?? "We don't hire for roles. We hire for impact."}
+        subheadline={data?.heroSubheadline ?? "GrowValley sits at a rare intersection: wealth management, venture building, and active capital deployment. That means the people who thrive here aren't looking for a quiet corner of finance. They're looking for a place where their thinking actually changes outcomes."}
+        image={heroImageUrl}
+        hasCTA={false}
       />
 
       {/* SECTION 2 INTRODUCTION */}
@@ -57,9 +42,7 @@ export default async function JobsPage() {
           <div className={styles.pullQuote}>
             <div className={styles.pullQuoteAccent} />
             <p className={styles.pullQuoteText}>
-              We&apos;re a small, senior team. There&apos;s no hiding behind process here.
-              If you join GrowValley, what you do will be felt by the clients we serve and
-              the businesses we build.
+              {data?.pullQuote1 ?? "We're a small, senior team. There's no hiding behind process here. If you join GrowValley, what you do will be felt by the clients we serve and the businesses we build."}
             </p>
           </div>
         </div>
@@ -70,18 +53,17 @@ export default async function JobsPage() {
         <div className="container">
           <div className={styles.whoWeLookFor}>
             <div className={styles.leftCol}>
-              <span className={styles.eyebrow}>WHO WE LOOK FOR</span>
+              <span className={styles.eyebrow}>{data?.whoEyebrow ?? "WHO WE LOOK FOR"}</span>
               <h2 className={styles.heading}>
-                The people who do well here share one thing: they&apos;re serious about the work.
+                {data?.whoHeadline ?? "The people who do well here share one thing: they're serious about the work."}
               </h2>
             </div>
             <div className={styles.body}>
               <p>
-                You have strong opinions you can defend. You don&apos;t wait to be told what
-                needs doing, you see it, you own it, you follow through.
+                {data?.whoBody1 ?? "You have strong opinions you can defend. You don't wait to be told what needs doing, you see it, you own it, you follow through."}
               </p>
               <p>
-                We don&apos;t care where you&apos;re based. We care what you bring.
+                {data?.whoBody2 ?? "We don't care where you're based. We care what you bring."}
               </p>
             </div>
           </div>
@@ -96,19 +78,17 @@ export default async function JobsPage() {
               <div className={styles.sectionIcon} style={{ margin: '0 auto 1.5rem' }}>
                 <Mail />
               </div>
-              <span className={styles.eyebrow}>OPEN ROLES</span>
+              <span className={styles.eyebrow}>{data?.ctaEyebrow ?? "OPEN ROLES"}</span>
               <h2 className={styles.heading}>
-                No open roles right now but we&apos;re always listening.
+                {data?.ctaHeadline ?? "No open roles right now but we're always listening."}
               </h2>
               <div className={styles.openingCard}>
                 <p>
-                  We don&apos;t hire on a fixed schedule. When we find the right person,
-                  we find a way to bring them in. If you think GrowValley is where
-                  you should be, tell us why. The right message gets a response.
+                  {data?.ctaBody ?? "We don't hire on a fixed schedule. When we find the right person, we find a way to bring them in. If you think GrowValley is where you should be, tell us why. The right message gets a response."}
                 </p>
-                <Link href="mailto:careers@gv.ventures">
+                <Link href={data?.ctaButtonHref ?? "mailto:careers@gv.ventures"}>
                   <Button variant="primary" size="lg">
-                    Send Us Your CV
+                    {data?.ctaButtonLabel ?? "Send Us Your CV"}
                   </Button>
                 </Link>
               </div>

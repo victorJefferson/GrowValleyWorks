@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { iconList } from "../lib/iconList";
 
 export default defineType({
     name: "who-we-work-with-works",
@@ -51,7 +52,7 @@ export default defineType({
                     fields: [
                         { name: "title", title: "Title", type: "string" },
                         { name: "description", title: "Description", type: "text" },
-                        { name: "iconName", title: "Icon Name", type: "string" },
+                        { name: "iconName", title: "Icon Name", type: "string", options: { list: iconList } },
                     ]
                 }
             ]

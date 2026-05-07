@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/ui/Hero";
 import styles from "../JoinUs.module.scss";
-import { client } from "@/lib/sanity";
-import { heroQuery } from "@/lib/queries";
-import { urlFor } from "@/lib/sanity";
+import { client, urlFor } from "@/lib/sanity";
+import { joinUsPageQuery } from "@/lib/queries";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "Investors | GrowValley",
-  },
-  description:
-    "Access exclusive investment opportunities with GrowValley.",
+  title: { absolute: "Investors | GrowValley" },
+  description: "Access exclusive investment opportunities with GrowValley.",
   openGraph: {
     title: "Investors | GrowValley",
     description: "Access exclusive investment opportunities with GrowValley.",
@@ -22,31 +18,22 @@ export const metadata: Metadata = {
 };
 
 export default async function InvestorsPage() {
-  let heroData = null;
-  try {
-    heroData = await client.fetch(heroQuery, { pageSlug: "careers" });
-  } catch (err) {
-    console.error("Investors Hero Fetch Error:", err);
-  }
+  const data = await client
+    .fetch(joinUsPageQuery, { pageKey: "investors" })
+    .catch(() => null);
 
-  const defaultHero = {
-    eyebrow: "INVESTORS",
-    headline: "Exclusive Access to Direct Opportunities.",
-    subheadline: "GrowValley provides qualified investors with access to transactions sourced through our deep network and relationships, not public listings. We focus on transparency, discipline, and alignment.",
-    image: "/images/careers_hero.png",
-  };
-
-  const displayHero = heroData || defaultHero;
-  const heroImage = heroData?.image ? urlFor(heroData.image).url() : displayHero.image;
+  const heroImageUrl = data?.heroImage
+    ? urlFor(data.heroImage).url()
+    : data?.heroImagePath ?? "/images/careers_hero.png";
 
   return (
     <main>
       <Hero
         isShort
-        eyebrow="INVESTORS"
-        headline="We don't manage capital for volume. We manage it for outcomes."
-        subheadline="GrowValley works with a focused group of investors who want more than a managed portfolio."
-        image={heroImage}
+        eyebrow={data?.heroEyebrow ?? "INVESTORS"}
+        headline={data?.heroHeadline ?? "We don't manage capital for volume. We manage it for outcomes."}
+        subheadline={data?.heroSubheadline ?? "GrowValley works with a focused group of investors who want more than a managed portfolio."}
+        image={heroImageUrl}
         hasCTA={false}
       />
 
@@ -57,10 +44,10 @@ export default async function InvestorsPage() {
             <div className={styles.pullQuoteAccent} />
             <div className={styles.body} style={{ textAlign: 'center', maxWidth: '900px' }}>
               <p className={styles.pullQuoteText} style={{ marginBottom: '2rem' }}>
-                GrowValley works with a focused group of investors: HNW individuals, family offices, entrepreneurs, and qualified allocators who want more than a managed portfolio. They want a team that has been inside the deals, built the businesses, and deployed real capital across real markets.
+                {data?.pullQuote1 ?? "GrowValley works with a focused group of investors: HNW individuals, family offices, entrepreneurs, and qualified allocators who want more than a managed portfolio. They want a team that has been inside the deals, built the businesses, and deployed real capital across real markets."}
               </p>
               <p className={styles.pullQuoteText} style={{ fontSize: '1.25rem', color: 'var(--color-text-muted)' }}>
-                Our investors access opportunities that don&apos;t circulate publicly. They work alongside a team with $1B+ in capital deployed and 500+ projects built. And they get a mandate built around their actual goals, not a packaged tier.
+                {data?.pullQuote2 ?? "Our investors access opportunities that don't circulate publicly. They work alongside a team with $1B+ in capital deployed and 500+ projects built. And they get a mandate built around their actual goals, not a packaged tier."}
               </p>
             </div>
           </div>
@@ -72,17 +59,17 @@ export default async function InvestorsPage() {
         <div className="container">
           <div className={styles.whoWeLookFor}>
             <div className={styles.leftCol}>
-              <span className={styles.eyebrow}>WHO WE WORK WITH</span>
+              <span className={styles.eyebrow}>{data?.whoEyebrow ?? "WHO WE WORK WITH"}</span>
               <h2 className={styles.heading}>
-                We work with investors who take the work seriously.
+                {data?.whoHeadline ?? "We work with investors who take the work seriously."}
               </h2>
             </div>
             <div className={styles.body}>
               <p>
-                You&apos;ve built or managed capital at a level where you know the difference between advice and real counsel. You want access to private markets, direct deals, and a team that has operated inside the opportunities it presents, not just sourced them.
+                {data?.whoBody1 ?? "You've built or managed capital at a level where you know the difference between advice and real counsel. You want access to private markets, direct deals, and a team that has operated inside the opportunities it presents, not just sourced them."}
               </p>
               <p>
-                You&apos;re not looking to be managed. You&apos;re looking for a thinking partner with a verifiable track record.
+                {data?.whoBody2 ?? "You're not looking to be managed. You're looking for a thinking partner with a verifiable track record."}
               </p>
             </div>
           </div>
@@ -97,17 +84,17 @@ export default async function InvestorsPage() {
               <div className={styles.sectionIcon} style={{ margin: '0 auto 1.5rem' }}>
                 <Mail />
               </div>
-              <span className={styles.eyebrow}>SELECTIVE BY DESIGN</span>
+              <span className={styles.eyebrow}>{data?.ctaEyebrow ?? "SELECTIVE BY DESIGN"}</span>
               <h2 className={styles.heading}>
-                We&apos;re selective. That&apos;s the point.
+                {data?.ctaHeadline ?? "We're selective. That's the point."}
               </h2>
               <div className={styles.openingCard}>
                 <p>
-                  GrowValley isn&apos;t structured for volume. We take on investors where we can do the work properly and add something real. Capacity is limited and the mandate is focused. If you want to understand what that looks like in practice, reach out.
+                  {data?.ctaBody ?? "GrowValley isn't structured for volume. We take on investors where we can do the work properly and add something real. Capacity is limited and the mandate is focused. If you want to understand what that looks like in practice, reach out."}
                 </p>
-                <Link href="mailto:investors@gv.ventures">
+                <Link href={data?.ctaButtonHref ?? "mailto:investors@gv.ventures"}>
                   <Button variant="primary" size="lg">
-                    Talk to an Advisor
+                    {data?.ctaButtonLabel ?? "Talk to an Advisor"}
                   </Button>
                 </Link>
               </div>

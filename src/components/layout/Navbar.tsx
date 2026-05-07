@@ -19,8 +19,8 @@ import { ChevronDown } from "lucide-react";
 
 import { features } from "@/config/features";
 
-export function Navbar() {
-  const navLinks = [
+export function Navbar({ settings }: { settings?: any }) {
+  const fallbackNavLinks = [
     { name: "Home", href: "/" },
     {
       name: "About Us",
@@ -53,6 +53,8 @@ export function Navbar() {
       ]
     },
   ];
+
+  const navLinks = settings?.mainNavigation || fallbackNavLinks;
   const pathname = usePathname();
 
   return (
@@ -74,7 +76,7 @@ export function Navbar() {
 
             {/* Desktop Nav */}
             <nav className={styles.links}>
-              {navLinks.map((link) => {
+              {navLinks.map((link: any) => {
                 const isActive =
                   pathname === link.href ||
                   (link.href !== "/" && pathname.startsWith(link.href));
@@ -93,68 +95,55 @@ export function Navbar() {
 
                           <PopoverPanel transition className={styles.megaMenu}>
                             <div className={`container ${styles.megaMenuContent}`}>
-                              {link.name === "Our Services" ? (
+                              {link.description ? (
                                 <>
+                                  {/* LEFT SIDE: Parent Title, Intro, and Overview Link */}
                                   <div className={styles.megaMenuLeft}>
                                     <div className={styles.megaMenuHeader}>
-                                      <h3>Our Services</h3>
-                                      <p>The operational infrastructure behind serious businesses. Formation, compliance, finance, and international expansion — one firm handling all of it.</p>
-                                      <Link href="/our-capabilities" className={styles.overviewLink} onClick={() => close()}>
+                                      <h3>{link.name}</h3>
+                                      <p>{link.description}</p>
+                                      <Link href={link.href} className={styles.overviewLink} onClick={() => close()}>
                                         View Overview <ArrowRight size={16} />
                                       </Link>
                                     </div>
                                   </div>
+
                                   <div className={styles.megaMenuDivider}></div>
+
+                                  {/* RIGHT SIDE: Sub-links Grid */}
                                   <div className={styles.megaMenuGrid}>
-                                    {link.children.map((child) => (
+                                    {link.children.map((child: any) => (
                                       <Link
                                         key={child.name}
                                         href={child.href}
                                         className={styles.megaMenuItem}
                                         onClick={() => close()}
                                       >
-                                        <div className={styles.megaMenuItemLabel}>{child.name}</div>
+                                        <div className={`${styles.megaMenuItemLabel} ${child.isFeatured ? styles.isFeatured : ""}`}>
+                                          {child.name}
+                                        </div>
                                         <div className={styles.megaMenuItemDesc}>{child.description}</div>
                                       </Link>
                                     ))}
                                   </div>
                                 </>
                               ) : (
-                                <>
-                                  <div className={`${styles.megaMenuGrid} ${!features.insights ? styles.fullWidth : ""}`}>
-                                    {link.children.map((child) => (
-                                      <Link
-                                        key={child.name}
-                                        href={child.href}
-                                        className={styles.megaMenuItem}
-                                        onClick={() => close()}
-                                      >
-                                        <div className={styles.megaMenuItemLabel}>{child.name}</div>
-                                        <div className={styles.megaMenuItemDesc}>{child.description}</div>
-                                      </Link>
-                                    ))}
-                                  </div>
-                                  {features.insights && (
-                                    <>
-                                      <div className={styles.megaMenuDivider}></div>
-                                      <div className={styles.megaMenuFeatured}>
-                                        <div className={styles.featuredTag}>Featured Content</div>
-                                        <div className={styles.featuredCard}>
-                                          <img src="/images/leadership_collaboration.png" alt="Featured" />
-                                          <div className={styles.featuredInfo}>
-                                            <Link
-                                              href="/insights"
-                                              className={styles.featuredLink}
-                                              onClick={() => close()}
-                                            >
-                                              Click here to read our latest Insights<ArrowRight size={12} />
-                                            </Link>
-                                          </div>
-                                        </div>
+                                /* Standard Grid Layout (No Intro) */
+                                <div className={`${styles.megaMenuGrid} ${styles.fullWidth}`}>
+                                  {link.children.map((child: any) => (
+                                    <Link
+                                      key={child.name}
+                                      href={child.href}
+                                      className={styles.megaMenuItem}
+                                      onClick={() => close()}
+                                    >
+                                      <div className={`${styles.megaMenuItemLabel} ${child.isFeatured ? styles.isFeatured : ""}`}>
+                                        {child.name}
                                       </div>
-                                    </>
-                                  )}
-                                </>
+                                      <div className={styles.megaMenuItemDesc}>{child.description}</div>
+                                    </Link>
+                                  ))}
+                                </div>
                               )}
                             </div>
                           </PopoverPanel>
@@ -209,7 +198,7 @@ export function Navbar() {
           {/* Mobile Dropdown Nav */}
           <DisclosurePanel className={styles.mobileNav}>
             <nav className={styles.mobileLinks}>
-              {navLinks.map((link) => {
+              {navLinks.map((link: any) => {
                 const isActive =
                   pathname === link.href ||
                   (link.href !== "/" && pathname.startsWith(link.href));
@@ -224,7 +213,7 @@ export function Navbar() {
                             <ChevronDown size={20} className={`${styles.chevron} ${open ? styles.rotate : ""}`} />
                           </DisclosureButton>
                           <DisclosurePanel className={styles.mobileSubmenuPanel}>
-                            {link.children.map((child) => (
+                            {link.children.map((child: any) => (
                               <Link key={child.name} href={child.href} onClick={() => close()}>
                                 <DisclosureButton as="span" className={styles.mobileSubLink}>
                                   <div className={styles.subLinkLabel}>{child.name}</div>

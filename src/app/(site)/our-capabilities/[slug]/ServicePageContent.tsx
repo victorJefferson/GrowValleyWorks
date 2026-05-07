@@ -2,66 +2,42 @@
 
 import React from "react";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
-import {
-  Building2, BarChart3, Heart, Briefcase, Globe, Palette,
-  Zap, Users, ShieldCheck, Layers, ScrollText, Plane,
-  LineChart, Network, Target, Route, RefreshCw,
-  Search, Key, Book, CheckCircle, Calculator, FileText, Lock, BookOpen, MapPin, Edit, UserCheck, DollarSign, Shield, Map, Folder
+import { 
+  ArrowRight, Award, Scale, Landmark, BarChart3, BookOpen, Briefcase, 
+  Building, Building2, Calculator, CheckCircle, Coins, Compass, 
+  CreditCard, Database, DollarSign, Edit, ExternalLink, Eye, 
+  FileText, Filter, Flag, Folder, Globe, TrendingUp, Handshake, 
+  Heart, HelpCircle, Home, Key, Layers, LineChart, Lock, Mail, 
+  Map, MapPin, Network, Package, Palette, Phone, PieChart, Plane, 
+  Rocket, Search, Settings, ShieldCheck, ShoppingBag, Star, 
+  Target, Users, Wallet, Zap, RefreshCw, Route, ChevronRight
 } from "lucide-react";
-
-import { ServiceDetail } from "@/config/services";
-import { Button } from "@/components/ui/Button";
 import { urlFor } from "@/lib/sanity";
+import { Button } from "@/components/ui/Button";
 import styles from "./ServicePage.module.scss";
 
-// Import data from split files
-import { establishData } from "./data/establish";
-import { operateData } from "./data/operate";
-import { manageData } from "./data/manage";
-import { expandData } from "./data/expand";
-
 const iconMap: Record<string, any> = {
-  Building2, BarChart3, Heart, Briefcase, Globe, Palette,
-  Zap, Users, ShieldCheck, Layers, ScrollText, Plane,
-  LineChart, Network, Target, Route, RefreshCw,
-  Search, Key, Book, CheckCircle, Calculator, FileText, Lock, BookOpen, MapPin, Edit, UserCheck, DollarSign, Shield, Map, Folder
+  ArrowRight, Award, Scale, Landmark, BarChart3, BookOpen, Briefcase, 
+  Building, Building2, Calculator, CheckCircle, Coins, Compass, 
+  CreditCard, Database, DollarSign, Edit, ExternalLink, Eye, 
+  FileText, Filter, Flag, Folder, Globe, TrendingUp, Handshake, 
+  Heart, HelpCircle, Home, Key, Layers, LineChart, Lock, Mail, 
+  Map, MapPin, Network, Package, Palette, Phone, PieChart, Plane, 
+  Rocket, Search, Settings, ShieldCheck, ShoppingBag, Star, 
+  Target, Users, Wallet, Zap, RefreshCw, Route, ChevronRight
 };
 
-const servicePageContent: Record<string, any> = {
-  ...establishData,
-  ...operateData,
-  ...manageData,
-  ...expandData
-};
+export default function ServicePageContent({ cmsData }: { cmsData: any }) {
+  if (!cmsData) return null;
 
-const SERVICE_SECTION_IMAGES: Record<string, any> = {
-  // We use placeholder unsplash images mapped generally by category, 
-  // but they can be customized per slug just like before.
-};
-
-export default function ServicePageContent({ service, cmsData }: { service?: ServiceDetail, cmsData?: any }) {
-  if (!service && !cmsData) return null;
-
-  const slug = service?.slug || cmsData?.slug?.current || cmsData?.slug;
-  const fallbackContent = servicePageContent[slug] || {};
-  const content = { ...fallbackContent, ...cmsData };
-
-  if (!content || Object.keys(content).length === 0) {
-    return (
-      <div className="container" style={{ padding: '10rem 0', textAlign: 'center' }}>
-        <h2>Service content not found for slug: {slug}</h2>
-      </div>
-    );
-  }
-
-  const sectionImgs = (service?.slug ? SERVICE_SECTION_IMAGES[service.slug] : {}) || {};
+  const content = cmsData;
+  const slug = cmsData.slug?.current || cmsData.slug;
   const defaultImg = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1400&auto=format&fit=crop";
 
-  const heroImg = content.heroImage ? urlFor(content.heroImage).url() : (sectionImgs.hero ?? defaultImg);
-  const problemImg = sectionImgs.problem ?? heroImg;
-  const featureImg = sectionImgs.feature ?? heroImg;
-  const includedImg = sectionImgs.included ?? heroImg;
+  const heroImg = content.heroImage ? urlFor(content.heroImage).url() : defaultImg;
+  const problemImg = content.problemImage ? urlFor(content.problemImage).url() : heroImg;
+  const featureImg = content.featureImage ? urlFor(content.featureImage).url() : heroImg;
+  const includedImg = content.whatsIncludedImage ? urlFor(content.whatsIncludedImage).url() : heroImg;
 
   return (
     <main>
@@ -73,31 +49,39 @@ export default function ServicePageContent({ service, cmsData }: { service?: Ser
             <ChevronRight className={styles.separator} size={14} />
             <Link href="/our-capabilities">Our Services</Link>
             <ChevronRight className={styles.separator} size={14} />
-            <Link href={`/our-capabilities/${(service?.category || content.pillarSlug || "establish").toLowerCase().replace(/\s+/g, '-')}`}>
-              {content.categoryLabel || service?.category || content.pillarTitle || "Services"}
-            </Link>
-            <ChevronRight className={styles.separator} size={14} />
-            <span className={styles.current}>{content.title || service?.title}</span>
+            {content.pillarTitle && (
+              <>
+                <Link href={`/our-capabilities/${content.pillarSlug}`}>
+                  {content.pillarTitle}
+                </Link>
+                <ChevronRight className={styles.separator} size={14} />
+              </>
+            )}
+            <span className={styles.current}>{content.title}</span>
           </nav>
 
           <div className={styles.heroSplit}>
             <div className={styles.heroLeft}>
               <h1 className={content.heroHeadline && content.heroHeadline.length > 50 ? styles.longHeadline : ""}>
-                {content.heroHeadline || content.title || service?.title}
+                {content.heroHeadline || content.title}
               </h1>
-              <p>{content.heroSubheadline || service?.description}</p>
-              <Link href="/contact">
-                <Button size="lg">{content.heroCtaLabel || content.ctaButtonLabel || "SPEAK TO AN EXPERT"}</Button>
+              <p>{content.heroSubheadline}</p>
+              <Link href={content.heroCtaLink || "/contact"}>
+                <Button size="lg">{content.heroCtaLabel || "SPEAK TO AN EXPERT"}</Button>
               </Link>
             </div>
             <div className={styles.heroRight}>
-              <img src={heroImg} alt={content.title || service?.title} />
+              <img src={heroImg} alt={content.title} />
               <div className={styles.heroRightOverlay} />
               <div className={styles.heroCaption}>
                 <div className={styles.overlayBreadcrumb}>
-                  <span className={styles.categoryPart}>{content.categoryLabel || service?.category || content.pillarTitle}</span>
-                  <span className={styles.separatorPart}> / </span>
-                  <span className={styles.titlePart}>{content.title || service?.title}</span>
+                  {content.pillarTitle && (
+                    <>
+                      <span className={styles.categoryPart}>{content.pillarTitle}</span>
+                      <span className={styles.separatorPart}> / </span>
+                    </>
+                  )}
+                  <span className={styles.titlePart}>{content.title}</span>
                 </div>
               </div>
             </div>
@@ -106,29 +90,31 @@ export default function ServicePageContent({ service, cmsData }: { service?: Ser
       </section>
 
       {/* ── 2. Value Prop ── */}
-      <section className={styles.valueProp}>
-        <div className="container">
-          <div className={styles.vpGrid}>
-            <div className={styles.vpLeft}>
-              <h2>
-                {content.valuePropHeadline}{" "}
-                <em>{content.valuePropAccent}</em>
-              </h2>
-            </div>
-            <div className={styles.vpRight}>
-              <p>{content.valuePropBody}</p>
+      {(content.valuePropHeadline || content.valuePropBody) && (
+        <section className={styles.valueProp}>
+          <div className="container">
+            <div className={styles.vpGrid}>
+              <div className={styles.vpLeft}>
+                <h2>
+                  {content.valuePropHeadline}{" "}
+                  {content.valuePropAccent && <em>{content.valuePropAccent}</em>}
+                </h2>
+              </div>
+              <div className={styles.vpRight}>
+                <p>{content.valuePropBody}</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── 3. Workflow Section (Optional) ── */}
-      {content.workflow && (
+      {content.workflow && content.workflow.length > 0 && (
         <section className={styles.howWeHelp}>
           <div className="container">
             <div className={styles.hwHead}>
               <h2>What we do</h2>
-              <p>{content.howWeHelpSubtitle}</p>
+              {content.howWeHelpSubtitle && <p>{content.howWeHelpSubtitle}</p>}
             </div>
             <div className={styles.processGrid}>
               {content.workflow.map((step: any, i: number) => (
@@ -146,40 +132,44 @@ export default function ServicePageContent({ service, cmsData }: { service?: Ser
       )}
 
       {/* ── 4. Problem Section ── */}
-      <section className={styles.problemSection}>
-        <div className="container">
-          <div className={styles.problemCard}>
-            <div className={styles.problemImageCol}>
-              <img src={problemImg} alt={service?.title} />
-              <div className={styles.problemHighlight}>
-                <strong>{content.problemImageText || content.problemHighlight}</strong>
-                <span className={styles.underlineAccent} />
+      {(content.problemHeadline || content.problemBody) && (
+        <section className={styles.problemSection}>
+          <div className="container">
+            <div className={styles.problemCard}>
+              <div className={styles.problemImageCol}>
+                <img src={problemImg} alt={content.title} />
+                <div className={styles.problemHighlight}>
+                  <strong>{content.problemImageText || content.problemHighlight || "The Problem"}</strong>
+                  <span className={styles.underlineAccent} />
+                </div>
+              </div>
+              <div className={styles.problemContent}>
+                <h3>{content.problemHeadline}</h3>
+                <p>{content.problemBody}</p>
+                {content.problemBullets && (
+                  <ul>
+                    {content.problemBullets.map((b: string, i: number) => <li key={i}>{b}</li>)}
+                  </ul>
+                )}
+                <Link href={content.problemCtaLink || "/contact"}>
+                  <Button variant="outline">{content.problemCtaLabel || "LET'S TALK"}</Button>
+                </Link>
               </div>
             </div>
-            <div className={styles.problemContent}>
-              <h3>{content.problemHeadline}</h3>
-              <p>{content.problemBody}</p>
-              <ul>
-                {content.problemBullets?.map((b: string, i: number) => <li key={i}>{b}</li>)}
-              </ul>
-              <Link href="/contact">
-                <Button variant="outline">{content.problemCtaLabel || content.ctaButtonLabel || "LET'S TALK"}</Button>
-              </Link>
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── 5. How We Help ── */}
-      {!content.workflow && (
+      {content.helpCards && content.helpCards.length > 0 && (
         <section className={styles.howWeHelp}>
           <div className="container">
             <div className={styles.hwHead}>
               <h2>How we help</h2>
-              <p>{content.howWeHelpSubtitle}</p>
+              {content.howWeHelpSubtitle && <p>{content.howWeHelpSubtitle}</p>}
             </div>
             <div className={styles.hwGrid}>
-              {content.helpCards?.map((card: any, i: number) => {
+              {content.helpCards.map((card: any, i: number) => {
                 const Icon = iconMap[card.iconName] || Briefcase;
                 return (
                   <div key={i} className={styles.hwCard}>
@@ -202,18 +192,20 @@ export default function ServicePageContent({ service, cmsData }: { service?: Ser
           <div className="container">
             <div className={styles.fsGrid}>
               <div className={styles.fsVisual}>
-                <img src={featureImg} alt={service?.title} />
+                <img src={featureImg} alt={content.title} />
                 <div className={styles.fsVisualPattern} />
               </div>
               <div className={styles.fsContent}>
-                <span className={styles.fsEyebrow}>{content.featureEyebrow}</span>
+                {content.featureEyebrow && <span className={styles.fsEyebrow}>{content.featureEyebrow}</span>}
                 <h2>{content.featureHeadline}</h2>
                 <p>{content.featureBody}</p>
-                <ul>
-                  {content.featureBullets?.map((b: string, i: number) => <li key={i}>{b}</li>)}
-                </ul>
-                <Link href="/contact">
-                  <Button variant="outline">{content.featureCtaLabel || content.ctaButtonLabel || "Enquire about this service"}</Button>
+                {content.featureBullets && (
+                  <ul>
+                    {content.featureBullets.map((b: string, i: number) => <li key={i}>{b}</li>)}
+                  </ul>
+                )}
+                <Link href={content.featureCtaLink || "/contact"}>
+                  <Button variant="outline">{content.featureCtaLabel || "Enquire about this service"}</Button>
                 </Link>
               </div>
             </div>
@@ -240,13 +232,13 @@ export default function ServicePageContent({ service, cmsData }: { service?: Ser
         </section>
       )}
 
-      {/* ── 8. Network and Reach (Optional for Market Entry) ── */}
-      {content.network && (
+      {/* ── 8. Network and Reach ── */}
+      {content.network && content.network.length > 0 && (
         <section className={styles.howWeHelp} style={{ backgroundColor: 'var(--color-surface-1)' }}>
           <div className="container">
             <div className={styles.hwHead}>
               <h2>{content.networkHeadline || "Our Network and Reach"}</h2>
-              <p>{content.networkSubheadline}</p>
+              {content.networkSubheadline && <p>{content.networkSubheadline}</p>}
             </div>
             <div className={styles.hwGrid}>
               {content.network.map((card: any, i: number) => {
@@ -266,13 +258,43 @@ export default function ServicePageContent({ service, cmsData }: { service?: Ser
         </section>
       )}
 
+      {/* ── 8.5 Feature Grid (Optional) ── */}
+      {(content.featureGridHeadline || content.featureGridCards?.length > 0) && (
+        <section className={styles.featureGridSection}>
+          <div className="container">
+            <div className={styles.fgHeader}>
+              {content.featureGridEyebrow && <span className={styles.fgEyebrow}>{content.featureGridEyebrow}</span>}
+              {content.featureGridHeadline && <h2>{content.featureGridHeadline}</h2>}
+              {content.featureGridBody && <p className={styles.fgIntroBody}>{content.featureGridBody}</p>}
+            </div>
+            
+            {content.featureGridCards && content.featureGridCards.length > 0 && (
+              <div className={styles.fgGrid}>
+                {content.featureGridCards.map((item: any, i: number) => {
+                  const Icon = iconMap[item.iconName] || Briefcase;
+                  return (
+                    <div key={i} className={styles.fgCard}>
+                      <div className={styles.fgIcon}>
+                        <Icon size={28} strokeWidth={1.5} />
+                      </div>
+                      <h4>{item.title}</h4>
+                      <p>{item.description}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* ── 9. What's Included ── */}
       {content.whatsIncluded && (
         <section className={styles.whatsIncluded}>
           <div className="container">
             <div className={styles.wiCard}>
               <div className={styles.wiContent}>
-                <h3>What&apos;s included with GrowValley&apos;s {service?.title}</h3>
+                <h3>What&apos;s included with GrowValley&apos;s {content.title}</h3>
                 <p className={styles.wiSubtext}>Everything required to manage your business properly, from day one.</p>
                 <div className={styles.wiGrid}>
                   <ul>
@@ -288,7 +310,7 @@ export default function ServicePageContent({ service, cmsData }: { service?: Ser
                 </div>
               </div>
               <div className={styles.wiImage}>
-                <img src={includedImg} alt={service?.title} />
+                <img src={includedImg} alt={content.title} />
                 <div className={styles.wiImageOverlay} />
               </div>
             </div>
@@ -296,7 +318,7 @@ export default function ServicePageContent({ service, cmsData }: { service?: Ser
         </section>
       )}
 
-      {/* ── 9. CTA Banner ── */}
+      {/* ── 10. CTA Banner ── */}
       <section className={styles.ctaBanner}>
         <div className="container">
           <div className={styles.ctaInner}>
@@ -304,8 +326,8 @@ export default function ServicePageContent({ service, cmsData }: { service?: Ser
             <p>
               {content.ctaBody || "Our advisors are ready to discuss your specific requirements with discretion and depth."}
             </p>
-            <Link href="/contact">
-              <Button size="lg" variant="secondary">{content.bottomCtaLabel || content.ctaButtonLabel || "CONTACT US"}</Button>
+            <Link href={content.ctaButtonLink || "/contact"}>
+              <Button size="lg" variant="secondary">{content.ctaButtonLabel || "CONTACT US"}</Button>
             </Link>
           </div>
         </div>

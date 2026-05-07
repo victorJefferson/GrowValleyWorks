@@ -48,12 +48,7 @@ export default defineType({
             type: "array",
             of: [{ type: "block" }],
         }),
-        defineField({
-            name: "whoWeWorkWith",
-            title: "Who We Work With (Bullets)",
-            type: "array",
-            of: [{ type: "string" }],
-        }),
+
         defineField({
             name: "howItWorks",
             title: "How It Works (Steps)",
@@ -74,6 +69,29 @@ export default defineType({
             type: "text",
         }),
         defineField({
+            name: "cardGridEyebrow",
+            title: "Card Grid: Eyebrow (Optional)",
+            description: "Example: 'THE PROBLEM'",
+            type: "string",
+        }),
+        defineField({
+            name: "cardGridHeadline",
+            title: "Card Grid: Headline (Optional)",
+            type: "string",
+        }),
+        defineField({
+            name: "cardGridBody",
+            title: "Card Grid: Body (Optional)",
+            type: "text",
+        }),
+        defineField({
+            name: "whoWeWorkWith",
+            title: "Card Grid: Items",
+            description: "These will appear as cards in a 2-column grid.",
+            type: "array",
+            of: [{ type: "string" }],
+        }),
+        defineField({
             name: "stats",
             title: "Statistics",
             type: "array",
@@ -86,6 +104,17 @@ export default defineType({
                     ]
                 }
             ]
+        }),
+        defineField({
+            name: "servicesEyebrow",
+            title: "Services Grid: Eyebrow (Optional)",
+            description: "Example: 'WHAT GROWVALLEY DOES IN EXPAND'",
+            type: "string",
+        }),
+        defineField({
+            name: "servicesHeadline",
+            title: "Services Grid: Headline (Optional)",
+            type: "string",
         }),
         defineField({
             name: "nextSectionTitle",
@@ -111,6 +140,29 @@ export default defineType({
             name: "ctaButtonLabel",
             title: "CTA Button Label",
             type: "string",
+        }),
+        defineField({
+            name: "aboutUsSubtitle",
+            title: "About Us: Grid Subtitle",
+            description: "The subtitle that appears under the Pillar Title in the 'Our Solutions' grid on the About Us page.",
+            type: "string",
+            initialValue: "Integrated advisory and alignment.",
+        }),
+        defineField({
+            name: "aboutUsServices",
+            title: "About Us: Grid Services (4 Cards)",
+            description: "Provide exactly 4 services to be displayed in the grid on the About Us page. These are short summaries specifically for that layout.",
+            type: "array",
+            of: [
+                {
+                    type: "object",
+                    fields: [
+                        { name: "title", title: "Service Title", type: "string" },
+                        { name: "description", title: "Service Description", type: "text" },
+                    ]
+                }
+            ],
+            validation: Rule => Rule.max(4),
         }),
     ],
 });

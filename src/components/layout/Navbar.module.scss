@@ -351,6 +351,10 @@
     font-weight: 600;
     color: var(--color-primary-navy);
     transition: color 0.2s;
+
+    &.isFeatured {
+        color: var(--color-accent-blue);
+    }
 }
 
 .megaMenuItemDesc {

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Hero } from "@/components/ui/Hero";
 import { DataSection } from "@/components/ui/DataSection";
-import { ArrowRight, Layers, ShieldCheck, Globe, Target } from "lucide-react";
+import * as Icons from "lucide-react";
 import Link from "next/link";
 import { urlFor } from "@/lib/sanity";
 import {
@@ -22,6 +22,7 @@ interface HomeContentProps {
   dataSectionData: any;
   whoWeWorkWithData?: any;
   solutionsData?: any;
+  homePageSettings?: any;
 }
 
 export default function HomeContent({
@@ -30,6 +31,7 @@ export default function HomeContent({
   dataSectionData,
   whoWeWorkWithData,
   solutionsData,
+  homePageSettings,
 }: HomeContentProps) {
   const defaultHero = {
     eyebrow: "GROWVALLEY WORKS",
@@ -53,8 +55,16 @@ export default function HomeContent({
     ],
   };
 
-  const displayHero = heroData || defaultHero;
-  const displayDataSection = dataSectionData || defaultDataSection;
+  const displayHero = {
+    ...defaultHero,
+    ...(heroData || {})
+  };
+
+  const displayDataSection = {
+    ...defaultDataSection,
+    ...(dataSectionData || {}),
+    stats: dataSectionData?.stats || defaultDataSection.stats
+  };
 
   const getHeroImage = () => {
     if (heroData?.image) {
@@ -82,6 +92,14 @@ export default function HomeContent({
     slug: item.slug,
   }));
 
+  const fallbackWhyCards = [
+    { iconName: "ShieldCheck", label: "Integrated Across Functions", description: "Legal, compliance, finance, and administration sit inside one firm. No vendor gaps. No coordination overhead." },
+    { iconName: "Layers", label: "Structured for Scale", description: "Our model works whether you manage one entity or twelve. We do not need to rebuild when you grow." },
+    { iconName: "Globe", label: "Operational in Multiple Jurisdictions", description: "UAE-headquartered with active capability across international markets. Ready when you expand, not after." }
+  ];
+
+  const whyCards = homePageSettings?.whyCards || fallbackWhyCards;
+
   return (
     <main>
       <Hero
@@ -100,98 +118,63 @@ export default function HomeContent({
             <div className={styles.whySplitLeft}>
               <div className={styles.introCardDark}>
                 <h3>
-                  GrowValley is not a business setup company. We run the infrastructure that keeps entities compliant, solvent, and operational after the license is signed.
+                  {homePageSettings?.whySplitLeftText || "GrowValley is not a business setup company. We run the infrastructure that keeps entities compliant, solvent, and operational after the license is signed."}
                 </h3>
               </div>
             </div>
 
             <div className={styles.whySplitRight}>
-
-              <div className={styles.whyCard}>
-                <div className={styles.whyCardInner}>
-                  <div className={styles.whyCardFront}>
-                    <div className={styles.whyCardIcon}>
-                      <ShieldCheck size={48} strokeWidth={1} />
-                    </div>
-                    <div className={styles.whyCardLabel}>
-                      Integrated Across Functions
-                    </div>
-                  </div>
-                  <div className={styles.whyCardBack}>
-                    <p>
-                      Legal, compliance, finance, and administration sit inside one firm. No vendor gaps. No coordination overhead.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.whyCard}>
-                <div className={styles.whyCardInner}>
-                  <div className={styles.whyCardFront}>
-                    <div className={styles.whyCardIcon}>
-                      <Layers size={48} strokeWidth={1} />
-                    </div>
-                    <div className={styles.whyCardLabel}>
-                      Structured for Scale
+              {whyCards.map((card: any, idx: number) => {
+                const IconComponent = (Icons as any)[card.iconName] || Icons.CheckCircle;
+                return (
+                  <div key={idx} className={styles.whyCard}>
+                    <div className={styles.whyCardInner}>
+                      <div className={styles.whyCardFront}>
+                        <div className={styles.whyCardIcon}>
+                          <IconComponent size={48} strokeWidth={1} />
+                        </div>
+                        <div className={styles.whyCardLabel}>
+                          {card.label}
+                        </div>
+                      </div>
+                      <div className={styles.whyCardBack}>
+                        <p>{card.description}</p>
+                      </div>
                     </div>
                   </div>
-                  <div className={styles.whyCardBack}>
-                    <p>
-                      Our model works whether you manage one entity or twelve. We do not need to rebuild when you grow.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.whyCard}>
-                <div className={styles.whyCardInner}>
-                  <div className={styles.whyCardFront}>
-                    <div className={styles.whyCardIcon}>
-                      <Globe size={48} strokeWidth={1} />
-                    </div>
-                    <div className={styles.whyCardLabel}>
-                      Operational in Multiple Jurisdictions
-                    </div>
-                  </div>
-                  <div className={styles.whyCardBack}>
-                    <p>
-                      UAE-headquartered with active capability across international markets. Ready when you expand, not after.
-                    </p>
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
 
           <div className={styles.positioningSplit}>
             <div className={styles.positioningLeft}>
-              <h2>Many firms help you start. We handle what comes after.</h2>
+              <h2>{homePageSettings?.positioningHeadline || "Many firms help you start. We handle what comes after."}</h2>
             </div>
             <div className={styles.positioningRight}>
               <p className={styles.subheadline}>
-                GrowValley is the execution arm of the GrowValley ecosystem.
+                {homePageSettings?.positioningSubheadline || "GrowValley is the execution arm of the GrowValley ecosystem."}
               </p>
-              <p className={styles.body}>
-                GrowValley Ventures deploys capital. GrowValley Capital advises on strategy. We run the operations.<br /><br />
-                That means company formation, PRO and government liaison, accounting, payroll, tax compliance, and international structuring. The work that is not your core business but stops everything if it fails.
-              </p>
+              <p className={styles.body} dangerouslySetInnerHTML={{ __html: homePageSettings?.positioningBody ? homePageSettings.positioningBody.replace(/\n/g, '<br />') : "GrowValley Ventures deploys capital. GrowValley Capital advises on strategy. We run the operations.<br /><br />That means company formation, PRO and government liaison, accounting, payroll, tax compliance, and international structuring. The work that is not your core business but stops everything if it fails." }} />
             </div>
           </div>
         </div>
       </section>
 
+
       <section className={styles.miniCta}>
         <div className={styles.miniCtaInner}>
           <div className={styles.miniCtaText}>
-            <h3>Infrastructure. Compliance. Operations.</h3>
+            <h3>{homePageSettings?.miniCtaHeadline || "Infrastructure. Compliance. Operations."}</h3>
           </div>
-          <Link href="/contact">
+          <Link href={homePageSettings?.miniCtaButtonLink || "/contact"}>
             <Button variant="secondary" size="lg">
-              Let&apos;s Work
+              {homePageSettings?.miniCtaButtonText || "Let's Work"}
             </Button>
           </Link>
         </div>
       </section>
+      
       <Solutions cmsData={solutionsData} />
       <WhoWeWorkWith cmsData={whoWeWorkWithData} />
       {features.insights && (
@@ -207,14 +190,15 @@ export default function HomeContent({
         description={displayDataSection.description}
         stats={displayDataSection.stats}
       />
+
       <section className={styles.ctaBanner}>
         <div className="container">
           <h2 className={styles.speakToAnExpertBannerHeading}>
-            Your operations are only as strong as the infrastructure running underneath them.
+            {homePageSettings?.bottomCtaHeadline || "Your operations are only as strong as the infrastructure running underneath them."}
           </h2>
-          <Link href="/contact">
+          <Link href={homePageSettings?.bottomCtaButtonLink || "/contact"}>
             <Button size="lg" variant="secondary">
-              Let&apos;s Work
+              {homePageSettings?.bottomCtaButtonText || "Let's Work"}
             </Button>
           </Link>
         </div>

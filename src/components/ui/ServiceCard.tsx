@@ -1,35 +1,26 @@
 import React from 'react';
 import Link from 'next/link';
 import { 
-  ArrowRight, 
-  Building2, 
-  BarChart3, 
-  Heart, 
-  Briefcase, 
-  Globe, 
-  Palette, 
-  Zap, 
-  Users, 
-  ShieldCheck, 
-  Layers, 
-  ScrollText, 
-  Plane 
+  ArrowRight, Award, Scale, Landmark, BarChart3, BookOpen, Briefcase, 
+  Building, Building2, Calculator, CheckCircle, Coins, Compass, 
+  CreditCard, Database, DollarSign, Edit, ExternalLink, Eye, 
+  FileText, Filter, Flag, Folder, Globe, TrendingUp, Handshake, 
+  Heart, HelpCircle, Home, Key, Layers, LineChart, Lock, Mail, 
+  Map, MapPin, Network, Package, Palette, Phone, PieChart, Plane, 
+  Rocket, Search, Settings, ShieldCheck, ShoppingBag, Star, 
+  Target, Users, Wallet, Zap 
 } from 'lucide-react';
 import styles from './ServiceCard.module.scss';
 
 const iconMap: Record<string, any> = {
-  Building2,
-  BarChart3,
-  Heart,
-  Briefcase,
-  Globe,
-  Palette,
-  Zap,
-  Users,
-  ShieldCheck,
-  Layers,
-  ScrollText,
-  Plane
+  ArrowRight, Award, Scale, Landmark, BarChart3, BookOpen, Briefcase, 
+  Building, Building2, Calculator, CheckCircle, Coins, Compass, 
+  CreditCard, Database, DollarSign, Edit, ExternalLink, Eye, 
+  FileText, Filter, Flag, Folder, Globe, TrendingUp, Handshake, 
+  Heart, HelpCircle, Home, Key, Layers, LineChart, Lock, Mail, 
+  Map, MapPin, Network, Package, Palette, Phone, PieChart, Plane, 
+  Rocket, Search, Settings, ShieldCheck, ShoppingBag, Star, 
+  Target, Users, Wallet, Zap 
 };
 
 interface ServiceCardProps {

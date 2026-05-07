@@ -753,6 +753,95 @@
   }
 }
 
+/* ── Feature Grid ── */
+.featureGridSection {
+  padding: var(--section-gap) 0;
+  background-color: var(--color-surface-1); // Subtle grey background for the whole section
+}
+
+.fgHeader {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 5rem auto;
+
+  .fgEyebrow {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--color-primary-navy);
+    margin-bottom: 1.5rem;
+  }
+
+  .fgIntroBody {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+.fgGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.fgCard {
+  flex: 0 1 380px;
+  background-color: var(--color-white);
+  padding: 3.5rem 2.5rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 450px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .fgIcon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--color-surface-1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-navy);
+    margin-bottom: 2rem;
+  }
+
+  h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-primary-navy);
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+}
+
 /* ── 9. Bottom CTA Banner ─────────────────── */
 .ctaBanner {
   padding: var(--section-gap) 0;

@@ -131,6 +131,15 @@ export default function ContactContent() {
         setErrors({});
     };
 
+    const offices = [
+        {
+            name: "Dubai Head Office",
+            address: "GrowValley Group Offices\nDubai, United Arab Emirates",
+            phone: "+971 50 169 6971",
+            email: "reach@gv.ventures"
+        }
+    ];
+
     return (
         <>
             <div className={styles.contactPage}>
@@ -148,25 +157,28 @@ export default function ContactContent() {
                         {/* ── Left Dark Panel ── */}
                         <aside className={styles.leftPanel}>
                             <h1 className={styles.leftHeadline}>
-                                We're easy to reach.
+                                We&apos;re easy to reach.
                             </h1>
                             <p className={styles.leftDescription}>
-                                If you have a question, want to talk specifics, or just want to understand what we do, get in touch. You'll hear directly from one of our advisors.
+                                If you have a question, want to talk specifics, or just want to understand what we do, get in touch. You&apos;ll hear directly from one of our advisors.
                             </p>
 
                             <div className={styles.leftDivider} />
 
-                            <div className={styles.leftContactGroup}>
-                                <p className={styles.leftContactTitle}>Dubai Head Office</p>
-                                <div className={styles.leftContactBody}>
-                                    <p>GrowValley Group Offices</p>
-                                    <p>Dubai, United Arab Emirates</p>
-                                    <p style={{ marginTop: '1rem' }}>Phone: <a href="tel:+971501696971">+971 50 169 6971</a></p>
-                                    <p>Email: <a href="mailto:reach@gv.ventures">reach@gv.ventures</a></p>
-                                    <p>WhatsApp: <a href="https://wa.me/971501696971" target="_blank" rel="noopener noreferrer">+971 50 169 6971</a></p>
-                                    <p style={{ marginTop: '1rem' }}>Working hours: Sunday to Thursday, 9:00 AM to 6:00 PM GST</p>
+                            <p className={styles.leftContactTitle} style={{ marginBottom: '1.5rem', opacity: 0.8 }}>
+                                OUR LOCATIONS
+                            </p>
+
+                            {offices.map((office, idx) => (
+                                <div key={idx} className={styles.leftContactGroup} style={{ marginBottom: '2rem' }}>
+                                    <p className={styles.leftContactTitle}>{office.name}</p>
+                                    <div className={styles.leftContactBody}>
+                                        <p style={{ whiteSpace: 'pre-line' }}>{office.address}</p>
+                                        {office.phone && <p style={{ marginTop: '0.5rem' }}>Phone: <a href={`tel:${office.phone.replace(/\s/g, '')}`}>{office.phone}</a></p>}
+                                        {office.email && <p>Email: <a href={`mailto:${office.email}`}>{office.email}</a></p>}
+                                    </div>
                                 </div>
-                            </div>
+                            ))}
                         </aside>
 
                         {/* ── Right Form Panel ── */}
@@ -175,7 +187,7 @@ export default function ContactContent() {
                                 Prefer to write?
                             </h2>
                             <p className={styles.formEyebrow} style={{ marginBottom: '2rem' }}>
-                                Use the form below and we'll come back to you. If it's urgent, Email us.
+                                Use the form below and we&apos;ll come back to you. If it&apos;s urgent, Email us.
                             </p>
 
                             <form

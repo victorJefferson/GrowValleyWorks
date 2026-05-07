@@ -7,7 +7,15 @@ import serviceWorks from "./service-works";
 import whoWeWorkWithWorks from "./who-we-work-with-works";
 import solutionsWorks from "./solutions-works";
 import caseStudyWorks from "./case-study-works";
+import siteSettingsWorks from "./siteSettings-works";
+import pageWorks from "./page-works";
+import homePageWorks from "./homePage-works";
+import capabilitiesPageWorks from "./capabilitiesPage-works";
+import aboutUsPageWorks from "./aboutUsPage-works";
+import teamWorks from "./team-works";
+import legalPageWorks from "./legalPage-works";
 import consentLog from "./consentLog";
+import joinUsPageWorks from "./joinUsPage-works";
 
 export const schemaTypes = [
     heroWorks,
@@ -19,5 +27,13 @@ export const schemaTypes = [
     whoWeWorkWithWorks,
     solutionsWorks,
     caseStudyWorks,
-    consentLog
+    siteSettingsWorks,
+    pageWorks,
+    homePageWorks,
+    capabilitiesPageWorks,
+    aboutUsPageWorks,
+    teamWorks,
+    legalPageWorks,
+    consentLog,
+    joinUsPageWorks
 ];

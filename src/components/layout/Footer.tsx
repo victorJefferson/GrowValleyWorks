@@ -29,7 +29,38 @@ const SocialLinks = ({ hide = true }: { hide?: boolean }) => {
   );
 };
 
-export function Footer() {
+export function Footer({ settings }: { settings?: any }) {
+  const fallbackFooterNav = [
+    {
+      columnTitle: "Our Services",
+      links: [
+        { name: "Establish", href: "/our-capabilities/establish" },
+        { name: "Operate", href: "/our-capabilities/operate" },
+        { name: "Manage", href: "/our-capabilities/manage" },
+        { name: "Expand", href: "/our-capabilities/expand" },
+      ]
+    },
+    {
+      columnTitle: "About Us",
+      links: [
+        { name: "About GrowValley Works", href: "/about-us" },
+        { name: "Leadership", href: "/about-us/leadership" },
+        { name: "Team", href: "/about-us/team" },
+      ]
+    },
+    {
+      columnTitle: "Join Us",
+      links: [
+        { name: "Jobs", href: "/join-us/jobs" },
+        { name: "Partners", href: "/join-us/partners" },
+        { name: "Investors", href: "/join-us/investors" },
+        { name: "Experts", href: "/join-us/experts" },
+      ]
+    }
+  ];
+
+  const footerNav = settings?.footerNavigation || fallbackFooterNav;
+
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.footerGrid}`}>
@@ -48,6 +79,9 @@ export function Footer() {
           <div className={styles.contactCallout}>
             <h3>Got a question?</h3>
             <h3>Get in touch</h3>
+            <a href="tel:+97141234567" className={styles.phoneLink}>
+              +971 50 169 6971
+            </a>
             <Link href="/contact" className={styles.enquiryLink}>
               Make an enquiry <ArrowRight size={20} className={styles.arrow} />
             </Link>
@@ -58,64 +92,18 @@ export function Footer() {
 
         {/* Navigation Columns */}
         <div className={styles.navGrid}>
-          <div className={styles.linksCol}>
-            <h4>Our Services</h4>
-            <ul>
-              <li>
-                <Link href="/our-capabilities/establish">
-                  Establish
-                </Link>
-              </li>
-              <li>
-                <Link href="/our-capabilities/operate">
-                  Operate
-                </Link>
-              </li>
-              <li>
-                <Link href="/our-capabilities/manage">
-                  Manage
-                </Link>
-              </li>
-              <li>
-                <Link href="/our-capabilities/expand">
-                  Expand
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className={styles.linksCol}>
-            <h4>About Us</h4>
-            <ul>
-              <li>
-                <Link href="/about-us">About GrowValley Works</Link>
-              </li>
-              <li>
-                <Link href="/about-us/leadership">Leadership</Link>
-              </li>
-              <li>
-                <Link href="/about-us/team">Team</Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className={styles.linksCol}>
-            <h4>Join Us</h4>
-            <ul>
-              <li>
-                <Link href="/join-us/jobs">Jobs</Link>
-              </li>
-              <li>
-                <Link href="/join-us/partners">Partners</Link>
-              </li>
-              <li>
-                <Link href="/join-us/investors">Investors</Link>
-              </li>
-              <li>
-                <Link href="/join-us/experts">Experts</Link>
-              </li>
-            </ul>
-          </div>
+          {footerNav.map((column: any, idx: number) => (
+            <div key={idx} className={styles.linksCol}>
+              <h4>{column.columnTitle}</h4>
+              <ul>
+                {column.links?.map((link: any, linkIdx: number) => (
+                  <li key={linkIdx}>
+                    <Link href={link.href}>{link.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
 
