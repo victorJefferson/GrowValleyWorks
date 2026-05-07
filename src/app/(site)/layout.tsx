@@ -1,5 +1,6 @@
 import { Navbar } from "../../components/layout/Navbar";
 import { Footer } from "../../components/layout/Footer";
+import { FloatingContact } from "../../components/ui/FloatingContact";
 import { TrustGuard } from "trust-guard-js";
 import { trustGuardConfig } from "../../trustguard.config";
 import { siteConfig } from "../../config/siteConfig";
@@ -33,6 +34,7 @@ export default async function SiteLayout({
         {children}
       </main>
       <Footer settings={siteSettings} />
+      <FloatingContact />
     </TrustGuard>
   );
 }
