@@ -501,25 +501,32 @@
 
 // Service Grid (Dynamic row accommodation)
 .serviceGrid {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1.5rem;
     align-items: stretch;
     margin-top: 3rem;
     margin-bottom: 3rem;
 
-    @media (min-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    > * {
+        flex: 1 1 100%;
+        
+        @media (min-width: 768px) {
+            flex: 0 1 calc((100% - 1.5rem) / 2); // 2 per row
+        }
 
-    @media (min-width: 1024px) {
-        grid-template-columns: repeat(4, 1fr); // Force 4 per row
+        @media (min-width: 1024px) {
+            flex: 0 1 calc((100% - 4.5rem) / 4); // 4 per row
+        }
     }
 
     // Special layout for more than 4 cards
     &.gridLarge {
-        @media (min-width: 1024px) {
-            grid-template-columns: repeat(3, 1fr);
+        > * {
+            @media (min-width: 1024px) {
+                flex: 0 1 calc((100% - 3rem) / 3); // 3 per row
+            }
         }
     }
 }
