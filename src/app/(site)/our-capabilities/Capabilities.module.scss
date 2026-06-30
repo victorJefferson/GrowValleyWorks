@@ -519,14 +519,7 @@
     // Special layout for more than 4 cards
     &.gridLarge {
         @media (min-width: 1024px) {
-            display: flex; // Switch back to flex ONLY for centering logic
-            flex-wrap: wrap;
-            justify-content: center;
-            
-            & > * {
-                flex: 0 1 calc(33.333% - 1.5rem);
-                min-height: 500px;
-            }
+            grid-template-columns: repeat(3, 1fr);
         }
     }
 }
