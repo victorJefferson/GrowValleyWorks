@@ -5,8 +5,6 @@ import { Metadata } from "next";
 import { client } from "@/lib/sanity";
 import { serviceQuery, pillarQuery, heroQuery, allServicesQuery, serviceCategoriesQuery } from "@/lib/queries";
 
-export const revalidate = 60;
-
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   
