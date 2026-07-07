@@ -7,19 +7,20 @@ export const revalidate = 0;
 
 export const metadata: Metadata = {
     title: {
-        absolute: "GrowValley",
+        absolute: "GrowValley Works | Company Formation & Corporate Operations",
     },
-    description: "A 360° approach to managing your wealth.",
+    description: "GrowValley Works is the operational backbone for serious businesses. We handle company formation, government compliance, accounting, payroll, and international expansion.",
+    keywords: ["GrowValley Works", "GV Works", "GrowValleyWorks", "GVWorks", "Company Formation UAE", "Corporate Structuring", "Business Compliance", "PRO Services", "Accounting UAE", "Payroll UAE"],
     openGraph: {
-        title: "GrowValley",
-        description: "Your Wealth. Our Expertise. This Is GrowValley!",
+        title: "GrowValley Works | Company Formation & Corporate Operations",
+        description: "Your business operations. Handled by one firm. Company formation, compliance, accounting, and payroll.",
         url: "https://gv.works",
         images: [
             {
                 url: "/images/growvalleyworks.png",
                 width: 1200,
                 height: 630,
-                alt: "GrowValley",
+                alt: "GrowValley Works",
             },
         ],
     },

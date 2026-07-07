@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | GrowValley Works"
   },
   description: "Company formation, government compliance, accounting, payroll, and international expansion. Handled by one firm.",
-  keywords: ["Company Formation UAE", "PRO Services", "Business Compliance UAE", "Payroll UAE", "Accounting UAE", "Corporate Structuring", "International Expansion", "GrowValley Works"],
+  keywords: ["Company Formation UAE", "PRO Services", "Business Compliance UAE", "Payroll UAE", "Accounting UAE", "Corporate Structuring", "International Expansion", "GrowValley Works", "GV Works", "GVWorks", "GrowValleyWorks"],
   authors: [{ name: "GrowValley Works" }],
   creator: "GrowValley Works",
   publisher: "GrowValley Works",
@@ -69,9 +69,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GrowValley Works",
+    "alternateName": ["GV Works", "GVWorks", "GrowValleyWorks"],
+    "url": "https://gv.works",
+    "logo": "https://gv.works/gv-logo-blue.png",
+    "description": "Company formation, government compliance, accounting, payroll, and international expansion. Handled by one firm."
+  };
+
   return (
     <html lang="en" className={`${outfit.variable}`} suppressHydrationWarning>
       <body suppressHydrationWarning>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>
