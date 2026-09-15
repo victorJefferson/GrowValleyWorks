@@ -37,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let insightRoutes: MetadataRoute.Sitemap = [];
   try {
     const insights = await client.fetch<InsightSitemapResult[]>(
-      groq`*[_type == "insight" && defined(slug.current)]{ "slug": slug.current, _updatedAt }`
+      groq`*[_type == "insight-works" && defined(slug.current)]{ "slug": slug.current, _updatedAt }`
     );
     insightRoutes = insights.map((insight) => ({
       url: `${baseUrl}/insights/${insight.slug}`,
