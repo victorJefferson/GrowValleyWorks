@@ -71,12 +71,31 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "GrowValley Works",
-    "alternateName": ["GV Works", "GVWorks", "GrowValleyWorks"],
-    "url": "https://gv.works",
-    "logo": "https://gv.works/gv-logo-blue.png",
-    "description": "Company formation, government compliance, accounting, payroll, and international expansion. Handled by one firm."
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://gv.works/#organization",
+        "name": "GrowValley Works",
+        "alternateName": ["GV Works", "GVWorks", "GrowValleyWorks"],
+        "url": "https://gv.works/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://gv.works/gv-logo-blue.png"
+        },
+        "description": "Company formation, government compliance, accounting, payroll, and international expansion. Handled by one firm."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://gv.works/#website",
+        "url": "https://gv.works/",
+        "name": "GrowValley Works",
+        "alternateName": ["GV Works", "GVWorks"],
+        "publisher": {
+          "@id": "https://gv.works/#organization"
+        },
+        "inLanguage": "en"
+      }
+    ]
   };
 
   return (
