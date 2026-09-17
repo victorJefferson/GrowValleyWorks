@@ -60,6 +60,15 @@ export default function HomeContent({
     ...(heroData || {})
   };
 
+  // Keep the full brand in the page's primary heading even when Sanity supplies
+  // a campaign headline. This gives search engines an unambiguous on-page
+  // identity signal while preserving the existing positioning statement.
+  const brandedHeroHeadline = String(displayHero.headline)
+    .toLowerCase()
+    .includes("growvalley works")
+    ? displayHero.headline
+    : `GrowValley Works — ${displayHero.headline}`;
+
   const displayDataSection = {
     ...defaultDataSection,
     ...(dataSectionData || {}),
@@ -104,7 +113,7 @@ export default function HomeContent({
     <main>
       <Hero
         eyebrow={displayHero.eyebrow}
-        headline={displayHero.headline}
+        headline={brandedHeroHeadline}
         subheadline={displayHero.subheadline}
         ctaText={displayHero.ctaText}
         ctaHref={displayHero.ctaHref}
